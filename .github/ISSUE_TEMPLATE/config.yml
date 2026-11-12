@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Bugs in Pyo
+    url: https://github.com/upsetdev/pyo/issues
+    about: Report problems with Pyo itself there.

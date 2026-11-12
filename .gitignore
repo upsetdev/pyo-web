@@ -1,0 +1,17 @@
+node_modules
+dist
+.output
+.tanstack
+.nitro
+.screens-raw
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+.DS_Store
+content/docs
+content/openapi
+public/openapi.json
+public/md
+public/llms.txt
+public/llms-full.txt

@@ -1,0 +1,990 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+@import "fumadocs-openapi/css/preset.css";
+
+/* The theme script writes class="dark" and data-theme on <html>; dark:
+   utilities key on the class. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Palette: dark-first neutrals, one blue accent, hairline
+  borders. Tokens are HSL triplets so utilities can apply opacity
+  (bg-primary/10). Change --primary to rebrand; everything else follows.
+*/
+@layer base {
+  :root,
+  :root[data-theme="dark"] {
+    --canvas: 0 0% 4.3%; /* #0b0b0b: the content area */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 5.7%; /* #0f0f0f: a card inside its frame (--muted, #131313), a step above the page */
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 10%; /* #1a1a1a: menus and tooltips, above cards */
+    --primary: 222 100% 57%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 8.6%; /* #161616 */
+    --muted: 0 0% 7.6%; /* #131313: the frame around cards */
+    --muted-foreground: 0 0% 67%;
+    --accent: 0 0% 12.5%; /* #202020: hover fill */
+    --destructive: 0 70% 52%;
+    --success: 152 60% 48%;
+    --warning: 38 92% 56%;
+    --info: 222 100% 65%;
+    --border: 0 0% 14.2%; /* #242424: decorative lines, quiet but visible */
+    --border-strong: 0 0% 25.8%; /* #424242: outlines on secondary buttons */
+    --card-border: 0 0% 20%; /* #333333: a card's own edge, apart from dividers */
+    --divider: 0 0% 15.7%; /* #282828: rows in a list */
+    --shell-border: 0 0% 11%; /* #1c1c1c: the edges of the site's chrome (header, docs sidebar and bar) */
+    --card-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.04);
+    --frame-border: 0 0% 11.8%; /* #1e1e1e: the frame's hairline, softer than a card's */
+    --field: 0 0% 4.7%;
+    --field-shadow: inset 0 1px 1px 0 rgb(0 0 0 / 0.25);
+    --input: 0 0% 29%;
+    --input-hover: 0 0% 40%;
+    --ring: 222 100% 62%;
+    --sidebar: 0 0% 2%; /* #050505: the sidebar, darker than the content */
+    --sidebar-border: 0 0% 2%;
+    --content: 0 0% 2%;
+    /* Chart series: validated categorical slots. */
+    --series-1: #2465ff;
+    --series-2: #0a9cbd;
+    --series-3: #f0884b; /* coral: no purple */
+    --chart-grid: 0 0% 12%;
+    color-scheme: dark;
+  }
+
+  :root[data-theme="light"] {
+    --canvas: 0 0% 100%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --primary: 222 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 0 0% 95%;
+    --destructive: 0 72% 48%;
+    --success: 152 70% 29%; /* 5:1 as text */
+    --warning: 30 95% 35%; /* 4.8:1 as text */
+    --info: 222 100% 50%;
+    --border: 0 0% 90%;
+    --border-strong: 0 0% 80%; /* #cccccc: outlines on secondary buttons */
+    --card-border: 0 0% 86.5%; /* #dddddd */
+    --divider: 0 0% 91.5%; /* #e9e9e9: rows in a list */
+    --shell-border: 0 0% 91%; /* #e8e8e8 */
+    --card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+    --frame-border: 0 0% 92%; /* #ebebeb */
+    --field: 0 0% 100%;
+    --field-shadow: inset 0 1px 1px 0 rgb(0 0 0 / 0.03);
+    --input: 0 0% 68%;
+    --input-hover: 0 0% 55%;
+    --ring: 222 100% 50%;
+    --sidebar: 0 0% 96%; /* the layered card surround (--muted) */
+    --sidebar-border: 0 0% 96%;
+    --content: 0 0% 97%;
+    --series-1: #004cff;
+    --series-2: #0aa5c8;
+    --series-3: #c2570c;
+    --chart-grid: 0 0% 91%;
+    color-scheme: light;
+  }
+
+  /* Before the theme script runs (or with JS off), follow the OS setting. */
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+      --canvas: 0 0% 100%;
+      --background: 0 0% 100%;
+      --foreground: 0 0% 9%;
+      --card: 0 0% 100%;
+      --card-foreground: 0 0% 9%;
+      --popover: 0 0% 100%;
+      --primary: 222 100% 50%;
+      --primary-foreground: 0 0% 100%;
+      --secondary: 0 0% 96%;
+      --muted: 0 0% 96%;
+      --muted-foreground: 0 0% 40%;
+      --accent: 0 0% 95%;
+      --destructive: 0 72% 48%;
+      --success: 152 70% 29%; /* 5:1 as text */
+      --warning: 30 95% 35%; /* 4.8:1 as text */
+      --info: 222 100% 50%;
+      --border: 0 0% 90%;
+    --border-strong: 0 0% 80%; /* #cccccc: outlines on secondary buttons */
+    --card-border: 0 0% 86.5%; /* #dddddd */
+    --divider: 0 0% 91.5%; /* #e9e9e9: rows in a list */
+    --shell-border: 0 0% 91%; /* #e8e8e8 */
+    --card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+    --frame-border: 0 0% 92%; /* #ebebeb */
+    --field: 0 0% 100%;
+    --field-shadow: inset 0 1px 1px 0 rgb(0 0 0 / 0.03);
+    --input: 0 0% 68%;
+    --input-hover: 0 0% 55%;
+      --ring: 222 100% 50%;
+      --sidebar: 0 0% 96%; /* the layered card surround (--muted) */
+      --sidebar-border: 0 0% 96%;
+      --content: 0 0% 97%;
+      --series-1: #004cff;
+      --series-2: #0aa5c8;
+      --series-3: #c2570c;
+      --chart-grid: 0 0% 91%;
+      color-scheme: light;
+    }
+  }
+}
+
+@theme inline {
+  --color-canvas: hsl(var(--canvas));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-destructive: hsl(var(--destructive));
+  --color-success: hsl(var(--success));
+  --color-warning: hsl(var(--warning));
+  --color-info: hsl(var(--info));
+  --color-chart-grid: hsl(var(--chart-grid));
+  --color-border: hsl(var(--border));
+  --color-border-strong: hsl(var(--border-strong));
+  --color-card-border: hsl(var(--card-border));
+  --color-shell-border: hsl(var(--shell-border));
+  --color-divider: hsl(var(--divider));
+  --color-frame-border: hsl(var(--frame-border));
+  --color-field: hsl(var(--field));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-content: hsl(var(--content));
+
+  --font-sans:
+    "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  --font-mono:
+    "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --animate-dropdown-in: dropdown-in 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-fade-up: fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  html {
+    background: hsl(var(--background));
+    scrollbar-width: thin;
+  }
+  body {
+    background: hsl(var(--canvas));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background: hsl(var(--primary) / 0.35);
+    color: hsl(var(--foreground));
+  }
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
+
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/*
+  The primary button, as in the dashboard: a flat brand fill with a crisp rim
+  and a soft glow. Lighter on hover, darker when pressed.
+*/
+@utility btn-emerge {
+  background-color: hsl(var(--primary));
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.22),
+    inset 0 -1px 0 0 rgb(0 0 0 / 0.15),
+    0 0 0 1px color-mix(in oklab, hsl(var(--primary)) 80%, black),
+    0 1px 2px 0 rgb(0 0 0 / 0.2),
+    0 6px 16px -6px hsl(var(--primary) / 0.55);
+  &:hover {
+    background-color: color-mix(in oklab, hsl(var(--primary)) 90%, white);
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.28),
+      inset 0 -1px 0 0 rgb(0 0 0 / 0.15),
+      0 0 0 1px color-mix(in oklab, hsl(var(--primary)) 80%, black),
+      0 2px 4px 0 rgb(0 0 0 / 0.2),
+      0 12px 28px -8px hsl(var(--primary) / 0.7);
+  }
+  &:active {
+    background-color: color-mix(in oklab, hsl(var(--primary)) 86%, black);
+    transform: none;
+    box-shadow:
+      inset 0 1px 2px 0 rgb(0 0 0 / 0.25),
+      0 0 0 1px color-mix(in oklab, hsl(var(--primary)) 75%, black);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+/* A card's edge, as in the dashboard: its own border, with a top highlight in
+   dark and a soft shadow in light. Frames around cards have no border. */
+@utility card-edge {
+  border-width: 1px;
+  border-color: hsl(var(--card-border));
+  box-shadow: var(--card-shadow);
+}
+/* Cards you can click: the edge firms up on hover. */
+@utility card-edge-hover {
+  &:hover {
+    border-color: hsl(var(--border-strong) / 0.7);
+  }
+}
+
+/* The soft ring around cards: a hairline, softer than the card's own edge. */
+@utility frame-edge {
+  border: 1px solid hsl(var(--frame-border));
+}
+
+/* Text fields, as in the dashboard: inset, a firmer edge on hover, and a
+   primary ring on focus (destructive when invalid). */
+@utility field {
+  border: 1px solid hsl(var(--input));
+  border-radius: 10px;
+  background-color: hsl(var(--field));
+  box-shadow: var(--field-shadow);
+  transition: border-color 150ms, box-shadow 150ms;
+  &:hover {
+    border-color: hsl(var(--input-hover));
+  }
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    border-color: hsl(var(--primary));
+    box-shadow:
+      var(--field-shadow),
+      0 0 0 3px hsl(var(--primary) / 0.2);
+  }
+  &[aria-invalid="true"],
+  &:user-invalid {
+    border-color: hsl(var(--destructive));
+  }
+  &[aria-invalid="true"]:focus,
+  &:user-invalid:focus {
+    box-shadow:
+      var(--field-shadow),
+      0 0 0 3px hsl(var(--destructive) / 0.2);
+  }
+}
+
+/*
+  Rows in a list card, as in the dashboard: full-width dividers between rows (none
+  above the first or below the last). A hovered row's fill runs to the card's
+  edges; the lines stay as they are.
+*/
+@utility list-rows {
+  & > :where(*) {
+    position: relative;
+  }
+  & > * + *::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: hsl(var(--divider));
+    pointer-events: none;
+  }
+}
+
+/* The faint diagonal dashes behind the hero and the closing section. */
+.dash-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cpath d='M20 20l34 30M80 75l34 30' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+  opacity: 0.07;
+}
+:root[data-theme="light"] .dash-pattern {
+  filter: invert(1);
+  opacity: 0.05;
+}
+
+/*
+  The docs use Pyo's tokens, with their own accent for links and active states.
+  The site and the dashboard keep the brand blue.
+*/
+:root,
+:root[data-theme="dark"] {
+  --segment-core: hsl(330 90% 72%);
+  --segment-cli: hsl(152 60% 55%);
+  --segment-api: hsl(46 95% 58%);
+  --segment-mcp: hsl(190 80% 60%);
+  --docs-accent: var(--segment-core);
+  --docs-border: 0 0% 18%; /* clearer than --border: lines in reading content */
+  --docs-control: 0 0% 8%;
+  --docs-control-border: 0 0% 14.2%; /* = --border */
+  --docs-kbd: rgb(0 0 0 / 0.45);
+  --docs-card: 0 0% 8%; /* a step above the page (#0b0b0b) */
+  --docs-card-hover: 0 0% 11.5%;
+  --icon-yellow: hsl(46 95% 58%);
+}
+:root[data-theme="light"] {
+  --segment-core: hsl(330 80% 46%);
+  --segment-cli: hsl(152 72% 29%);
+  --segment-api: hsl(36 95% 32%);
+  --segment-mcp: hsl(192 85% 32%);
+  --docs-accent: var(--segment-core);
+  --docs-border: 0 0% 85%;
+  --docs-control: 0 0% 100%;
+  --docs-control-border: 0 0% 90%;
+  --docs-kbd: rgb(0 0 0 / 0.06);
+  --docs-card: 0 0% 96%;
+  --docs-card-hover: 0 0% 93%;
+  --icon-yellow: hsl(42 95% 42%);
+}
+:root {
+  --color-fd-background: hsl(var(--background));
+  --color-fd-foreground: hsl(var(--foreground));
+  --color-fd-card: hsl(var(--card));
+  --color-fd-card-foreground: hsl(var(--card-foreground));
+  --color-fd-popover: hsl(var(--popover));
+  --color-fd-popover-foreground: hsl(var(--foreground));
+  --color-fd-primary: var(--docs-accent);
+  --color-fd-primary-foreground: hsl(var(--primary-foreground));
+  --color-fd-secondary: hsl(var(--secondary));
+  --color-fd-secondary-foreground: hsl(var(--foreground));
+  --color-fd-muted: hsl(var(--muted));
+  --color-fd-muted-foreground: hsl(var(--muted-foreground));
+  --color-fd-accent: hsl(var(--accent));
+  --color-fd-accent-foreground: hsl(var(--foreground));
+  --color-fd-border: hsl(var(--docs-border));
+  --color-fd-ring: hsl(var(--ring));
+}
+
+/* Like the dashboard: a darker sidebar beside the page. */
+#nd-docs-layout {
+  position: relative;
+  background: hsl(var(--canvas));
+  /* Clearer lines than the dashboard's: here they separate reading content. */
+  --border: var(--docs-border);
+  /* Cards and buttons lift off the page. */
+  --card: var(--docs-card);
+  --color-fd-card: hsl(var(--docs-card));
+}
+/* Cards lift off the page. */
+#nd-page .prose a[data-card="true"],
+#nd-page a.rounded-lg.border {
+  background: hsl(var(--docs-card));
+  border-color: hsl(var(--card-border));
+  box-shadow: var(--card-shadow);
+}
+#nd-page .prose a[data-card="true"]:hover,
+#nd-page a.rounded-lg.border:hover {
+  background: hsl(var(--docs-card-hover));
+  border-color: hsl(var(--border-strong) / 0.7);
+}
+/* The icon tile takes the page's colour, so it still shows on the card. */
+#nd-page .prose a[data-card="true"] > div:first-child {
+  background: hsl(var(--canvas));
+  box-shadow: none;
+}
+/* Code blocks stay as they were: they aren't cards. */
+#nd-page figure {
+  --color-fd-card: hsl(var(--canvas));
+}
+/* Search and the phone sidebar open outside the layout. */
+[role="dialog"] {
+  --border: var(--docs-border);
+}
+/* As in the dashboard: a quiet shell line beside the sidebar and under the bar. */
+#nd-sidebar {
+  background: hsl(var(--sidebar));
+  border-color: hsl(var(--shell-border));
+}
+#nd-subnav {
+  background: hsl(var(--sidebar));
+  border-color: hsl(var(--shell-border));
+}
+/* A calm page to read: a comfortable line length, with room to breathe. */
+#nd-page {
+  max-width: none;
+  padding-bottom: 96px;
+}
+#nd-page .prose {
+  line-height: 1.75;
+  /* Softer than headings and bold text, so those stand out without shouting. */
+  --tw-prose-body: color-mix(in oklab, hsl(var(--foreground)) 80%, transparent);
+  color: color-mix(in oklab, hsl(var(--foreground)) 80%, transparent);
+}
+#nd-page .prose strong {
+  color: hsl(var(--foreground));
+}
+#nd-page .prose h2 {
+  margin-top: 2.6em;
+}
+#nd-page .prose > :first-child {
+  margin-top: 0.75em;
+}
+#nd-page > :last-child {
+  margin-top: 56px;
+}
+/* Other links, as in the dashboard too: quieter, so the active one stands out. */
+[id^="nd-sidebar"] [data-radix-scroll-area-viewport] :is(a, button):not([data-active="true"]) {
+  color: hsl(var(--muted-foreground));
+}
+[id^="nd-sidebar"] [data-radix-scroll-area-viewport] :is(a, button):not([data-active="true"]):hover {
+  background: rgb(0 0 0 / 0.035);
+  color: hsl(var(--foreground));
+}
+.dark [id^="nd-sidebar"] [data-radix-scroll-area-viewport] :is(a, button):not([data-active="true"]) {
+  color: rgb(255 255 255 / 0.5);
+}
+.dark [id^="nd-sidebar"] [data-radix-scroll-area-viewport] :is(a, button):not([data-active="true"]):hover {
+  background: rgb(255 255 255 / 0.01);
+  color: rgb(255 255 255 / 0.85);
+}
+.dark [id^="nd-sidebar"] [data-radix-scroll-area-viewport] :is(a, button):not([data-active="true"]) svg {
+  color: rgb(255 255 255 / 0.45);
+}
+.dark [id^="nd-sidebar"] [data-radix-scroll-area-viewport] :is(a, button):not([data-active="true"]):hover svg {
+  color: rgb(255 255 255 / 0.85);
+}
+/* The active link: the dashboard's pill (navItemClass in AppShell), in the accent. */
+#nd-sidebar a[data-active="true"],
+#nd-sidebar button[data-active="true"] {
+  background: hsl(var(--canvas));
+  color: var(--docs-accent);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+[id^="nd-sidebar"] a[data-active="true"],
+[id^="nd-sidebar"] button[data-active="true"] {
+  font-weight: 400;
+}
+#nd-sidebar a[data-active="true"]::before {
+  content: none;
+}
+.dark #nd-sidebar a[data-active="true"],
+.dark #nd-sidebar button[data-active="true"] {
+  box-shadow: none;
+}
+/* So the last links never end against the bottom of the screen. */
+[id^="nd-sidebar"] [data-radix-scroll-area-viewport] {
+  padding-bottom: 72px;
+}
+#nd-sidebar p {
+  font-size: 12px;
+  font-weight: 500;
+  color: color-mix(in oklab, hsl(var(--foreground)) 85%, transparent);
+}
+/* Room between the logo row and search. */
+#nd-sidebar div:has(> a[href="/docs"]) {
+  margin-bottom: 10px;
+}
+/* Each segment has its own accent. On the root, so menus opened outside the layout get it too. */
+:root:has(#nd-docs-layout[data-segment="cli"]) {
+  --docs-accent: var(--segment-cli);
+}
+:root:has(#nd-docs-layout[data-segment="api"]) {
+  --docs-accent: var(--segment-api);
+}
+:root:has(#nd-docs-layout[data-segment="mcp"]) {
+  --docs-accent: var(--segment-mcp);
+}
+/* The segment switcher and search: matching soft pills. */
+[id^="nd-sidebar"] button[aria-haspopup="dialog"],
+[id^="nd-sidebar"] button[data-search-full] {
+  min-height: 44px;
+  padding-inline: 12px;
+  border-color: hsl(var(--docs-control-border));
+  border-radius: 14px;
+  background: hsl(var(--docs-control));
+}
+[id^="nd-sidebar"] button[aria-haspopup="dialog"]:hover,
+[id^="nd-sidebar"] button[data-search-full]:hover {
+  background: hsl(var(--docs-card-hover));
+}
+/* The segment reads as a title. */
+#nd-sidebar button[aria-haspopup="dialog"] p:first-child,
+[id^="nd-sidebar"] button[aria-haspopup="dialog"] p:first-child {
+  font-size: 14px;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+}
+/* The open segment menu: compact, on a solid surface. */
+[role="dialog"]:has(> a .fd-page-tree-item-name) {
+  gap: 2px;
+  padding: 6px;
+  border-color: hsl(var(--docs-control-border));
+  border-radius: 16px;
+  background: hsl(var(--popover));
+  box-shadow: 0 16px 40px -16px rgb(0 0 0 / 0.45);
+  backdrop-filter: none;
+}
+[role="dialog"]:has(> a .fd-page-tree-item-name) > a {
+  gap: 10px;
+  padding: 8px;
+  border-radius: 10px;
+}
+[role="dialog"]:has(> a .fd-page-tree-item-name) > a:hover {
+  background: hsl(var(--docs-card-hover));
+}
+[role="dialog"]:has(> a .fd-page-tree-item-name) p:first-child {
+  font-size: 13.5px;
+  line-height: 18px;
+  color: hsl(var(--foreground));
+}
+[role="dialog"]:has(> a .fd-page-tree-item-name) p:nth-child(2) {
+  margin-top: 1px;
+  font-size: 12px;
+  line-height: 16px;
+}
+@media (min-width: 768px) {
+  [role="dialog"]:has(> a .fd-page-tree-item-name) > a > div:first-child {
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+  }
+}
+/* Search stays quiet. */
+[id^="nd-sidebar"] button[data-search-full] {
+  font-size: 14px;
+  font-weight: 400;
+  color: hsl(var(--muted-foreground));
+}
+[id^="nd-sidebar"] button[data-search-full] kbd {
+  border: 0;
+  border-radius: 7px;
+  background: var(--docs-kbd);
+}
+/* The sidebar doesn't collapse, so its control for that state never shows. */
+[data-sidebar-panel] {
+  display: none;
+}
+@media (min-width: 768px) {
+  /*
+    Fumadocs sets this on the element, so it needs !important. The added empty
+    column centres the page and its outline in the space beside the sidebar.
+  */
+  #nd-docs-layout {
+    grid-template:
+      "sidebar . header toc ."
+      "sidebar . toc-popover toc ."
+      "sidebar . tabs toc ."
+      "sidebar . main toc ." 1fr
+      / var(--fd-sidebar-col) minmax(0, 1fr) minmax(0, 780px)
+      var(--fd-toc-width) minmax(0, 1fr) !important;
+  }
+  #nd-page {
+    padding-top: 72px;
+  }
+}
+
+/* The outline lines up with the page title. */
+@media (min-width: 1280px) {
+  #nd-page {
+    padding-top: 80px;
+  }
+  #nd-toc {
+    padding-top: 80px;
+  }
+}
+
+/* API reference: the HTTP method beside a page's name in the sidebar. */
+.api-method {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  padding: 3px 5px;
+  border-radius: 5px;
+  color: hsl(var(--muted-foreground));
+  background: hsl(var(--muted-foreground) / 0.12);
+}
+.api-method[data-method="get"] {
+  color: hsl(var(--success));
+  background: hsl(var(--success) / 0.12);
+}
+.api-method[data-method="post"] {
+  color: hsl(var(--info));
+  background: hsl(var(--info) / 0.12);
+}
+.api-method:is([data-method="put"], [data-method="patch"]) {
+  color: hsl(var(--warning));
+  background: hsl(var(--warning) / 0.12);
+}
+.api-method[data-method="delete"] {
+  color: hsl(var(--destructive));
+  background: hsl(var(--destructive) / 0.12);
+}
+
+/*
+  API reference pages are full width: two columns, the examples on the right,
+  in a sticky column. On narrow screens they stack, the examples after the
+  description.
+*/
+@media (min-width: 768px) {
+  #nd-docs-layout:has(#nd-page[data-full="true"]) {
+    grid-template:
+      "sidebar . header ."
+      "sidebar . toc-popover ."
+      "sidebar . tabs ."
+      "sidebar . main ." 1fr
+      / var(--fd-sidebar-col) minmax(0, 1fr) minmax(0, 1180px)
+      minmax(0, 1fr) !important;
+  }
+}
+#nd-page[data-full="true"] {
+  max-width: 1180px;
+}
+.api-op {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "head" "aside" "body";
+  gap: 0 40px;
+}
+.api-op-head {
+  grid-area: head;
+  min-width: 0;
+}
+.api-op-body {
+  grid-area: body;
+  min-width: 0;
+}
+.api-op-aside {
+  grid-area: aside;
+  min-width: 0;
+  margin: 8px 0 24px;
+}
+@container (min-width: 900px) {
+  .api-op {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+    grid-template-areas: "head aside" "body aside";
+    grid-template-rows: auto 1fr;
+  }
+  .api-op-aside {
+    margin: 0;
+    position: sticky;
+    top: calc(var(--fd-docs-row-1, 0px) + 24px);
+    align-self: start;
+    max-height: calc(100dvh - var(--fd-docs-row-1, 0px) - 48px);
+    overflow: auto;
+    scrollbar-width: thin;
+  }
+}
+#nd-page[data-full="true"] {
+  container-type: inline-size;
+}
+.api-examples {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.api-card {
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid hsl(var(--card-border));
+  background: hsl(var(--docs-card));
+  box-shadow: var(--card-shadow);
+}
+.api-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 6px 8px 6px 12px;
+  border-bottom: 1px solid hsl(var(--divider));
+  font-size: 13px;
+}
+.api-card-title {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+}
+.api-tile {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  color: hsl(var(--muted-foreground));
+  background: hsl(var(--muted-foreground) / 0.14);
+}
+.api-tile[data-method="get"] {
+  color: hsl(var(--success));
+  background: hsl(var(--success) / 0.14);
+}
+.api-tile[data-method="post"] {
+  color: hsl(var(--info));
+  background: hsl(var(--info) / 0.14);
+}
+.api-tile:is([data-method="put"], [data-method="patch"]) {
+  color: hsl(var(--warning));
+  background: hsl(var(--warning) / 0.14);
+}
+.api-tile[data-method="delete"] {
+  color: hsl(var(--destructive));
+  background: hsl(var(--destructive) / 0.14);
+}
+.api-card-select {
+  height: 28px;
+  max-width: 140px;
+  padding: 0 24px 0 8px;
+  border-radius: 8px;
+  border: 1px solid hsl(var(--docs-control-border));
+  background: hsl(var(--docs-control))
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 256 256'%3E%3Cpath fill='%23888' d='M213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32z'/%3E%3C/svg%3E")
+    no-repeat right 8px center;
+  appearance: none;
+  font-size: 12px;
+  color: hsl(var(--foreground));
+  cursor: pointer;
+}
+.api-card-select:hover {
+  border-color: hsl(var(--input-hover));
+}
+.api-card-select-start {
+  max-width: none;
+  font-weight: 500;
+}
+.api-card-icon-button {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: hsl(var(--muted-foreground));
+  transition: background-color 150ms, color 150ms;
+}
+.api-card-icon-button:hover {
+  background: hsl(var(--accent));
+  color: hsl(var(--foreground));
+}
+/* The code inside a card: no frame of its own, line numbers, its own scroll. */
+.api-card .api-card-code {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  font-size: 12.5px;
+}
+.api-card .api-card-code pre {
+  overflow-x: auto;
+}
+.api-card-scroll {
+  max-height: 340px;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+.api-card-empty {
+  margin: 0;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: hsl(var(--muted-foreground));
+}
+
+/*
+  The architecture diagram (ArchitectureDiagram.tsx): one inline SVG, read
+  top to bottom, in monospace. Thin lines and rounded corners, an accent line
+  on top of the parts doing the work, filled boxes for the ways in. Every
+  colour is a theme token, so it follows the theme toggle. On a phone it keeps
+  its size and scrolls sideways inside its own box.
+*/
+.arch-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+/* Narrower than the diagram: scroll edge to edge, past the page's gutter. */
+@media (max-width: 899.98px) {
+  .arch-scroll {
+    margin-inline: -20px;
+    padding-inline: 20px;
+  }
+}
+.arch-svg {
+  --arch-edge: hsl(var(--foreground) / 0.3);
+  --arch-wire: hsl(var(--foreground) / 0.42);
+  --arch-frame: hsl(var(--foreground) / 0.24);
+  display: block;
+  width: 100%;
+  min-width: 860px;
+  max-width: 1100px;
+  height: auto;
+  margin-inline: auto;
+  font-family: var(--font-mono);
+}
+.arch-hint {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: 13px;
+  color: hsl(var(--muted-foreground));
+}
+.arch-hint::before {
+  content: "\2190  ";
+}
+.arch-hint::after {
+  content: "  \2192";
+}
+@media (min-width: 900px) {
+  .arch-hint {
+    display: none;
+  }
+}
+
+.arch-svg text {
+  text-anchor: middle;
+}
+.arch-title {
+  font-size: 13px;
+  font-weight: 500;
+  fill: hsl(var(--foreground));
+}
+.arch-muted {
+  font-size: 12px;
+  fill: hsl(var(--muted-foreground));
+}
+.arch-label {
+  font-size: 12px;
+  fill: hsl(var(--muted-foreground));
+}
+.arch-notch {
+  font-weight: 700;
+  fill: hsl(var(--foreground));
+}
+.arch-svg .arch-notch {
+  text-anchor: start;
+}
+.arch-notch-aside {
+  font-weight: 400;
+  fill: hsl(var(--muted-foreground));
+}
+
+.arch-box {
+  fill: hsl(var(--background));
+  stroke: var(--arch-edge);
+  stroke-width: 1;
+}
+.arch-box-tint {
+  fill: hsl(var(--primary) / 0.12);
+  stroke: hsl(var(--primary) / 0.45);
+}
+.arch-box-dashed {
+  stroke-dasharray: 4 3;
+}
+/* Along the top edge, round its corners too. */
+.arch-accent {
+  fill: none;
+  stroke: hsl(var(--primary));
+  stroke-width: 2;
+}
+.arch-frame {
+  fill: none;
+  stroke: var(--arch-frame);
+  stroke-width: 1;
+}
+.arch-divider {
+  stroke: var(--arch-frame);
+  stroke-width: 1;
+  stroke-dasharray: 5 5;
+  shape-rendering: crispEdges;
+}
+.arch-ground {
+  fill: hsl(var(--background));
+}
+
+.arch-wire {
+  fill: none;
+  stroke: var(--arch-wire);
+  stroke-width: 1;
+}
+.arch-dot {
+  fill: var(--arch-wire);
+}
+/* A short dash of the accent colour, travelling along its wire. */
+.arch-flow {
+  fill: none;
+  stroke: hsl(var(--primary));
+  stroke-width: 2;
+  stroke-dasharray: 10px calc(var(--len) * 1px);
+  stroke-dashoffset: 10px;
+  animation: arch-flow linear infinite;
+}
+@keyframes arch-flow {
+  from {
+    stroke-dashoffset: 10px;
+  }
+  70%,
+  to {
+    stroke-dashoffset: calc(var(--len) * -1px + 6px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arch-flow {
+    animation: none;
+    stroke-dashoffset: calc(var(--len) * -0.5px + 5px);
+  }
+}
