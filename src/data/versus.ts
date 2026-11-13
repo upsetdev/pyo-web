@@ -90,7 +90,7 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "CLI", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "API", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
-          { topic: "MCP for AI assistants", pyo: ["yes", "129 tools, covering the whole API"], them: ["yes", "Yes"] },
+          { topic: "MCP for AI assistants", pyo: ["yes", "131 tools, covering the whole API"], them: ["yes", "Yes"] },
         ],
       },
       {
@@ -169,7 +169,7 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "CLI", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "API", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
-          { topic: "MCP for AI assistants", pyo: ["yes", "129 tools, covering the whole API"], them: ["yes", "Yes"] },
+          { topic: "MCP for AI assistants", pyo: ["yes", "131 tools, covering the whole API"], them: ["yes", "Yes"] },
         ],
       },
       {
@@ -245,7 +245,7 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "CLI", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "API", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
-          { topic: "MCP for AI assistants", pyo: ["yes", "129 tools, covering the whole API"], them: ["partly", "Community servers"] },
+          { topic: "MCP for AI assistants", pyo: ["yes", "131 tools, covering the whole API"], them: ["partly", "Community servers"] },
         ],
       },
       {
@@ -321,7 +321,7 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "CLI", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "API", pyo: ["yes", "Yes"], them: ["partly", "Commands over SSH"] },
-          { topic: "MCP for AI assistants", pyo: ["yes", "129 tools, covering the whole API"], them: ["partly", "Community servers"] },
+          { topic: "MCP for AI assistants", pyo: ["yes", "131 tools, covering the whole API"], them: ["partly", "Community servers"] },
         ],
       },
       {
@@ -397,7 +397,7 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "CLI", pyo: ["yes", "Yes"], them: ["partly", "Through the API or Terraform"] },
           { topic: "API", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
-          { topic: "MCP for AI assistants", pyo: ["yes", "129 tools, covering the whole API"], them: ["yes", "Yes"] },
+          { topic: "MCP for AI assistants", pyo: ["yes", "131 tools, covering the whole API"], them: ["yes", "Yes"] },
         ],
       },
       {
@@ -487,7 +487,7 @@ export const COMPETITORS: Competitor[] = [
           { topic: "CLI", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "API", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "SDK", pyo: ["no", "Use the API"], them: ["yes", "JavaScript and TypeScript"] },
-          { topic: "MCP for AI assistants", pyo: ["yes", "129 tools, covering the whole API"], them: ["yes", "Yes"] },
+          { topic: "MCP for AI assistants", pyo: ["yes", "131 tools, covering the whole API"], them: ["yes", "Yes"] },
         ],
       },
       {
@@ -575,7 +575,7 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "CLI", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "API", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
-          { topic: "MCP for AI assistants", pyo: ["yes", "129 tools, covering the whole API"], them: ["yes", "Yes"] },
+          { topic: "MCP for AI assistants", pyo: ["yes", "131 tools, covering the whole API"], them: ["yes", "Yes"] },
         ],
       },
     ],
@@ -654,7 +654,7 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "CLI", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "API", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
-          { topic: "MCP for AI assistants", pyo: ["yes", "129 tools, covering the whole API"], them: ["yes", "Yes"] },
+          { topic: "MCP for AI assistants", pyo: ["yes", "131 tools, covering the whole API"], them: ["yes", "Yes"] },
         ],
       },
     ],
@@ -734,7 +734,7 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "CLI", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "API", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
-          { topic: "MCP for AI assistants", pyo: ["yes", "129 tools, covering the whole API"], them: ["yes", "Yes"] },
+          { topic: "MCP for AI assistants", pyo: ["yes", "131 tools, covering the whole API"], them: ["yes", "Yes"] },
         ],
       },
     ],
@@ -813,7 +813,7 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "CLI", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "API", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
-          { topic: "MCP for AI assistants", pyo: ["yes", "129 tools, covering the whole API"], them: ["yes", "Yes"] },
+          { topic: "MCP for AI assistants", pyo: ["yes", "131 tools, covering the whole API"], them: ["yes", "Yes"] },
         ],
       },
     ],
@@ -890,7 +890,7 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "CLI", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "API", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
-          { topic: "MCP for AI assistants", pyo: ["yes", "129 tools, covering the whole API"], them: ["partly", "Experimental, in the CLI"] },
+          { topic: "MCP for AI assistants", pyo: ["yes", "131 tools, covering the whole API"], them: ["partly", "Experimental, in the CLI"] },
         ],
       },
     ],
