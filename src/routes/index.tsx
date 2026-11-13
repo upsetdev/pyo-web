@@ -23,7 +23,15 @@ const STRUCTURED_DATA = {
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    ...seo({ path: "/", title: site.title, description: site.description }),
+    ...seo({
+      path: "/",
+      title: site.title,
+      description: site.description,
+      card: {
+        title: "Deploy your apps easily on your own servers",
+        description: "The open-source PaaS for your own servers.",
+      },
+    }),
     scripts: [
       { type: "application/ld+json", children: JSON.stringify(STRUCTURED_DATA) },
     ],

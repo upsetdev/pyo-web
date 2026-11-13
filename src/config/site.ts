@@ -7,7 +7,8 @@ export const site = {
   /** Under 160 characters, for the same reason. */
   description:
     "Deploy your code, databases and one-click templates on your own servers. The open-source, self-hosted alternative to Vercel, Netlify, Railway, Render and Fly.io.",
-  ogImageAlt: "The Pyo dashboard, showing projects, deployments and clusters",
+  /** Renders each page's social card (see lib/seo.ts). */
+  ogImageUrl: "https://og.upset.dev/image",
   url: "https://pyo.dev",
   github: "https://github.com/upsetdev/pyo",
   docsRepo: "https://github.com/upsetdev/pyo-docs",

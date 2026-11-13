@@ -16,6 +16,11 @@ export const Route = createFileRoute("/pricing")({
       title: "Pricing: free self-hosted, or Pyo Cloud at $5 per server | Pyo",
       description:
         "Self-host Pyo for free with every feature, or let us run it with Pyo Cloud for $5 per server per month. Either way, your services and data stay on your servers.",
+      card: {
+        badge: "Pricing",
+        title: "Free to self-host, or Pyo Cloud at $5 per server",
+        description: "Every feature on every install. Your services and data stay on your servers.",
+      },
     }),
   component: PricingPage,
 });

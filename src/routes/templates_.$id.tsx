@@ -72,6 +72,7 @@ export const Route = createFileRoute("/templates_/$id")({
             path: `/templates/${t.id}`,
             title: pageTitle(t),
             description: pageDescription(t),
+            card: { badge: "Template", description: t.description },
           }),
           scripts: [
             {

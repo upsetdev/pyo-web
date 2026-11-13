@@ -17,6 +17,7 @@ export const Route = createFileRoute("/vs/$competitor")({
           path: `/vs/${c.slug}`,
           title: `${c.name} alternative, Pyo is an open source and self-hosted PaaS`,
           description: c.seoDescription,
+          card: { badge: "Comparison", title: `Pyo vs ${c.name}` },
         })
       : {};
   },

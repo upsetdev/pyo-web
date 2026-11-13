@@ -9,6 +9,10 @@ export const Route = createFileRoute("/architecture")({
       title: "How Pyo works: your services, on your own servers | Pyo",
       description:
         "How Pyo fits together: visitors, Pyo Gateway, your servers, Pyo and you, and what each part does.",
+      card: {
+        title: "How Pyo works",
+        description: "Pyo runs your services on servers you own, and handles the rest.",
+      },
     }),
   component: ArchitecturePage,
 });

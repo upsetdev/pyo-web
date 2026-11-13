@@ -65,6 +65,7 @@ export const Route = createFileRoute("/docs/$")({
       path: d.url,
       title: `${d.title} | Pyo Docs`,
       description: d.description,
+      card: { badge: "Docs", title: d.title },
     });
     return {
       meta: [...meta, { property: "og:site_name", content: "Pyo Docs" }],
