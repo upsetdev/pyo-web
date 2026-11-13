@@ -49,7 +49,7 @@ export const COMPETITORS: Competitor[] = [
         group: "Scaling",
         rows: [
           { topic: "Autoscaling", pyo: ["yes", "On CPU and memory, from min to max"], them: ["no", "No"] },
-          { topic: "Replicas across servers", pyo: ["yes", "Up to 50, from the dashboard"], them: ["partly", "Swarm, or your own load balancer"] },
+          { topic: "Replicas across servers", pyo: ["yes", "As many as your servers fit, from the dashboard"], them: ["partly", "Swarm, or your own load balancer"] },
           { topic: "Databases that fail over", pyo: ["yes", "Postgres, MySQL and KV, with replicas on other servers"], them: ["no", "One container each. Replication is up to you"] },
           { topic: "Services move if a server fails", pyo: ["yes", "Stateless services, automatically"], them: ["partly", "Only with Swarm, which is deprecated"] },
           { topic: "Clusters", pyo: ["yes", "Built in from the start"], them: ["partly", "Swarm, deprecated and due to be removed"] },
@@ -130,7 +130,7 @@ export const COMPETITORS: Competitor[] = [
         group: "Scaling",
         rows: [
           { topic: "Autoscaling", pyo: ["yes", "On CPU and memory, from min to max"], them: ["no", "No"] },
-          { topic: "Replicas across servers", pyo: ["yes", "Up to 50, from the dashboard"], them: ["partly", "Swarm replicas, set up by hand"] },
+          { topic: "Replicas across servers", pyo: ["yes", "As many as your servers fit, from the dashboard"], them: ["partly", "Swarm replicas, set up by hand"] },
           { topic: "Databases that fail over", pyo: ["yes", "Postgres, MySQL and KV, with replicas on other servers"], them: ["no", "One instance each, with no replication"] },
           { topic: "Services move if a server fails", pyo: ["yes", "Stateless services, automatically"], them: ["partly", "Through Docker Swarm"] },
           { topic: "Clusters", pyo: ["yes", "Built in from the start"], them: ["yes", "Docker Swarm"] },
@@ -207,7 +207,7 @@ export const COMPETITORS: Competitor[] = [
         group: "Scaling",
         rows: [
           { topic: "Autoscaling", pyo: ["yes", "On CPU and memory, from min to max"], them: ["no", "No"] },
-          { topic: "Replicas across servers", pyo: ["yes", "Up to 50, from the dashboard"], them: ["yes", "Instance count, across Swarm nodes"] },
+          { topic: "Replicas across servers", pyo: ["yes", "As many as your servers fit, from the dashboard"], them: ["yes", "Instance count, across Swarm nodes"] },
           { topic: "Databases that fail over", pyo: ["yes", "Postgres, MySQL and KV, with replicas on other servers"], them: ["no", "One-click apps, pinned to one server"] },
           { topic: "Services move if a server fails", pyo: ["yes", "Stateless services, automatically"], them: ["partly", "Stateless apps, through Docker Swarm"] },
           { topic: "Clusters", pyo: ["yes", "Built in from the start"], them: ["yes", "Docker Swarm"] },
@@ -283,7 +283,7 @@ export const COMPETITORS: Competitor[] = [
         group: "Scaling",
         rows: [
           { topic: "Autoscaling", pyo: ["yes", "On CPU and memory, from min to max"], them: ["partly", "With the multi-server scheduler"] },
-          { topic: "Replicas across servers", pyo: ["yes", "Up to 50, from the dashboard"], them: ["partly", "With the multi-server scheduler"] },
+          { topic: "Replicas across servers", pyo: ["yes", "As many as your servers fit, from the dashboard"], them: ["partly", "With the multi-server scheduler"] },
           { topic: "Databases that fail over", pyo: ["yes", "Postgres, MySQL and KV, with replicas on other servers"], them: ["no", "Through plugins, one container each"] },
           { topic: "Services move if a server fails", pyo: ["yes", "Stateless services, automatically"], them: ["partly", "With the multi-server scheduler"] },
           { topic: "Clusters", pyo: ["yes", "Built in from the start"], them: ["partly", "With the multi-server scheduler"] },
@@ -359,7 +359,7 @@ export const COMPETITORS: Competitor[] = [
         group: "Scaling",
         rows: [
           { topic: "Autoscaling", pyo: ["yes", "On CPU and memory, from min to max"], them: ["no", "Not for Docker or Swarm"] },
-          { topic: "Replicas across servers", pyo: ["yes", "Up to 50, from the dashboard"], them: ["partly", "With Docker Swarm"] },
+          { topic: "Replicas across servers", pyo: ["yes", "As many as your servers fit, from the dashboard"], them: ["partly", "With Docker Swarm"] },
           { topic: "Databases that fail over", pyo: ["yes", "Postgres, MySQL and KV, with replicas on other servers"], them: ["no", "Runs your containers. No built-in databases"] },
           { topic: "Services move if a server fails", pyo: ["yes", "Stateless services, automatically"], them: ["partly", "With Docker Swarm"] },
           { topic: "Clusters", pyo: ["yes", "Built in from the start"], them: ["partly", "Docker Swarm"] },
@@ -445,7 +445,7 @@ export const COMPETITORS: Competitor[] = [
         group: "Scaling",
         rows: [
           { topic: "Autoscaling", pyo: ["yes", "On CPU and memory, from min to max"], them: ["no", "Not on your own servers"] },
-          { topic: "Replicas across servers", pyo: ["yes", "Up to 50, from the dashboard"], them: ["yes", "Up to 100, on a k3s or Swarm cluster"] },
+          { topic: "Replicas across servers", pyo: ["yes", "As many as your servers fit, from the dashboard"], them: ["yes", "Up to 100, on a k3s or Swarm cluster"] },
           { topic: "Databases that fail over", pyo: ["yes", "Postgres, MySQL and KV, with replicas on other servers"], them: ["partly", "Postgres and Redis replicas, on a k3s cluster"] },
           { topic: "Services move if a server fails", pyo: ["yes", "Stateless services, automatically"], them: ["partly", "On a k3s cluster"] },
           { topic: "Clusters", pyo: ["yes", "Built in from the start"], them: ["yes", "k3s, or an existing Docker Swarm"] },

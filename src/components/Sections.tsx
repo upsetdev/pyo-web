@@ -29,7 +29,7 @@ const PRODUCTION: [Icon, string, string][] = [
   [
     StackIcon,
     "Room to scale",
-    "Run several replicas across your servers, or let Pyo add and remove them as CPU and memory use change.",
+    "Run as many replicas as your servers fit, or let Pyo add and remove them as CPU and memory use change.",
   ],
   [
     ShieldCheckIcon,
