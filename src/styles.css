@@ -952,6 +952,16 @@
   stroke-dasharray: 5 5;
   shape-rendering: crispEdges;
 }
+/* A feature tag: a small pill under a box's lines. */
+.arch-tag {
+  fill: hsl(var(--primary) / 0.08);
+  stroke: hsl(var(--primary) / 0.35);
+  stroke-width: 1;
+}
+.arch-tag-text {
+  font-size: 11px;
+  fill: hsl(var(--foreground) / 0.85);
+}
 .arch-ground {
   fill: hsl(var(--background));
 }

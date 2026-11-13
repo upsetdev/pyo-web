@@ -11,14 +11,38 @@ import { useEffect, useRef, type CSSProperties } from "react";
 // Colours come from the .arch-* rules in styles.css, so it follows the theme.
 
 const W = 1100;
-const H = 2050;
+const H = 2150;
 const LH = 18; // line height for the muted lines
 const R = 10; // corner radius of a box; frames get a little more
 
 type Pt = readonly [number, number];
 
-/** A box's height for a title and `n` muted lines below it. */
-const boxH = (n: number) => 38 + LH * n;
+const TAG_H = 20; // a feature tag: a small rounded pill
+const TAG_GAP = 6;
+const TAG_ROW = TAG_H + TAG_GAP;
+const TAG_CH = 6.6; // 11px mono
+
+const tagW = (t: string) => t.length * TAG_CH + 14;
+
+/** Feature tags in rows that fit `inner` pixels, filled greedily in order. */
+function tagRows(tags: readonly string[], inner: number) {
+  const rows: string[][] = [];
+  let used = Infinity;
+  for (const t of tags) {
+    const w = tagW(t);
+    if (used + TAG_GAP + w > inner) {
+      rows.push([t]);
+      used = w;
+    } else {
+      rows[rows.length - 1].push(t);
+      used += TAG_GAP + w;
+    }
+  }
+  return rows;
+}
+
+/** A box's height for a title, `n` muted lines and `rows` rows of tags. */
+const boxH = (n: number, rows = 0) => (rows ? 44 + LH * n + TAG_ROW * rows : 38 + LH * n);
 
 /** A box: a bold title and muted lines, centred. */
 function Box({
@@ -27,6 +51,7 @@ function Box({
   w,
   title,
   lines = [],
+  tags = [],
   accent,
   tint,
   stack = 0,
@@ -37,6 +62,8 @@ function Box({
   w: number;
   title: string;
   lines?: readonly string[];
+  /** What it does best, as small pills under the lines. */
+  tags?: readonly string[];
   /** A 2px accent line on top: one of the parts doing the work. */
   accent?: boolean;
   /** Filled: a way in, like visitors and your clients. */
@@ -46,8 +73,10 @@ function Box({
   /** Only there when you turn it on. */
   dashed?: boolean;
 }) {
-  const h = boxH(lines.length);
+  const rows = tagRows(tags, w - 24);
+  const h = boxH(lines.length, rows.length);
   const cx = x + w / 2;
+  const tagTop = y + 36 + LH * lines.length;
   const cls = `arch-box${tint ? " arch-box-tint" : ""}${dashed ? " arch-box-dashed" : ""}`;
   return (
     <g>
@@ -72,6 +101,24 @@ function Box({
           {l}
         </text>
       ))}
+      {rows.map((row, r) => {
+        const total = row.reduce((a, t) => a + tagW(t), 0) + TAG_GAP * (row.length - 1);
+        let tx = cx - total / 2;
+        const ty = tagTop + TAG_ROW * r;
+        return row.map((t) => {
+          const tw = tagW(t);
+          const el = (
+            <g key={t}>
+              <rect className="arch-tag" x={tx} y={ty} width={tw} height={TAG_H} rx={TAG_H / 2} />
+              <text className="arch-tag-text" x={tx + tw / 2} y={ty + 14}>
+                {t}
+              </text>
+            </g>
+          );
+          tx += tw + TAG_GAP;
+          return el;
+        });
+      })}
     </g>
   );
 }
@@ -221,92 +268,111 @@ function Diagram() {
   return (
     <>
       {/* Pyo, around your servers, your backups and its own parts. */}
-      <Frame x={10} y={140} w={1080} h={1340} title="pyo" big />
-      <line className="arch-divider" x1={10} x2={1090} y1={1150} y2={1150} />
-      <Frame x={40} y={180} w={1020} h={660} title="your servers" />
-      <Frame x={600} y={880} w={270} h={235} title="backups" />
-      <Notch x={530} y={1150} title="Pyo itself" aside="on your server or Pyo Cloud" />
-      <Frame x={10} y={1720} w={1080} h={310} title="a deploy, step by step" />
+      <Frame x={10} y={140} w={1080} h={1440} title="pyo" big />
+      <line className="arch-divider" x1={10} x2={1090} y1={1210} y2={1210} />
+      <Frame x={40} y={180} w={1020} h={720} title="your servers" />
+      <Frame x={600} y={940} w={270} h={235} title="backups" />
+      <Notch x={530} y={1210} title="Pyo itself" aside="on your server or Pyo Cloud" />
+      <Frame x={10} y={1820} w={1080} h={310} title="a deploy, step by step" />
 
       {/* Wires first, so boxes sit on top of their ends. */}
       <Wire points={[[C, 104], [C, 225]]} label={{ x: C + 12, y: 126, text: "HTTPS" }} />
-      <Wire points={[[440, 271], [300, 271]]} label={{ x: 370, y: 263, text: "each request", anchor: "middle" }} delay={0.4} />
-      <Wire points={[[C, 317], [C, 359]]} label={{ x: C + 12, y: 343, text: "requests" }} delay={0.8} />
-      <Wire points={[[420, 421], [270, 421]]} label={{ x: 337, y: 413, text: "reads and writes", anchor: "middle" }} delay={1.2} />
-      <Wire points={[[C, 467], [C, 519]]} label={{ x: C + 12, y: 497, text: "queries" }} delay={1.6} />
+      <Wire points={[[420, 282], [300, 282]]} label={{ x: 360, y: 274, text: "each request", anchor: "middle" }} delay={0.4} />
+      <Wire points={[[C, 339], [C, 389]]} label={{ x: C + 12, y: 369, text: "requests" }} delay={0.8} />
+      <Wire points={[[405, 455], [288, 455]]} label={{ x: 338, y: 447, text: "reads, writes", anchor: "middle" }} delay={1.2} />
+      <Wire points={[[C, 521], [C, 573]]} label={{ x: C + 12, y: 551, text: "queries" }} delay={1.6} />
       <Wire
-        points={[[175, 458], [175, 680], [735, 680], [735, 920]]}
-        dots={[[C, 680]]}
-        label={{ x: 747, y: 764, text: "backups" }}
+        points={[[180, 521], [180, 750], [735, 750], [735, 980]]}
+        dots={[[C, 750]]}
+        label={{ x: 747, y: 840, text: "backups" }}
         delay={2}
       />
-      <Wire points={[[C, 645], [C, 680]]} head={false} />
-      <Wire points={[[910, 317], [910, 1195]]} label={{ x: 922, y: 1124, text: "image" }} delay={0.6} />
-      <Wire points={[[170, 1195], [170, 807]]} label={{ x: 158, y: 1124, text: "commands", anchor: "end" }} delay={1} />
-      <Wire points={[[230, 807], [230, 1195]]} label={{ x: 242, y: 1124, text: "status, logs, metrics" }} delay={2.4} />
-      <Wire points={[[490, 798], [490, 1195]]} label={{ x: 502, y: 1124, text: "request logs" }} delay={1.8} />
-      <Wire points={[[200, 1269], [200, 1320]]} label={{ x: 212, y: 1299, text: "queries" }} delay={0.3} />
-      <Wire points={[[285, 1350], [582, 1350]]} label={{ x: 433, y: 1342, text: "jobs", anchor: "middle" }} delay={1.4} />
+      <Wire points={[[C, 723], [C, 750]]} head={false} />
+      <Wire points={[[915, 339], [915, 1255]]} label={{ x: 927, y: 1184, text: "image" }} delay={0.6} />
+      <Wire points={[[170, 1255], [170, 872]]} label={{ x: 158, y: 1184, text: "commands", anchor: "end" }} delay={1} />
+      <Wire points={[[230, 872], [230, 1255]]} label={{ x: 242, y: 1184, text: "status, logs, metrics" }} delay={2.4} />
+      <Wire points={[[520, 863], [520, 1255]]} label={{ x: 508, y: 1184, text: "request logs", anchor: "end" }} delay={1.8} />
+      <Wire points={[[200, 1387], [200, 1440]]} label={{ x: 212, y: 1418, text: "queries" }} delay={0.3} />
+      <Wire points={[[285, 1470], [610, 1470]]} label={{ x: 447, y: 1462, text: "jobs", anchor: "middle" }} delay={1.4} />
       <Wire
-        points={[[925, 1550], [925, 1520], [35, 1520], [35, 1232], [70, 1232]]}
-        dots={[[175, 1520], [425, 1520], [675, 1520]]}
-        label={{ x: 105, y: 1512, text: "manage", anchor: "middle" }}
+        points={[[925, 1650], [925, 1620], [35, 1620], [35, 1321], [70, 1321]]}
+        dots={[[175, 1620], [425, 1620], [675, 1620]]}
+        label={{ x: 105, y: 1612, text: "manage", anchor: "middle" }}
         delay={0.9}
       />
       {[175, 425, 675].map((x) => (
-        <Wire key={x} points={[[x, 1550], [x, 1520]]} head={false} />
+        <Wire key={x} points={[[x, 1650], [x, 1620]]} head={false} />
       ))}
       {STEPS.slice(1).map((_, i) => {
         const x = 40 + i * 176 + 140;
-        return <Wire key={x} points={[[x, 1806], [x + 36, 1806]]} />;
+        return <Wire key={x} points={[[x, 1906], [x + 36, 1906]]} />;
       })}
-      <Wire points={[[814, 1852], [814, 1900]]} label={{ x: 802, y: 1881, text: "if it fails", anchor: "end" }} delay={1.2} />
+      <Wire points={[[814, 1952], [814, 2000]]} label={{ x: 802, y: 1981, text: "if it fails", anchor: "end" }} delay={1.2} />
 
       <Box x={450} y={30} w={240} title="visitors" lines={["browsers, apps, API clients", "your domains or free ones"]} tint stack={2} />
 
       {/* Your servers. */}
-      <Box x={80} y={234} w={220} title="web firewall" lines={["when you turn it on", "checks for attacks first"]} dashed />
       <Box
-        x={440}
+        x={70}
+        y={229}
+        w={230}
+        title="web firewall"
+        lines={["checks each request first", "when you turn it on"]}
+        tags={["OWASP Core Rule Set"]}
+        dashed
+      />
+      <Box
+        x={420}
         y={225}
-        w={260}
+        w={300}
         title="Pyo Gateway"
-        lines={["free HTTPS, access rules", "rate limits, TCP and UDP", "domains live in seconds"]}
+        lines={["websites, TCP and UDP ports"]}
+        tags={["domains live without redeploy", "free HTTPS", "access rules", "rate limits"]}
         accent
       />
       <Box
         x={790}
         y={225}
-        w={240}
+        w={250}
         title="builds"
-        lines={["from Git push or Dockerfile", "or with zero config", "on a server or a build server"]}
+        lines={["on a server or a build server"]}
+        tags={["every Git push", "Dockerfile", "zero config"]}
       />
-      <Box x={80} y={384} w={190} title="files" lines={["volumes that keep data", "when a service restarts"]} />
       <Box
-        x={420}
-        y={375}
-        w={300}
+        x={70}
+        y={389}
+        w={218}
+        title="files"
+        lines={["volumes that keep data", "when a service restarts"]}
+        tags={["backups", "one-click restore", "move between projects"]}
+      />
+      <Box
+        x={405}
+        y={389}
+        w={330}
         title="services"
-        lines={["sites, APIs, workers, cron jobs", "replicas across your servers", "zero-downtime deploys"]}
+        lines={["sites, APIs and workers", "replicas across your servers"]}
+        tags={["autoscaling", "zero-downtime deploys", "rollbacks", "self-healing", "cron jobs"]}
         accent
         stack={2}
       />
       <Box
-        x={420}
-        y={535}
-        w={300}
+        x={405}
+        y={573}
+        w={330}
         title="databases"
-        lines={["Postgres, MySQL, key-value", "point-in-time recovery", "a replica takes over", "if a server is lost"]}
+        lines={["Postgres, MySQL, key-value", "restore Postgres to any moment", "and MySQL to its latest backup"]}
+        tags={["automatic failover", "point-in-time recovery", "read replicas", "import"]}
         accent
         stack={2}
       />
-      <Box x={80} y={715} w={240} title="Pyo agent" lines={["one on each cluster", "connects out to Pyo", "nothing connects in"]} accent />
-      <Box x={380} y={724} w={220} title="log collector" lines={["on each server", "sends request logs"]} stack={2} />
+      <Box x={70} y={780} w={240} title="Pyo agent" lines={["one on each cluster", "connects out to Pyo", "nothing connects in"]} accent />
+      <Box x={410} y={789} w={220} title="log collector" lines={["on each server", "sends request logs"]} stack={2} />
 
       {/* Backups. */}
       <Store
         cx={735}
-        y={920}
+        y={980}
         w={160}
         title="backup store"
         caption={[
@@ -320,36 +386,44 @@ function Diagram() {
       />
 
       {/* Pyo itself. */}
-      <Box x={70} y={1195} w={260} title="dashboard and API" lines={["where you, the CLI and", "AI assistants work"]} accent />
-      <Store cx={490} y={1195} w={180} title="observability" caption={["ClickHouse", "requests and metrics", "for analytics and logs"]} />
-      <Store cx={910} y={1195} w={170} title="registry" caption={["your built images", "servers pull from here"]} />
+      <Box
+        x={70}
+        y={1255}
+        w={320}
+        title="dashboard and API"
+        lines={["where you, the CLI and", "AI assistants work"]}
+        tags={["teams and roles", "encrypted secrets", "activity log", "alerts", "analytics and logs"]}
+        accent
+      />
+      <Store cx={520} y={1255} w={180} title="observability" caption={["ClickHouse", "requests and metrics", "for analytics and logs"]} />
+      <Store cx={915} y={1255} w={170} title="registry" caption={["your built images", "servers pull from here"]} />
       <Store
         cx={200}
-        y={1320}
+        y={1440}
         w={170}
         title="Pyo's database"
         caption={["Postgres", "teams, projects, settings", "history, encrypted secrets"]}
       />
-      <Box x={590} y={1322} w={230} title="background workers" lines={["deploys, backups, checks"]} accent stack={1} />
+      <Box x={610} y={1442} w={230} title="background workers" lines={["deploys, backups, checks"]} accent stack={1} />
 
       {/* You. */}
       {CLIENTS.map(([title, line], i) => (
-        <Box key={title} x={70 + i * 250} y={1550} w={210} title={title} lines={[line]} tint />
+        <Box key={title} x={70 + i * 250} y={1650} w={210} title={title} lines={[line]} tint />
       ))}
-      <text className="arch-title" x={550} y={1650}>
+      <text className="arch-title" x={550} y={1750}>
         you and your team
       </text>
-      <text className="arch-muted" x={550} y={1670}>
+      <text className="arch-muted" x={550} y={1770}>
         owner, admin, developer, viewer
       </text>
 
       {/* A deploy, step by step. */}
       {STEPS.map(([title, lines], i) => (
-        <Box key={title} x={40 + i * 176} y={1760} w={140} title={`${i + 1} ${title}`} lines={lines} accent={i === 5} />
+        <Box key={title} x={40 + i * 176} y={1860} w={140} title={`${i + 1} ${title}`} lines={lines} accent={i === 5} />
       ))}
       <Box
         x={684}
-        y={1900}
+        y={2000}
         w={260}
         title="roll back"
         lines={["old replicas keep serving", "the previous version returns", "you can turn this off"]}
@@ -383,26 +457,32 @@ export function ArchitectureDiagram() {
         Read from top to bottom. Visitors, in browsers, apps and API clients,
         reach your services over HTTPS, on your own domains or free ones. Pyo
         wraps your servers, your backups and its own parts. On your servers,
-        visitors arrive at Pyo Gateway. It gives free HTTPS, puts new domains
-        live in seconds, and applies access rules and rate limits, for websites
-        and for TCP and UDP ports. When you turn on the web firewall, the
-        gateway has it check each request for attacks first. The gateway sends
-        requests to your services: sites, APIs, workers and cron jobs, whose
-        replicas spread across your servers, with zero-downtime deploys.
-        Services read and write files on volumes, which keep their data when a
-        service restarts, and send queries to databases: Postgres, MySQL and
-        key-value, with point-in-time recovery. With high availability, a
-        replica takes over if a server is lost. Builds turn your code into an
-        image, from a Git push, a Dockerfile or with zero config, on one of
-        your servers or a build server of its own, and send it to Pyo's
-        registry. The Pyo agent, one on each cluster, connects out to Pyo, so
-        nothing connects in. Pyo sends it commands, and gets back status, logs
-        and metrics. A log collector on each server sends request logs to Pyo.
-        Files and databases are backed up to the built-in store or your own S3
-        bucket: files encrypted, Postgres and MySQL to a point in time,
-        key-value as encrypted snapshots, and Pyo itself encrypted. Pyo itself
-        runs on your server or on Pyo Cloud. Its dashboard and API are where
-        you, the CLI and AI assistants work. It keeps teams, projects,
+        visitors arrive at Pyo Gateway, for websites and for TCP and UDP ports.
+        It gives free HTTPS, puts domains live without a redeploy, and applies
+        access rules and rate limits. When you turn on the web firewall, with
+        the OWASP Core Rule Set, it checks each request for attacks first. The
+        gateway sends requests to your services: sites, APIs and workers, with
+        replicas across your servers. Services have autoscaling between a
+        minimum and maximum on CPU and memory use, zero-downtime deploys,
+        one-click and automatic rollbacks, self-healing that moves stateless
+        services to a healthy server, and cron jobs. Services read and write
+        files on volumes, which keep their data when a service restarts, are
+        backed up, restore in one click and can move between projects.
+        Services send queries to databases: Postgres, MySQL and key-value, with
+        automatic failover to a replica on another server, point-in-time
+        recovery that restores Postgres to any moment and MySQL to its latest
+        backup, read replicas and import. Builds turn your code into an image
+        on every Git push, from a Dockerfile or with zero config, on one of
+        your servers or a build server, and send it to Pyo's registry. The Pyo
+        agent, one on each cluster, connects out to Pyo, so nothing connects
+        in. Pyo sends it commands, and gets back status, logs and metrics. A
+        log collector on each server sends request logs to Pyo. Files and
+        databases are backed up to the built-in store or your own S3 bucket:
+        files encrypted, Postgres and MySQL to a point in time, key-value
+        encrypted, and Pyo itself encrypted. Pyo itself runs on your server or
+        on Pyo Cloud. Its dashboard and API are where you, the CLI and AI
+        assistants work, with teams and roles, encrypted secrets, an activity
+        log, alerts, and analytics and logs. It keeps teams, projects,
         settings, history and encrypted secrets in its own Postgres database,
         which also holds the jobs that background workers run: deploys,
         backups and checks. Requests and metrics go to ClickHouse, for

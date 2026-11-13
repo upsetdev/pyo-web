@@ -17,6 +17,15 @@ export const Route = createFileRoute("/architecture")({
   component: ArchitecturePage,
 });
 
+const HIGHLIGHTS = [
+  "Autoscaling",
+  "Zero-downtime deploys",
+  "Database failover",
+  "Point-in-time recovery",
+  "Web firewall",
+  "Volume backups",
+];
+
 function ArchitecturePage() {
   return (
     <main className="pb-24 sm:pb-32">
@@ -27,6 +36,16 @@ function ArchitecturePage() {
         <p className="mx-auto mt-4 max-w-2xl text-[16px] leading-relaxed lg:text-[18px] text-muted-foreground">
           Pyo runs your services on servers you own, and handles the rest.
         </p>
+        <ul className="mx-auto mt-6 flex max-w-2xl flex-wrap justify-center gap-2">
+          {HIGHLIGHTS.map((h) => (
+            <li
+              key={h}
+              className="rounded-full border border-primary/35 bg-primary/[0.08] px-3 py-1 font-mono text-[12px] text-foreground/85"
+            >
+              {h}
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="mx-auto max-w-6xl px-5">
