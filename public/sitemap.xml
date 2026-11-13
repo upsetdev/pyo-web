@@ -229,10 +229,7 @@
     <loc>https://pyo.dev/docs/api/reference/clusters/rotate-agent-token</loc>
   </url>
   <url>
-    <loc>https://pyo.dev/docs/api/reference/clusters/set-cluster-waf</loc>
-  </url>
-  <url>
-    <loc>https://pyo.dev/docs/api/reference/clusters/set-cluster-waf-default</loc>
+    <loc>https://pyo.dev/docs/api/reference/clusters/set-cluster-public-traffic</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/clusters/set-cluster-web-proxy-protocol</loc>
@@ -256,10 +253,16 @@
     <loc>https://pyo.dev/docs/api/reference/databases/add-database-backup</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/api/reference/databases/check-database-import</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/api/reference/databases/connect-database</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/databases/create-database</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/databases/create-database-dump-upload</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/databases/delete-database</loc>
@@ -289,6 +292,9 @@
     <loc>https://pyo.dev/docs/api/reference/databases/restore-database</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/api/reference/databases/retry-database-import</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/api/reference/databases/reveal-database-password</loc>
   </url>
   <url>
@@ -301,10 +307,16 @@
     <loc>https://pyo.dev/docs/api/reference/databases/set-database-extensions</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/api/reference/databases/start-database-import</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/api/reference/databases/update-database</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/databases/update-database-backup</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/databases/upload-database-dump</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/deployments/cancel</loc>
@@ -355,10 +367,10 @@
     <loc>https://pyo.dev/docs/api/reference/firewall/remove-waf-rule</loc>
   </url>
   <url>
-    <loc>https://pyo.dev/docs/api/reference/firewall/reorder-waf-rules</loc>
+    <loc>https://pyo.dev/docs/api/reference/firewall/reorder-firewall-rules</loc>
   </url>
   <url>
-    <loc>https://pyo.dev/docs/api/reference/firewall/set-firewall</loc>
+    <loc>https://pyo.dev/docs/api/reference/firewall/reorder-waf-rules</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/firewall/set-service-waf</loc>
@@ -418,7 +430,13 @@
     <loc>https://pyo.dev/docs/api/reference/observability/get-observability</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/api/reference/observability/get-observability-settings</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/api/reference/observability/get-service-connections</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/observability/set-observability</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/projects/create-project</loc>
@@ -433,34 +451,37 @@
     <loc>https://pyo.dev/docs/api/reference/projects/preview-compose</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/api/reference/projects/preview-platform-import</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/api/reference/projects/set-project-isolation</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/projects/start-platform-import</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/projects/update-project</loc>
   </url>
   <url>
-    <loc>https://pyo.dev/docs/api/reference/servers/cancel-node-removal</loc>
+    <loc>https://pyo.dev/docs/api/reference/servers/cancel-server-removal</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/servers/join-server</loc>
   </url>
   <url>
-    <loc>https://pyo.dev/docs/api/reference/servers/remove-node</loc>
+    <loc>https://pyo.dev/docs/api/reference/servers/remove-server</loc>
   </url>
   <url>
-    <loc>https://pyo.dev/docs/api/reference/servers/set-node-location</loc>
+    <loc>https://pyo.dev/docs/api/reference/servers/set-server-location</loc>
   </url>
   <url>
-    <loc>https://pyo.dev/docs/api/reference/servers/set-node-maintenance</loc>
-  </url>
-  <url>
-    <loc>https://pyo.dev/docs/api/reference/servers/set-node-schedulable</loc>
-  </url>
-  <url>
-    <loc>https://pyo.dev/docs/api/reference/servers/set-server-public-traffic</loc>
+    <loc>https://pyo.dev/docs/api/reference/servers/set-server-maintenance</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/servers/set-server-regular-services</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/servers/set-server-schedulable</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/servers/set-server-tags</loc>
@@ -529,7 +550,25 @@
     <loc>https://pyo.dev/docs/api/reference/volumes/add-volume</loc>
   </url>
   <url>
-    <loc>https://pyo.dev/docs/api/reference/volumes/remove-volume</loc>
+    <loc>https://pyo.dev/docs/api/reference/volumes/attach-volume</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/volumes/delete-volume</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/volumes/delete-volume-snapshot</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/volumes/detach-volume</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/volumes/list-volume-snapshots</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/volumes/resize-volume</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/volumes/restore-volume</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/backups</loc>
@@ -616,6 +655,9 @@
     <loc>https://pyo.dev/docs/images</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/import-platforms</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/install</loc>
   </url>
   <url>
@@ -628,10 +670,16 @@
     <loc>https://pyo.dev/docs/mcp/tools</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/migrating</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/network-isolation</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/observability</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/passkeys</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/projects</loc>
@@ -665,6 +713,9 @@
   </url>
   <url>
     <loc>https://pyo.dev/docs/templates</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/uninstall</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/updating-pyo</loc>
