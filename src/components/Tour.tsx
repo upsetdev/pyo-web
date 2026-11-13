@@ -14,7 +14,7 @@ const STEPS: {
     name: "deployments",
     label: "Deployments",
     title: "Every deploy, in one place",
-    body: "Build from Git, with or without a Dockerfile, or run any container image. Connect GitHub to deploy on every push and roll back in one click. If a deploy fails, Pyo puts the previous version back on its own.",
+    body: "Build from Git, with or without a Dockerfile, or run any container image. Connect GitHub to deploy on every push and roll back in one click. If a deploy fails, Pyo puts the previous version back on its own. Coming from Coolify or Dokploy? Import your services and databases in one go.",
   },
   {
     name: "analytics",

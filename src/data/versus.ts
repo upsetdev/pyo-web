@@ -16,6 +16,8 @@ export type Competitor = {
   trademark?: string;
   seoDescription: string;
   subtitle: string;
+  /** Pyo imports projects from this platform (see /docs/import-platforms). */
+  imports?: boolean;
   groups: { group: string; rows: Row[] }[];
 };
 
@@ -25,6 +27,7 @@ export const COMPETITORS: Competitor[] = [
     name: "Coolify",
     seoDescription: "Autoscaling, clusters and self-healing on your own servers. Compare Pyo and Coolify, feature by feature.",
     subtitle: "Autoscaling, clusters and self-healing on your own servers, all from one dashboard. Here's how Pyo compares, feature by feature.",
+    imports: true,
     groups: [
       {
         group: "Deploying",
@@ -105,6 +108,7 @@ export const COMPETITORS: Competitor[] = [
     name: "Dokploy",
     seoDescription: "Autoscaling, self-healing replicas and scheduled backups on your own servers. Compare Pyo and Dokploy, feature by feature.",
     subtitle: "Autoscaling, self-healing replicas and scheduled backups on your own servers, all from one dashboard. Here's how Pyo compares, feature by feature.",
+    imports: true,
     groups: [
       {
         group: "Deploying",
