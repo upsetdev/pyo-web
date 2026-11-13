@@ -132,6 +132,19 @@ export function VercelMark(props: MarkProps) {
   );
 }
 
+// Source: the ring OpenShip draws as its logo on https://openship.io/, from
+// https://github.com/oblien/openship/blob/5caea3b6d53b5457aec881e6c0a5fae15a246621/apps/web/src/components/landing/navbar.tsx
+// (a 30px circle with a 2.5px border in the heading colour). It's CSS there,
+// so it's redrawn here at the same proportions. Black on light, white on dark,
+// as on their site.
+export function OpenshipMark(props: MarkProps) {
+  return (
+    <svg {...base} viewBox="0 0 30 30" fill="none" stroke="currentColor" strokeWidth="2.5" {...props}>
+      <circle cx="15" cy="15" r="13.75" />
+    </svg>
+  );
+}
+
 // Source: https://www.netlify.com/press/ (monogram, full colour, light mode
 // and dark mode files, unchanged).
 export function NetlifyMark({ className = "", ...props }: MarkProps) {
@@ -170,6 +183,7 @@ export const COMPETITOR_MARKS: Record<string, (props: MarkProps) => JSX.Element>
   caprover: CapRoverMark,
   dokku: DokkuMark,
   portainer: PortainerMark,
+  openship: OpenshipMark,
   render: RenderMark,
   railway: RailwayMark,
   vercel: VercelMark,

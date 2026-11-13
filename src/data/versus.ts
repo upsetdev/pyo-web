@@ -407,6 +407,97 @@ export const COMPETITORS: Competitor[] = [
     ],
   },
   {
+    slug: "openship",
+    name: "OpenShip",
+    seoDescription: "Autoscaling, a web application firewall and databases that fail over, on your own servers. Compare Pyo and OpenShip, feature by feature.",
+    subtitle: "Autoscaling, a web application firewall and databases that fail over on your own servers, all from one dashboard. Here's how Pyo compares, feature by feature.",
+    groups: [
+      {
+        group: "Hosting",
+        rows: [
+          { topic: "Control plane on your laptop", pyo: ["no", "Runs on your servers"], them: ["yes", "The desktop app drives servers over SSH"] },
+          { topic: "Desktop app", pyo: ["no", "A web dashboard"], them: ["yes", "macOS, Windows and Linux"] },
+          { topic: "Mail server", pyo: ["no", "Not built in"], them: ["yes", "Sends and receives, with webmail"] },
+        ],
+      },
+      {
+        group: "Deploying",
+        rows: [
+          { topic: "Deploy from Git", pyo: ["yes", "On every push"], them: ["yes", "On every push"] },
+          { topic: "Deploy any container image", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
+          { topic: "Docker Compose", pyo: ["yes", "Dashboard, API or pyo deploy -f"], them: ["yes", "Yes"] },
+          { topic: "Zero-config builds", pyo: ["yes", "Detects your framework"], them: ["yes", "Detects your stack"] },
+          { topic: "Zero-downtime deploys", pyo: ["yes", "With 2 or more replicas"], them: ["partly", "For containers, not host processes"] },
+          { topic: "One-click rollback", pyo: ["yes", "To any earlier version"], them: ["yes", "To any healthy earlier version"] },
+          { topic: "Automatic rollback", pyo: ["yes", "A failed deploy undoes itself"], them: ["yes", "Keeps the running version"] },
+          { topic: "Health checks", pyo: ["yes", "HTTP, TCP or command"], them: ["yes", "Compose-style, per service"] },
+          { topic: "Deploy hooks", pyo: ["yes", "A secret URL for CI"], them: ["partly", "Run the CLI from CI with a token"] },
+          { topic: "Cron jobs", pyo: ["yes", "With run history and failure alerts"], them: ["yes", "With run history and notifications"] },
+          { topic: "One-click templates", pyo: ["yes", "Databases, tools and apps"], them: ["yes", "Yes"] },
+          { topic: "Adopt running containers", pyo: ["no", "Not built in"], them: ["yes", "From Coolify, Dokploy or Dokku servers"] },
+        ],
+      },
+      {
+        group: "Scaling",
+        rows: [
+          { topic: "Autoscaling", pyo: ["yes", "On CPU and memory, from min to max"], them: ["no", "Not on your own servers"] },
+          { topic: "Replicas across servers", pyo: ["yes", "Up to 50, from the dashboard"], them: ["yes", "Up to 100, on a k3s or Swarm cluster"] },
+          { topic: "Databases that fail over", pyo: ["yes", "Postgres, MySQL and KV, with replicas on other servers"], them: ["partly", "Postgres and Redis replicas, on a k3s cluster"] },
+          { topic: "Services move if a server fails", pyo: ["yes", "Stateless services, automatically"], them: ["partly", "On a k3s cluster"] },
+          { topic: "Clusters", pyo: ["yes", "Built in from the start"], them: ["yes", "k3s, or an existing Docker Swarm"] },
+          { topic: "Multiple servers", pyo: ["yes", "Joined over Tailscale"], them: ["yes", "Connected over SSH"] },
+          { topic: "CPU and memory limits", pyo: ["yes", "For every service"], them: ["yes", "For container services"] },
+        ],
+      },
+      {
+        group: "Traffic",
+        rows: [
+          { topic: "Web application firewall", pyo: ["yes", "OWASP and custom rules, off by default"], them: ["no", "Not built in"] },
+          { topic: "Firewall by IP, range or country", pyo: ["yes", "Per service"], them: ["yes", "Per route"] },
+          { topic: "Rate limits", pyo: ["yes", "Per visitor, for websites"], them: ["yes", "Per route"] },
+          { topic: "TCP and UDP ports", pyo: ["yes", "Through Pyo Gateway, or from your servers"], them: ["yes", "Published from the server"] },
+        ],
+      },
+      {
+        group: "Observability",
+        rows: [
+          { topic: "Analytics", pyo: ["yes", "No script to add"], them: ["yes", "From the edge, no script to add"] },
+          { topic: "CPU and memory metrics", pyo: ["yes", "Servers and services, no Prometheus"], them: ["yes", "Servers and containers"] },
+          { topic: "Live logs", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
+          { topic: "Terminal into a service", pyo: ["yes", "From the dashboard"], them: ["yes", "From the dashboard"] },
+        ],
+      },
+      {
+        group: "Security",
+        rows: [
+          { topic: "Encrypted secrets", pyo: ["yes", "A separate key for each team"], them: ["yes", "Every value, at rest"] },
+          { topic: "Network isolation", pyo: ["yes", "Between projects"], them: ["yes", "A Docker network per project"] },
+          { topic: "External secret stores", pyo: ["yes", "Vault, OpenBao, Infisical, AWS, GCP, Azure and Doppler"], them: ["no", "Not built in"] },
+          { topic: "Team roles", pyo: ["yes", "Owner, admin, developer and viewer"], them: ["yes", "Owner, admin, member and restricted"] },
+          { topic: "Scoped API keys", pyo: ["yes", "Read, deploy or full, per team"], them: ["yes", "Read-only, or limited to chosen resources"] },
+        ],
+      },
+      {
+        group: "Automation",
+        rows: [
+          { topic: "CLI", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
+          { topic: "API", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
+          { topic: "SDK", pyo: ["no", "Use the API"], them: ["yes", "JavaScript and TypeScript"] },
+          { topic: "MCP for AI assistants", pyo: ["yes", "129 tools, covering the whole API"], them: ["yes", "Yes"] },
+        ],
+      },
+      {
+        group: "Data",
+        rows: [
+          { topic: "One-click databases", pyo: ["yes", "Postgres, MySQL and KV. MongoDB as a template"], them: ["yes", "Postgres, MySQL, MongoDB and Redis"] },
+          { topic: "Persistent volumes", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
+          { topic: "Scheduled backups", pyo: ["yes", "Volumes and databases. Volumes are encrypted and restore in one click"], them: ["yes", "Volumes and databases. Restore in one click"] },
+          { topic: "Your own S3 bucket", pyo: ["yes", "Yes"], them: ["yes", "Or SFTP, a server or a local disk"] },
+        ],
+      },
+    ],
+  },
+  {
     slug: "render",
     name: "Render",
     seoDescription: "Pyo is an open-source alternative to Render that runs on your own servers. Compare features, costs and control, side by side.",
