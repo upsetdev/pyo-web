@@ -30,6 +30,16 @@ export const Route = createRootRoute({
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
     ],
+    // Cookieless analytics, in production builds only.
+    scripts: import.meta.env.PROD
+      ? [
+          {
+            defer: true,
+            src: "https://cdn-pyo.reflexapi.net/app",
+            "data-website-id": "1afadd6a-3aaa-4b84-b7f2-c73a53fff2c2",
+          },
+        ]
+      : [],
   }),
   shellComponent: RootDocument,
   component: Layout,
