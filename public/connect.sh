@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 # Connect a machine to Pyo as a cluster, or refresh one that's connected:
 #
-#   curl -fsSL https://pyo.dev/connect.sh | sudo bash -s -- --api <pyo-address-for-servers> --token <token>
-#   curl -fsSL https://pyo.dev/connect.sh | sudo bash
+#   curl -fsSL https://pyo.dev/connect.sh | bash -s -- --api <pyo-address-for-servers> --token <token>
+#   curl -fsSL https://pyo.dev/connect.sh | bash
 #
 # Your Pyo serves the same script at <your-pyo>/install/connect.sh, and its
 # dashboard shows the exact command to copy, with Pyo's address and the token.
 # Run without them on a cluster's first server, it reads both from the agent
 # already there. This one runs connect.sh from Pyo's latest release on GitHub,
 # and passes its arguments and environment on to it.
+# The script asks sudo for root when it needs it.
 #
 # To read the script before running it:
 #
@@ -25,8 +26,8 @@ cleanup() {
 }
 
 # connect.sh needs Pyo's address and the cluster's token (--api, --token),
-# except to refresh a cluster that's connected (it reads both from the agent
-# there) or to disconnect one (--uninstall).
+# except on a cluster's first server, where it reads both from the agent to
+# refresh it, or to disconnect a cluster (--uninstall).
 has_what_it_needs() {
   local a api="" token=""
   for a in "$@"; do
@@ -37,8 +38,7 @@ has_what_it_needs() {
     esac
   done
   [ -n "$api" ] && [ -n "$token" ] && return 0
-  [ -z "$api" ] && [ -z "$token" ] && command -v k3s >/dev/null &&
-    k3s kubectl -n pyo-system get secret pyo-agent >/dev/null 2>&1
+  [ -z "$api" ] && [ -z "$token" ] && command -v k3s >/dev/null
 }
 
 # Everything runs from here, after bash has read the whole file: piped into

@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # Add a server to a Pyo cluster:
 #
-#   curl -fsSL https://pyo.dev/join.sh | sudo bash -s -- --server <host> --token <token> --name <name> --k3s <version>
+#   curl -fsSL https://pyo.dev/join.sh | bash -s -- --server <host> --token <token> --name <name> --k3s <version>
 #
 # Your Pyo serves the same script at <your-pyo>/install/join.sh, and its
 # dashboard shows the exact command to copy (Add server). This one runs join.sh
 # from Pyo's latest release on GitHub, and passes its arguments and environment
 # on to it.
+# The script asks sudo for root when it needs it.
 #
 # To read the script before running it:
 #
