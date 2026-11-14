@@ -98,6 +98,9 @@ export function Header() {
             <Link to="/pricing" className={LINK}>
               Pricing
             </Link>
+            <Link to="/sponsors" className={LINK}>
+              Sponsors
+            </Link>
           </nav>
         </div>
         <div className="flex items-center gap-1.5">
@@ -162,6 +165,11 @@ export function Header() {
               <li>
                 <Link to="/pricing" className="text-[14px] font-medium">
                   Pricing
+                </Link>
+              </li>
+              <li>
+                <Link to="/sponsors" className="text-[14px] font-medium">
+                  Sponsors
                 </Link>
               </li>
             </ul>

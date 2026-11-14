@@ -1,7 +1,8 @@
-import { ArrowUpRightIcon, CheckIcon, GithubLogoIcon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon, CheckIcon } from "@phosphor-icons/react";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { ButtonLink } from "~/components/Button";
+import { GithubIcon } from "~/components/GithubIcon";
 import { seo } from "~/lib/seo";
 
 export const Route = createFileRoute("/sponsors")({
@@ -116,7 +117,7 @@ const COMPANIES = [
 function SponsorButton({ size = "lg" }: { size?: "sm" | "lg" }) {
   return (
     <ButtonLink href={SPONSOR_URL} size={size}>
-      <GithubLogoIcon size={size === "lg" ? 17 : 14} weight="fill" aria-hidden />
+      <GithubIcon size={size === "lg" ? 17 : 14} />
       Sponsor on GitHub
     </ButtonLink>
   );
