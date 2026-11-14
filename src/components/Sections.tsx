@@ -172,13 +172,9 @@ export function Footer() {
         </FooterColumn>
         <FooterColumn title="Resources">
           <li>
-            <Link
-              to="/docs/$"
-              params={{ _splat: "" }}
-              className={FOOTER_LINK}
-            >
+            <a href="/docs" className={FOOTER_LINK}>
               Docs
-            </Link>
+            </a>
           </li>
           <li>
             <a href={site.github} className={FOOTER_LINK}>

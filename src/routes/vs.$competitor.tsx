@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { Logo } from "~/components/Logo";
 import { Install } from "~/components/Sections";
 import { CompetitorMark, VersusTable } from "~/components/Versus";
@@ -57,13 +57,12 @@ function VersusPage() {
             <p className="mt-3 max-w-2xl text-[14px] leading-relaxed text-muted-foreground">
               Moving from {c.name}? Pyo imports your projects, services and
               databases.{" "}
-              <Link
-                to="/docs/$"
-                params={{ _splat: "import-platforms" }}
+              <a
+                href="/docs/import-platforms"
                 className="font-medium text-foreground/85 underline underline-offset-4 hover:text-foreground"
               >
                 See how
-              </Link>
+              </a>
             </p>
           ) : null}
         </div>

@@ -4,7 +4,7 @@ import { Logo } from "~/components/Logo";
 import type { Row } from "~/data/versus";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { RouteButton } from "~/components/Button";
+import { ButtonLink } from "~/components/Button";
 import { CopyCommand } from "~/components/CopyCommand";
 import { site } from "~/config/site";
 import { seo } from "~/lib/seo";
@@ -215,14 +215,13 @@ function PricingPage() {
             price="Free"
             summary="Open source, with every feature. You run and update Pyo yourself."
             action={
-              <RouteButton
-                to="/docs/$"
-                params={{ _splat: "install" }}
+              <ButtonLink
+                href="/docs/install"
                 variant="secondary"
                 className="w-full"
               >
                 Install
-              </RouteButton>
+              </ButtonLink>
             }
             features={SELF_HOSTED}
             footer={<CopyCommand command={site.setupCommand} />}

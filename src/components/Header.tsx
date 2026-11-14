@@ -92,9 +92,9 @@ export function Header() {
             <Link to="/templates" className={LINK}>
               Templates
             </Link>
-            <Link to="/docs/$" params={{ _splat: "" }} className={LINK}>
+            <a href="/docs" className={LINK}>
               Docs
-            </Link>
+            </a>
             <Link to="/pricing" className={LINK}>
               Pricing
             </Link>
@@ -155,13 +155,9 @@ export function Header() {
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/docs/$"
-                  params={{ _splat: "" }}
-                  className="text-[14px] font-medium"
-                >
+                <a href="/docs" className="text-[14px] font-medium">
                   Docs
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/pricing" className="text-[14px] font-medium">
