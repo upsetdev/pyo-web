@@ -3,9 +3,10 @@
 #
 #   curl -fsSL https://pyo.dev/join.sh | sudo bash -s -- --server <host> --token <token> --name <name> --k3s <version>
 #
-# Copy the command from the dashboard (Add server), which fills these in.
-# This runs join.sh from Pyo's latest release on GitHub. Pyo also serves its
-# own copy at <pyo-address>/install/join.sh. Any arguments are passed on to it.
+# Your Pyo serves the same script at <your-pyo>/install/join.sh, and its
+# dashboard shows the exact command to copy (Add server). This one runs join.sh
+# from Pyo's latest release on GitHub, and passes its arguments and environment
+# on to it.
 #
 # To read the script before running it:
 #
