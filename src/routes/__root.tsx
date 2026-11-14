@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 import { RootProvider } from "fumadocs-ui/provider/tanstack";
 import type { ReactNode } from "react";
+import { DocsLink } from "~/components/DocsLink";
 import DocsSearch from "~/components/DocsSearch";
 import { Header } from "~/components/Header";
 import { Footer } from "~/components/Sections";
@@ -62,6 +63,7 @@ function RootDocument({ children }: { children: ReactNode }) {
           <RootProvider
             theme={{ enabled: false }}
             search={{ SearchDialog: DocsSearch }}
+            components={{ Link: DocsLink }}
           >
             {children}
           </RootProvider>
