@@ -86,7 +86,7 @@ export const GROUPS: Group[] = [
     body: "From your code to a running service, however you like to work.",
     items: [
       [RocketLaunchIcon, "Deploy anything", "From Git, a container image, a template or a Docker Compose file. Static sites too."],
-      [MagicWandIcon, "Zero-config builds", "Pyo detects your framework and builds it, or uses your Dockerfile or Containerfile."],
+      [MagicWandIcon, "Zero-config builds", "Pyo detects your framework and builds it, or uses your Dockerfile."],
       [GitBranchIcon, "Deploy on every push", "Connect GitHub, private repositories included."],
       [ArrowCounterClockwiseIcon, "One-click rollback", "Go back to any earlier version. A failed deploy rolls back on its own."],
       [LightningIcon, "Zero-downtime deploys", "Set 2 replicas to avoid downtime during deploys."],
