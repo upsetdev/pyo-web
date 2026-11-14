@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as DocsSearchDotjsonRouteImport } from './routes/docs-search[.]json'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as TemplatesRouteImport } from './routes/templates'
 import { Route as DocsSplatRouteImport } from './routes/docs/$'
 import { Route as TemplatesIdRouteImport } from './routes/templates_.$id'
@@ -36,6 +37,11 @@ const DocsSearchDotjsonRoute = DocsSearchDotjsonRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SponsorsRoute = SponsorsRouteImport.update({
+  id: '/sponsors',
+  path: '/sponsors',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TemplatesRoute = TemplatesRouteImport.update({
@@ -64,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/architecture': typeof ArchitectureRoute
   '/docs-search.json': typeof DocsSearchDotjsonRoute
   '/pricing': typeof PricingRoute
+  '/sponsors': typeof SponsorsRoute
   '/templates': typeof TemplatesRoute
   '/docs/$': typeof DocsSplatRoute
   '/templates/$id': typeof TemplatesIdRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/architecture': typeof ArchitectureRoute
   '/docs-search.json': typeof DocsSearchDotjsonRoute
   '/pricing': typeof PricingRoute
+  '/sponsors': typeof SponsorsRoute
   '/templates': typeof TemplatesRoute
   '/docs/$': typeof DocsSplatRoute
   '/templates/$id': typeof TemplatesIdRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/architecture': typeof ArchitectureRoute
   '/docs-search.json': typeof DocsSearchDotjsonRoute
   '/pricing': typeof PricingRoute
+  '/sponsors': typeof SponsorsRoute
   '/templates': typeof TemplatesRoute
   '/docs/$': typeof DocsSplatRoute
   '/templates_/$id': typeof TemplatesIdRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/architecture'
     | '/docs-search.json'
     | '/pricing'
+    | '/sponsors'
     | '/templates'
     | '/docs/$'
     | '/templates/$id'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/architecture'
     | '/docs-search.json'
     | '/pricing'
+    | '/sponsors'
     | '/templates'
     | '/docs/$'
     | '/templates/$id'
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/architecture'
     | '/docs-search.json'
     | '/pricing'
+    | '/sponsors'
     | '/templates'
     | '/docs/$'
     | '/templates_/$id'
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   ArchitectureRoute: typeof ArchitectureRoute
   DocsSearchDotjsonRoute: typeof DocsSearchDotjsonRoute
   PricingRoute: typeof PricingRoute
+  SponsorsRoute: typeof SponsorsRoute
   TemplatesRoute: typeof TemplatesRoute
   DocsSplatRoute: typeof DocsSplatRoute
   TemplatesIdRoute: typeof TemplatesIdRoute
@@ -162,6 +175,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sponsors': {
+      id: '/sponsors'
+      path: '/sponsors'
+      fullPath: '/sponsors'
+      preLoaderRoute: typeof SponsorsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/templates': {
@@ -200,6 +220,7 @@ const rootRouteChildren: RootRouteChildren = {
   ArchitectureRoute: ArchitectureRoute,
   DocsSearchDotjsonRoute: DocsSearchDotjsonRoute,
   PricingRoute: PricingRoute,
+  SponsorsRoute: SponsorsRoute,
   TemplatesRoute: TemplatesRoute,
   DocsSplatRoute: DocsSplatRoute,
   TemplatesIdRoute: TemplatesIdRoute,

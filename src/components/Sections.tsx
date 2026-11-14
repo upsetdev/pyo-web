@@ -181,6 +181,11 @@ export function Footer() {
               GitHub
             </a>
           </li>
+          <li>
+            <Link to="/sponsors" className={FOOTER_LINK}>
+              Sponsors
+            </Link>
+          </li>
         </FooterColumn>
         <FooterColumn title="Compare">
           {COMPETITORS.map((c) => (
