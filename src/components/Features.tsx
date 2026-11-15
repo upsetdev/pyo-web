@@ -200,7 +200,7 @@ export const GROUPS: Group[] = [
       [GearSixIcon, "Config in your repo", "Keep a service's build and deploy settings in pyo.toml."],
       [CodeIcon, "API and scoped keys", "A documented API, with keys that can read, deploy or do everything."],
       [BrainIcon, "MCP for AI assistants", "131 tools that cover everything the API can do."],
-      [CubeTransparentIcon, "Sandboxes", "Isolated machines for AI agents, code interpreters, previews and CI, on your own infrastructure.", "/sandbox"],
+      [CubeTransparentIcon, "Sandbox", "Isolated machines for AI agents, code interpreters, previews and CI, on your own infrastructure.", "/sandbox"],
       [HeartbeatIcon, "Keeps running without Pyo", "Your services stay up even if Pyo itself is down."],
       [CubeIcon, "No lock-in", "Open source under Apache 2.0, built on standard tools."],
     ],
