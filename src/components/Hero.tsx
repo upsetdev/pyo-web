@@ -44,7 +44,8 @@ export function Hero() {
           </h1>
           <p className="mt-5 max-w-2xl text-balance text-[16px] leading-relaxed text-muted-foreground sm:text-[18px]">
             The open-source PaaS alternative to Vercel, Netlify, Railway,
-            Render and Fly.io, from one machine to a whole cluster.
+            Render and Fly.io. Deploy apps, run services, and create isolated
+            sandboxes, from one machine to a whole cluster.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <RouteButton to="/" hash="install">Get started</RouteButton>

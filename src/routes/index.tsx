@@ -29,7 +29,9 @@ export const Route = createFileRoute("/")({
       description: site.description,
       card: {
         title: "Deploy your services easily on your own infrastructure",
-        description: "The open-source PaaS for your own infrastructure.",
+        // The card fits three lines, so it shows the second half of the line.
+        description:
+          "Deploy apps, run services, and create isolated sandboxes, from one machine to a whole cluster.",
       },
     }),
     scripts: [

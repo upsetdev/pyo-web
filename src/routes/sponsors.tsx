@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { ButtonLink } from "~/components/Button";
 import { GithubIcon } from "~/components/GithubIcon";
+import { site } from "~/config/site";
 import { seo } from "~/lib/seo";
 
 export const Route = createFileRoute("/sponsors")({
@@ -26,7 +27,7 @@ const SPONSOR_URL = "https://github.com/sponsors/upsetdev";
 const PROJECTS = [
   {
     name: "Pyo",
-    about: "The open-source PaaS for your own infrastructure.",
+    about: site.description,
     href: "https://pyo.dev",
   },
   {
