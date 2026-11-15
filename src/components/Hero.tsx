@@ -32,14 +32,14 @@ export function Hero() {
             <ArrowRightIcon size={11} aria-hidden />
           </Link>
           <h1
-            aria-label="Deploy your apps easily on your own servers"
-            className="mt-6 text-[36px] font-semibold max-[370px]:text-[31px] leading-[1.22] tracking-[-0.03em] sm:text-[60px]"
+            aria-label="Deploy your services easily on your own infrastructure"
+            className="mt-6 text-[36px] font-semibold max-[370px]:text-[31px] leading-[1.22] tracking-[-0.03em] sm:text-[48px] md:text-[60px]"
           >
             <span aria-hidden="true">
               Deploy your <br className="sm:hidden" />
               <RotatingWord words={WORDS} /> easily
               <br />
-              on your own servers
+              on your own infrastructure
             </span>
           </h1>
           <p className="mt-5 max-w-2xl text-balance text-[16px] leading-relaxed text-muted-foreground sm:text-[18px]">

@@ -28,8 +28,8 @@ export const Route = createFileRoute("/")({
       title: site.title,
       description: site.description,
       card: {
-        title: "Deploy your apps easily on your own servers",
-        description: "The open-source PaaS for your own servers.",
+        title: "Deploy your services easily on your own infrastructure",
+        description: "The open-source PaaS for your own infrastructure.",
       },
     }),
     scripts: [

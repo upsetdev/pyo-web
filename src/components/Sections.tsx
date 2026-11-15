@@ -133,7 +133,7 @@ export function Footer() {
             <Logo />
           </Link>
           <p className="mt-4 max-w-xs text-[13px] leading-relaxed">
-            The open-source PaaS for your own servers. Deploy your apps easily, from one machine to a whole cluster.
+            The open-source PaaS for your own infrastructure. Deploy your services easily, from one machine to a whole cluster.
           </p>
           <a
             href={site.github}

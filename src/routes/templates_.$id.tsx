@@ -43,7 +43,7 @@ const REACHED: Record<string, string> = {
 const pageTitle = (t: Template) => `Self-host ${t.name} with one click | Pyo`;
 
 function pageDescription(t: Template) {
-  const pitch = `${t.description} Run it on your own servers with Pyo.`;
+  const pitch = `${t.description} Run it on your own infrastructure with Pyo.`;
   return pitch.length <= 160 ? pitch : t.description;
 }
 
@@ -164,7 +164,7 @@ function TemplatePage() {
             </span>
           </div>
           <h1 className="mt-5 max-w-3xl text-balance text-[34px] font-semibold leading-[1.1] tracking-[-0.03em] sm:text-[48px]">
-            Deploy {t.name} on your own servers
+            Deploy {t.name} on your own infrastructure
           </h1>
           <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-muted-foreground sm:text-[18px]">
             {t.description}

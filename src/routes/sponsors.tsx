@@ -26,7 +26,7 @@ const SPONSOR_URL = "https://github.com/sponsors/upsetdev";
 const PROJECTS = [
   {
     name: "Pyo",
-    about: "The open-source PaaS for your own servers.",
+    about: "The open-source PaaS for your own infrastructure.",
     href: "https://pyo.dev",
   },
   {

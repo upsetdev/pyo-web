@@ -6,7 +6,7 @@ export const Route = createFileRoute("/architecture")({
   head: () =>
     seo({
       path: "/architecture",
-      title: "How Pyo works: your services, on your own servers | Pyo",
+      title: "How Pyo works: your services, on your own infrastructure | Pyo",
       description:
         "How Pyo fits together: visitors, Pyo Gateway, your servers, Pyo and you, and what each part does.",
       card: {

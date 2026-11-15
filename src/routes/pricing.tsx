@@ -34,7 +34,7 @@ const SELF_HOSTED = [
 
 const CLOUD = [
   "Fully managed by the Pyo team",
-  "Deploy to your own servers",
+  "Deploy to your own infrastructure",
   "Login and MFA",
   "The GitHub App",
   "Managed updates",
@@ -204,7 +204,7 @@ function PricingPage() {
         </h1>
         <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-muted-foreground">
           Self-host Pyo for free, or let us run it for you with Pyo Cloud.
-          Either way, your services run on your own servers.
+          Either way, your services run on your own infrastructure.
         </p>
       </section>
 

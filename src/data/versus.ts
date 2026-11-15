@@ -25,8 +25,8 @@ export const COMPETITORS: Competitor[] = [
   {
     slug: "coolify",
     name: "Coolify",
-    seoDescription: "Autoscaling, clusters and self-healing on your own servers. Compare Pyo and Coolify, feature by feature.",
-    subtitle: "Autoscaling, clusters and self-healing on your own servers, all from one dashboard. Here's how Pyo compares, feature by feature.",
+    seoDescription: "Autoscaling, clusters and self-healing on your own infrastructure. Compare Pyo and Coolify, feature by feature.",
+    subtitle: "Autoscaling, clusters and self-healing on your own infrastructure, all from one dashboard. Here's how Pyo compares, feature by feature.",
     imports: true,
     groups: [
       {
@@ -106,8 +106,8 @@ export const COMPETITORS: Competitor[] = [
   {
     slug: "dokploy",
     name: "Dokploy",
-    seoDescription: "Autoscaling, self-healing replicas and scheduled backups on your own servers. Compare Pyo and Dokploy, feature by feature.",
-    subtitle: "Autoscaling, self-healing replicas and scheduled backups on your own servers, all from one dashboard. Here's how Pyo compares, feature by feature.",
+    seoDescription: "Autoscaling, self-healing replicas and scheduled backups on your own infrastructure. Compare Pyo and Dokploy, feature by feature.",
+    subtitle: "Autoscaling, self-healing replicas and scheduled backups on your own infrastructure, all from one dashboard. Here's how Pyo compares, feature by feature.",
     imports: true,
     groups: [
       {
@@ -185,8 +185,8 @@ export const COMPETITORS: Competitor[] = [
   {
     slug: "caprover",
     name: "CapRover",
-    seoDescription: "Autoscaling, team roles and scheduled backups on your own servers. Compare Pyo and CapRover, feature by feature.",
-    subtitle: "Autoscaling, team roles and scheduled backups on your own servers, all from one dashboard. Here's how Pyo compares, feature by feature.",
+    seoDescription: "Autoscaling, team roles and scheduled backups on your own infrastructure. Compare Pyo and CapRover, feature by feature.",
+    subtitle: "Autoscaling, team roles and scheduled backups on your own infrastructure, all from one dashboard. Here's how Pyo compares, feature by feature.",
     groups: [
       {
         group: "Deploying",
@@ -261,8 +261,8 @@ export const COMPETITORS: Competitor[] = [
   {
     slug: "dokku",
     name: "Dokku",
-    seoDescription: "Push-to-deploy with a dashboard, autoscaling and team roles, on your own servers. Compare Pyo and Dokku, feature by feature.",
-    subtitle: "Push to deploy, with a dashboard, autoscaling, team roles and scheduled backups on your own servers. Here's how Pyo compares, feature by feature.",
+    seoDescription: "Push-to-deploy with a dashboard, autoscaling and team roles, on your own infrastructure. Compare Pyo and Dokku, feature by feature.",
+    subtitle: "Push to deploy, with a dashboard, autoscaling, team roles and scheduled backups on your own infrastructure. Here's how Pyo compares, feature by feature.",
     groups: [
       {
         group: "Deploying",
@@ -337,8 +337,8 @@ export const COMPETITORS: Competitor[] = [
   {
     slug: "portainer",
     name: "Portainer",
-    seoDescription: "Git deploys, autoscaling, rollbacks and backups for your services, on your own servers. Compare Pyo and Portainer, feature by feature.",
-    subtitle: "Pyo builds, deploys, scales and backs up your services for you, on your own servers and from one dashboard. Here's how it compares, feature by feature.",
+    seoDescription: "Git deploys, autoscaling, rollbacks and backups for your services, on your own infrastructure. Compare Pyo and Portainer, feature by feature.",
+    subtitle: "Pyo builds, deploys, scales and backs up your services for you, on your own infrastructure and from one dashboard. Here's how it compares, feature by feature.",
     groups: [
       {
         group: "Deploying",
@@ -413,8 +413,8 @@ export const COMPETITORS: Competitor[] = [
   {
     slug: "openship",
     name: "OpenShip",
-    seoDescription: "Autoscaling, a web application firewall and databases that fail over, on your own servers. Compare Pyo and OpenShip, feature by feature.",
-    subtitle: "Autoscaling, a web application firewall and databases that fail over on your own servers, all from one dashboard. Here's how Pyo compares, feature by feature.",
+    seoDescription: "Autoscaling, a web application firewall and databases that fail over, on your own infrastructure. Compare Pyo and OpenShip, feature by feature.",
+    subtitle: "Autoscaling, a web application firewall and databases that fail over on your own infrastructure, all from one dashboard. Here's how Pyo compares, feature by feature.",
     groups: [
       {
         group: "Hosting",
@@ -444,7 +444,7 @@ export const COMPETITORS: Competitor[] = [
       {
         group: "Scaling",
         rows: [
-          { topic: "Autoscaling", pyo: ["yes", "On CPU and memory, from min to max"], them: ["no", "Not on your own servers"] },
+          { topic: "Autoscaling", pyo: ["yes", "On CPU and memory, from min to max"], them: ["no", "Not on your own infrastructure"] },
           { topic: "Replicas across servers", pyo: ["yes", "As many as your servers fit, from the dashboard"], them: ["yes", "Up to 100, on a k3s or Swarm cluster"] },
           { topic: "Databases that fail over", pyo: ["yes", "Postgres, MySQL and KV, with replicas on other servers"], them: ["partly", "Postgres and Redis replicas, on a k3s cluster"] },
           { topic: "Services move if a server fails", pyo: ["yes", "Stateless services, automatically"], them: ["partly", "On a k3s cluster"] },
@@ -504,13 +504,13 @@ export const COMPETITORS: Competitor[] = [
   {
     slug: "render",
     name: "Render",
-    seoDescription: "Pyo is an open-source alternative to Render that runs on your own servers. Compare features, costs and control, side by side.",
+    seoDescription: "Pyo is an open-source alternative to Render that runs on your own infrastructure. Compare features, costs and control, side by side.",
     subtitle: "Everything you like about a modern platform, on servers you own. Pyo is open source, and free to run for as many services as your servers can hold.",
     groups: [
       {
         group: "Hosting",
         rows: [
-          { topic: "Runs on your own servers", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Render's cloud only"] },
+          { topic: "Runs on your own infrastructure", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Render's cloud only"] },
           { topic: "Open source", pyo: ["yes", "Apache 2.0"], them: ["no", "Proprietary"] },
           { topic: "Free to use", pyo: ["yes", "You only pay for your servers"], them: ["partly", "Paid per instance, with some free options"] },
           { topic: "Runs on any provider", pyo: ["yes", "Or several at once"], them: ["no", "Render only"] },
@@ -583,13 +583,13 @@ export const COMPETITORS: Competitor[] = [
   {
     slug: "railway",
     name: "Railway",
-    seoDescription: "Pyo is an open-source alternative to Railway that runs on your own servers. Compare features, costs and control, side by side.",
+    seoDescription: "Pyo is an open-source alternative to Railway that runs on your own infrastructure. Compare features, costs and control, side by side.",
     subtitle: "Services, databases and cron jobs from one dashboard, on servers you own. Pyo is open source, and free to run for as many services as your servers can hold.",
     groups: [
       {
         group: "Hosting",
         rows: [
-          { topic: "Runs on your own servers", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Railway's cloud only"] },
+          { topic: "Runs on your own infrastructure", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Railway's cloud only"] },
           { topic: "Open source", pyo: ["yes", "Apache 2.0"], them: ["no", "Proprietary"] },
           { topic: "Free to use", pyo: ["yes", "You only pay for your servers"], them: ["partly", "Paid by usage, with a small free plan"] },
           { topic: "Runs on any provider", pyo: ["yes", "Or several at once"], them: ["no", "Railway only"] },
@@ -663,13 +663,13 @@ export const COMPETITORS: Competitor[] = [
     slug: "vercel",
     name: "Vercel",
     trademark: "Vercel, the Vercel design, Next.js and related marks, designs and logos are trademarks or registered trademarks of Vercel, Inc. or its affiliates in the US and other countries.",
-    seoDescription: "Pyo is an open-source alternative to Vercel that runs on your own servers. Compare features, costs and control, side by side.",
+    seoDescription: "Pyo is an open-source alternative to Vercel that runs on your own infrastructure. Compare features, costs and control, side by side.",
     subtitle: "Deploy on every push, with rollbacks, domains and analytics, on servers you own. Pyo is open source, and free to run for as many services as your servers can hold.",
     groups: [
       {
         group: "Hosting",
         rows: [
-          { topic: "Runs on your own servers", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Vercel's cloud, or your AWS account on Enterprise"] },
+          { topic: "Runs on your own infrastructure", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Vercel's cloud, or your AWS account on Enterprise"] },
           { topic: "Open source", pyo: ["yes", "Apache 2.0"], them: ["no", "Proprietary"] },
           { topic: "Free to use", pyo: ["yes", "You only pay for your servers"], them: ["partly", "Free for personal projects. Paid plans for teams"] },
           { topic: "Runs on any provider", pyo: ["yes", "Or several at once"], them: ["no", "Vercel, or AWS on Enterprise"] },
@@ -742,13 +742,13 @@ export const COMPETITORS: Competitor[] = [
   {
     slug: "netlify",
     name: "Netlify",
-    seoDescription: "Pyo is an open-source alternative to Netlify that runs on your own servers. Compare features, costs and control, side by side.",
+    seoDescription: "Pyo is an open-source alternative to Netlify that runs on your own infrastructure. Compare features, costs and control, side by side.",
     subtitle: "Sites, APIs, workers and databases from one dashboard, on servers you own. Pyo is open source, and free to run for as many services as your servers can hold.",
     groups: [
       {
         group: "Hosting",
         rows: [
-          { topic: "Runs on your own servers", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Netlify's cloud only"] },
+          { topic: "Runs on your own infrastructure", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Netlify's cloud only"] },
           { topic: "Open source", pyo: ["yes", "Apache 2.0"], them: ["no", "Proprietary"] },
           { topic: "Free to use", pyo: ["yes", "You only pay for your servers"], them: ["partly", "Free plan with monthly credits. Paid plans for more"] },
           { topic: "Runs on any provider", pyo: ["yes", "Or several at once"], them: ["no", "Netlify only"] },
@@ -821,13 +821,13 @@ export const COMPETITORS: Competitor[] = [
   {
     slug: "fly",
     name: "Fly.io",
-    seoDescription: "Pyo is an open-source alternative to Fly.io that runs on your own servers. Compare features, costs and control, side by side.",
+    seoDescription: "Pyo is an open-source alternative to Fly.io that runs on your own infrastructure. Compare features, costs and control, side by side.",
     subtitle: "Services, databases and cron jobs from one dashboard, on servers you own. Pyo is open source, and free to run for as many services as your servers can hold.",
     groups: [
       {
         group: "Hosting",
         rows: [
-          { topic: "Runs on your own servers", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Fly.io's cloud only"] },
+          { topic: "Runs on your own infrastructure", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Fly.io's cloud only"] },
           { topic: "Open source", pyo: ["yes", "Apache 2.0"], them: ["no", "Proprietary platform, open-source CLI"] },
           { topic: "Free to use", pyo: ["yes", "You only pay for your servers"], them: ["no", "Paid by usage, no free plan"] },
           { topic: "Runs on any provider", pyo: ["yes", "Or several at once"], them: ["no", "Fly.io only"] },

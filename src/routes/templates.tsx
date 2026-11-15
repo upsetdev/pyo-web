@@ -10,8 +10,8 @@ export const Route = createFileRoute("/templates")({
   head: () =>
     seo({
       path: "/templates",
-      title: "One-click templates for your own servers | Pyo",
-      description: `${COUNT} ready-to-run templates for Pyo: WordPress, Ghost, MySQL, MongoDB, Grafana, n8n, Ollama and more, on your own servers.`,
+      title: "One-click templates for your own infrastructure | Pyo",
+      description: `${COUNT} ready-to-run templates for Pyo: WordPress, Ghost, MySQL, MongoDB, Grafana, n8n, Ollama and more, on your own infrastructure.`,
     }),
   component: TemplatesPage,
 });
@@ -35,7 +35,7 @@ function TemplatesPage() {
             </h1>
             <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-muted-foreground sm:text-[18px]">
               {COUNT} ready-to-run databases, tools and apps. Pick one in
-              the dashboard, and Pyo runs it on your own servers.
+              the dashboard, and Pyo runs it on your own infrastructure.
             </p>
           </div>
         </section>

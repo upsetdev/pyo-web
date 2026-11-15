@@ -93,13 +93,13 @@ export const GROUPS: Group[] = [
       [ArrowSquareInIcon, "Import from Coolify or Dokploy", "Bring over projects, services and databases, with their variables and domains."],
       [WebhooksLogoIcon, "Deploy hooks", "Trigger a deploy from CI, a CMS or a cron job with a secret URL."],
       [TimerIcon, "Cron jobs", "Run tasks on a schedule, with run history and alerts when one fails."],
-      [HammerIcon, "Build machines", "Build on your own servers or on a dedicated build server."],
+      [HammerIcon, "Build machines", "Build on your own infrastructure or on a dedicated build server."],
     ],
   },
   {
     id: "databases",
     title: "Databases",
-    body: "Postgres, MySQL and KV, run for you on your own servers.",
+    body: "Postgres, MySQL and KV, run for you on your own infrastructure.",
     items: [
       [DatabaseIcon, "Postgres", "Postgres 16 to 18, with a connection pooler built in."],
       [DatabaseIcon, "MySQL", "MySQL 8.4, starting at 1 GiB of memory."],
