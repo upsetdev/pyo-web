@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as DocsSearchDotjsonRouteImport } from './routes/docs-search[.]json'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as SandboxRouteImport } from './routes/sandbox'
 import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as TemplatesRouteImport } from './routes/templates'
 import { Route as DocsSplatRouteImport } from './routes/docs/$'
@@ -37,6 +38,11 @@ const DocsSearchDotjsonRoute = DocsSearchDotjsonRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SandboxRoute = SandboxRouteImport.update({
+  id: '/sandbox',
+  path: '/sandbox',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SponsorsRoute = SponsorsRouteImport.update({
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/architecture': typeof ArchitectureRoute
   '/docs-search.json': typeof DocsSearchDotjsonRoute
   '/pricing': typeof PricingRoute
+  '/sandbox': typeof SandboxRoute
   '/sponsors': typeof SponsorsRoute
   '/templates': typeof TemplatesRoute
   '/docs/$': typeof DocsSplatRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/architecture': typeof ArchitectureRoute
   '/docs-search.json': typeof DocsSearchDotjsonRoute
   '/pricing': typeof PricingRoute
+  '/sandbox': typeof SandboxRoute
   '/sponsors': typeof SponsorsRoute
   '/templates': typeof TemplatesRoute
   '/docs/$': typeof DocsSplatRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/architecture': typeof ArchitectureRoute
   '/docs-search.json': typeof DocsSearchDotjsonRoute
   '/pricing': typeof PricingRoute
+  '/sandbox': typeof SandboxRoute
   '/sponsors': typeof SponsorsRoute
   '/templates': typeof TemplatesRoute
   '/docs/$': typeof DocsSplatRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/architecture'
     | '/docs-search.json'
     | '/pricing'
+    | '/sandbox'
     | '/sponsors'
     | '/templates'
     | '/docs/$'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/architecture'
     | '/docs-search.json'
     | '/pricing'
+    | '/sandbox'
     | '/sponsors'
     | '/templates'
     | '/docs/$'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/architecture'
     | '/docs-search.json'
     | '/pricing'
+    | '/sandbox'
     | '/sponsors'
     | '/templates'
     | '/docs/$'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   ArchitectureRoute: typeof ArchitectureRoute
   DocsSearchDotjsonRoute: typeof DocsSearchDotjsonRoute
   PricingRoute: typeof PricingRoute
+  SandboxRoute: typeof SandboxRoute
   SponsorsRoute: typeof SponsorsRoute
   TemplatesRoute: typeof TemplatesRoute
   DocsSplatRoute: typeof DocsSplatRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sandbox': {
+      id: '/sandbox'
+      path: '/sandbox'
+      fullPath: '/sandbox'
+      preLoaderRoute: typeof SandboxRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sponsors': {
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   ArchitectureRoute: ArchitectureRoute,
   DocsSearchDotjsonRoute: DocsSearchDotjsonRoute,
   PricingRoute: PricingRoute,
+  SandboxRoute: SandboxRoute,
   SponsorsRoute: SponsorsRoute,
   TemplatesRoute: TemplatesRoute,
   DocsSplatRoute: DocsSplatRoute,

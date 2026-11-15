@@ -155,6 +155,11 @@ export function Footer() {
             </Link>
           </li>
           <li>
+            <Link to="/sandbox" className={FOOTER_LINK}>
+              Sandboxes
+            </Link>
+          </li>
+          <li>
             <Link to="/architecture" className={FOOTER_LINK}>
               Architecture
             </Link>

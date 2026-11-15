@@ -68,7 +68,8 @@ const ICON_COLORS = [
 export const iconColor = (index: number) =>
   ICON_COLORS[index % ICON_COLORS.length];
 
-type Feature = [Icon, string, string];
+/** An icon, a title, a line, and the site page that tells more, if any. */
+type Feature = [Icon, string, string, "/sandbox"?];
 export type Group = {
   /** Its anchor on the page. */
   id: string;
@@ -199,7 +200,7 @@ export const GROUPS: Group[] = [
       [GearSixIcon, "Config in your repo", "Keep a service's build and deploy settings in pyo.toml."],
       [CodeIcon, "API and scoped keys", "A documented API, with keys that can read, deploy or do everything."],
       [BrainIcon, "MCP for AI assistants", "131 tools that cover everything the API can do."],
-      [CubeTransparentIcon, "Sandboxes", "Isolated machines for AI agents, code interpreters, previews and CI, on your own infrastructure."],
+      [CubeTransparentIcon, "Sandboxes", "Isolated machines for AI agents, code interpreters, previews and CI, on your own infrastructure.", "/sandbox"],
       [HeartbeatIcon, "Keeps running without Pyo", "Your services stay up even if Pyo itself is down."],
       [CubeIcon, "No lock-in", "Open source under Apache 2.0, built on standard tools."],
     ],
@@ -235,23 +236,45 @@ export function Features() {
               </div>
               <div className="rounded-[20px] frame-edge bg-muted p-1.5">
                 <ul className="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
-                  {group.items.map(([ItemIcon, title, body], i) => (
-                    <li
-                      key={title}
-                      className="rounded-[14px] card-edge bg-card p-4"
-                    >
-                      <ItemIcon
-                        size={18}
-                        className={iconColor(i + groupIndex)}
-                      />
-                      <h4 className="mt-3 text-[14px] font-semibold">
-                        {title}
-                      </h4>
-                      <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-                        {body}
-                      </p>
-                    </li>
-                  ))}
+                  {group.items.map(([ItemIcon, title, body, page], i) => {
+                    const card = (
+                      <>
+                        <ItemIcon
+                          size={18}
+                          className={iconColor(i + groupIndex)}
+                        />
+                        <h4 className="mt-3 inline-flex items-center gap-1 text-[14px] font-semibold">
+                          {title}
+                          {page ? (
+                            <ArrowRightIcon
+                              size={12}
+                              className="text-muted-foreground transition-transform group-hover/card:translate-x-0.5"
+                            />
+                          ) : null}
+                        </h4>
+                        <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+                          {body}
+                        </p>
+                      </>
+                    );
+                    return page ? (
+                      <li key={title}>
+                        <Link
+                          to={page}
+                          className="group/card block h-full rounded-[14px] card-edge card-edge-hover bg-card p-4 transition-colors hover:bg-accent/40"
+                        >
+                          {card}
+                        </Link>
+                      </li>
+                    ) : (
+                      <li
+                        key={title}
+                        className="rounded-[14px] card-edge bg-card p-4"
+                      >
+                        {card}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>
