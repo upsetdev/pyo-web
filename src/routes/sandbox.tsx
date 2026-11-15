@@ -150,7 +150,7 @@ function SandboxPage() {
             own infrastructure.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <ButtonLink href="/docs/sandboxes">Read the docs</ButtonLink>
+            <ButtonLink href="/docs/sandbox">Read the docs</ButtonLink>
             <RouteButton to="/" hash="install" variant="secondary">
               Get started
             </RouteButton>
