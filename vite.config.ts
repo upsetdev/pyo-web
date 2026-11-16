@@ -75,7 +75,8 @@ function docsDev(): Plugin {
 
 // Every page is prerendered, so the site deploys as static files (dist/client).
 export default defineConfig({
-  server: { port: 3000 },
+  // Reachable from the tailnet too, at http://<machine>.<tailnet>.ts.net:3000.
+  server: { port: 3000, host: true, allowedHosts: [".ts.net"] },
   resolve: { tsconfigPaths: true },
   plugins: [
     tailwindcss(),
