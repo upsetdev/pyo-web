@@ -223,6 +223,9 @@
     <loc>https://pyo.dev/docs/api/reference/builders/rotate-builder-token</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/api/reference/clusters/create-cloud-cluster</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/api/reference/clusters/create-cluster</loc>
   </url>
   <url>
@@ -233,6 +236,9 @@
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/clusters/rotate-agent-token</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/clusters/set-cluster-free-domain-address</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/clusters/set-cluster-public-traffic</loc>
@@ -340,6 +346,12 @@
     <loc>https://pyo.dev/docs/api/reference/deployments/reveal-deploy-hook</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/api/reference/domains/create-dns-record</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/domains/delete-dns-record</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/api/reference/domains/remove-certificate</loc>
   </url>
   <url>
@@ -379,6 +391,9 @@
     <loc>https://pyo.dev/docs/api/reference/firewall/reorder-waf-rules</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/api/reference/firewall/set-service-behind-cdn</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/api/reference/firewall/set-service-waf</loc>
   </url>
   <url>
@@ -386,6 +401,21 @@
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/firewall/update-waf-rule</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/git-providers/get-git-build-file</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/git-providers/list-git-branches</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/git-providers/list-git-repos</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/git-providers/remove-git-connection</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/git-providers/test-git-connection</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/github/get-github-build-file</loc>
@@ -421,10 +451,25 @@
     <loc>https://pyo.dev/docs/api/reference/integrations/check-secret-import</loc>
   </url>
   <url>
-    <loc>https://pyo.dev/docs/api/reference/integrations/remove-integration</loc>
+    <loc>https://pyo.dev/docs/api/reference/integrations/connect-cloudflare</loc>
   </url>
   <url>
-    <loc>https://pyo.dev/docs/api/reference/integrations/save-integration</loc>
+    <loc>https://pyo.dev/docs/api/reference/integrations/get-cloudflare</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/integrations/remove-cloudflare</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/integrations/remove-hetzner</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/integrations/save-hetzner</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/integrations/test-cloudflare</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/integrations/test-hetzner</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/observability/get-access-logs</loc>
@@ -451,7 +496,13 @@
     <loc>https://pyo.dev/docs/api/reference/projects/delete-project</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/api/reference/projects/get-platform-import</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/api/reference/projects/import-compose</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/projects/list-platform-imports</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/projects/preview-compose</loc>
@@ -469,7 +520,70 @@
     <loc>https://pyo.dev/docs/api/reference/projects/update-project</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/add-sandbox-server</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/close-sandbox-port</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/create-sandbox</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/create-sandbox-server-dns-record</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/create-sandbox-template</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/create-sandbox-token</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/delete-sandbox</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/delete-sandbox-template</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/extend-sandbox</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/get-sandbox</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/issue-sandbox-server-certificate</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/list-sandbox-servers</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/list-sandbox-templates</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/list-sandboxes</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/open-sandbox-port</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/pause-sandbox</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/remove-sandbox-server</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/resume-sandbox</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/api/reference/servers/cancel-server-removal</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/servers/create-cloud-server</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/servers/delete-cloud-server</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/servers/get-cloud-options</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/servers/join-server</loc>
@@ -544,6 +658,9 @@
     <loc>https://pyo.dev/docs/api/reference/teams/resend-invite</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/api/reference/teams/reset-member-sign-in</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/api/reference/teams/rotate-data-key</loc>
   </url>
   <url>
@@ -598,6 +715,9 @@
     <loc>https://pyo.dev/docs/cli/pyo-toml</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/cloudflare</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/clusters</loc>
   </url>
   <url>
@@ -625,6 +745,9 @@
     <loc>https://pyo.dev/docs/deploy/rollbacks</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/deploy/static-sites</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/domains</loc>
   </url>
   <url>
@@ -646,13 +769,22 @@
     <loc>https://pyo.dev/docs/gateway</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/getting-back-in</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/github</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/gitlab</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/gpus</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/hardening-your-server</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/hetzner</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/high-availability</loc>
@@ -695,6 +827,9 @@
   </url>
   <url>
     <loc>https://pyo.dev/docs/registries</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/sandbox</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/scaling</loc>
