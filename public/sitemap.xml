@@ -526,6 +526,9 @@
     <loc>https://pyo.dev/docs/api/reference/sandboxes/close-sandbox-port</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/create-cloud-sandbox-server</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/api/reference/sandboxes/create-sandbox</loc>
   </url>
   <url>
@@ -571,6 +574,9 @@
     <loc>https://pyo.dev/docs/api/reference/sandboxes/remove-sandbox-server</loc>
   </url>
   <url>
+    <loc>https://pyo.dev/docs/api/reference/sandboxes/rename-sandbox</loc>
+  </url>
+  <url>
     <loc>https://pyo.dev/docs/api/reference/sandboxes/resume-sandbox</loc>
   </url>
   <url>
@@ -584,6 +590,9 @@
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/servers/get-cloud-options</loc>
+  </url>
+  <url>
+    <loc>https://pyo.dev/docs/api/reference/servers/get-tailnet-lock</loc>
   </url>
   <url>
     <loc>https://pyo.dev/docs/api/reference/servers/join-server</loc>
