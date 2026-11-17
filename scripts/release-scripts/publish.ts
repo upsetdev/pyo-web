@@ -21,6 +21,7 @@ import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, writeFil
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { TrustedRoot } from "@sigstore/protobuf-specs";
 import { getTrustedRoot } from "@sigstore/tuf";
 import { type Checked, checkRelease, compareVersions, type Fetch, type Legacy, REPO, sha256 } from "./verify";
 
@@ -51,11 +52,35 @@ export function headers(versions: string[]) {
   ].join("\n");
 }
 
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/** An error with what caused it, all the way down. */
+export function explain(e: unknown): string {
+  const parts: string[] = [];
+  for (let c: unknown = e; c && parts.length < 6; c = (c as { cause?: unknown }).cause) {
+    parts.push(c instanceof Error ? `${c.name === "Error" ? "" : `${c.name}: `}${c.message}` : String(c));
+  }
+  return parts.join("\n  because: ");
+}
+
 /** Release versions from 0.4.0 on, by their tags on GitHub. */
-function versions(oldest: string): string[] {
-  const refs = execFileSync("git", ["ls-remote", "--tags", "--refs", `https://github.com/${REPO}.git`], {
-    encoding: "utf8",
-  });
+async function versions(oldest: string): Promise<string[]> {
+  let refs = "";
+  for (let attempt = 1; ; attempt++) {
+    try {
+      refs = execFileSync("git", ["ls-remote", "--tags", "--refs", `https://github.com/${REPO}.git`], {
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "pipe"],
+        timeout: 60_000,
+        env: { ...process.env, GIT_TERMINAL_PROMPT: "0" },
+      });
+      break;
+    } catch (e) {
+      const stderr = String((e as { stderr?: unknown }).stderr ?? "").trim();
+      if (attempt >= 4) throw new Error(`couldn't list ${REPO}'s tags with git ls-remote: ${stderr || explain(e)}`);
+      await sleep(attempt * 2000);
+    }
+  }
   return refs
     .split("\n")
     .map((l) => l.match(/\trefs\/tags\/v(\d+\.\d+\.\d+)$/)?.[1])
@@ -73,8 +98,8 @@ export const fromGitHub: Fetch = async (version, name) => {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return new Uint8Array(await res.arrayBuffer());
     } catch (e) {
-      if (attempt >= 4) throw new Error(`couldn't download ${url}: ${(e as Error).message}`);
-      await new Promise((r) => setTimeout(r, attempt * 2000));
+      if (attempt >= 4) throw new Error(`couldn't download ${url}: ${explain(e)}`);
+      await sleep(attempt * 2000);
     }
   }
 };
@@ -92,6 +117,25 @@ export function refuseOwnScripts(out: string) {
   }
 }
 
+/**
+ * Sigstore's keys (Fulcio's certificates, Rekor's and the CT logs' keys),
+ * through TUF, Sigstore's own signed and versioned metadata. If TUF can't be
+ * reached, the copy in sigstore-trusted-root.json (Sigstore's public
+ * trusted_root.json, reviewed with this code). Either way a signature only
+ * checks out with Sigstore's real keys: a stale copy can only refuse.
+ */
+async function sigstoreRoot(): Promise<TrustedRoot> {
+  const cachePath = mkdtempSync(join(tmpdir(), "pyo-sigstore-"));
+  try {
+    const r = await getTrustedRoot({ cachePath, timeout: 30_000, retry: 4 });
+    console.log("Pyo's install scripts: Sigstore's keys from TUF");
+    return r;
+  } catch (e) {
+    console.warn(`Pyo's install scripts: Sigstore's TUF repository didn't answer, so the reviewed copy of its keys is used:\n  ${explain(e)}`);
+    return TrustedRoot.fromJSON(JSON.parse(readFileSync(join(here, "sigstore-trusted-root.json"), "utf8")));
+  }
+}
+
 async function main() {
   const argv = process.argv.slice(2);
   const out = argv.includes("--out") ? argv[argv.indexOf("--out") + 1] : join(root, "dist/client");
@@ -100,11 +144,11 @@ async function main() {
 
   const legacy: Legacy = JSON.parse(readFileSync(join(here, "legacy.json"), "utf8")).releases;
   const oldest = Object.keys(legacy).sort(compareVersions)[0];
-  const tags = versions(oldest);
+  console.log(`Pyo's install scripts: Bun ${process.versions.bun ?? "-"}, Node ${process.versions.node}, ${process.platform}-${process.arch}`);
+  const tags = await versions(oldest);
+  if (!tags.length) throw new Error(`${REPO} has no release tags from v${oldest} on`);
   console.log(`Pyo's install scripts: checking ${tags.length} releases (${tags[0]} to ${tags.at(-1)})`);
-
-  // Sigstore's keys, through TUF (Sigstore's own signed metadata).
-  const trusted = await getTrustedRoot({ cachePath: mkdtempSync(join(tmpdir(), "pyo-sigstore-")) });
+  const trusted = await sigstoreRoot();
 
   const checked: Checked[] = [];
   for (const version of tags) {
@@ -134,7 +178,7 @@ async function main() {
 
 if (import.meta.main) {
   main().catch((e) => {
-    console.error(`\nPyo's install scripts: ${(e as Error).message}`);
+    console.error(`\nPyo's install scripts: ${explain(e)}`);
     console.error("Nothing was published. Pyo's scripts come only from its signed releases.");
     process.exit(1);
   });

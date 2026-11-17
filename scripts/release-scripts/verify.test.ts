@@ -1,8 +1,9 @@
 // bun test scripts
 //
-// Offline: Sigstore's trusted root, and Pyo 0.4.2's signed release.json,
-// are in testdata/ (testdata/other-signer is pyo-sandbox-images' signed
-// images.json: a real signature by another workflow).
+// Offline: Sigstore's trusted root (sigstore-trusted-root.json) and Pyo
+// 0.4.2's signed release.json (testdata/). testdata/other-signer is
+// pyo-sandbox-images' signed images.json: a real signature by another
+// workflow.
 import { describe, expect, test } from "bun:test";
 import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -12,7 +13,7 @@ import { headers, refuseOwnScripts } from "./publish";
 import { checkRelease, type Fetch, type Legacy, Refused, SCRIPTS, sha256, verifySignature } from "./verify";
 
 const data = (f: string) => readFileSync(join(import.meta.dir, "testdata", f));
-const root = TrustedRoot.fromJSON(JSON.parse(data("trusted_root.json").toString()));
+const root = TrustedRoot.fromJSON(JSON.parse(readFileSync(join(import.meta.dir, "sigstore-trusted-root.json")).toString()));
 const release042 = data("v0.4.2/release.json");
 const bundle042 = JSON.parse(data("v0.4.2/release.json.sigstore.json").toString());
 const COMMIT_042 = "f40b0ab78a517b29abb02e9e2db4065f11a64f8e";
@@ -64,7 +65,7 @@ describe("release.json's signature", () => {
     expect(() => verifySignature(root, noTlog, release042, "0.4.2")).toThrow(Refused);
   });
   test("a transparency log Sigstore doesn't trust", () => {
-    const json = JSON.parse(data("trusted_root.json").toString());
+    const json = JSON.parse(readFileSync(join(import.meta.dir, "sigstore-trusted-root.json")).toString());
     for (const t of json.tlogs) t.publicKey.rawBytes = json.ctlogs[0].publicKey.rawBytes;
     expect(() => verifySignature(TrustedRoot.fromJSON(json), bundle042, release042, "0.4.2")).toThrow(
       /signature doesn't check out/,
