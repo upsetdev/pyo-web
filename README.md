@@ -21,8 +21,18 @@ here writes `public/sitemap.xml` from it and the docs.
 `/docs` renders [pyo-docs](https://github.com/upsetdev/pyo-docs), next to this
 repo, with Fumadocs. `bun run dev` and `bun run build` copy it into
 `content/docs`, which isn't committed, and the dev server follows your edits. Set `PYO_DOCS_DIR` if it's elsewhere.
+In CI (`CI` or `WORKERS_CI` set), with no pyo-docs next to the repo, the build
+clones pyo-docs' `main` instead. `PYO_DOCS_CLONE=1` does that anywhere, and
+`PYO_DOCS_REF` picks another branch or tag.
 The site is static, so docs pages and the search index are written out at build
 time, and search runs in the browser.
+
+## Deploy
+
+Cloudflare's Workers Builds builds and deploys the site on every push to
+`main`, with `bun run build` and the assets in `dist/client` (`wrangler.jsonc`).
+A push to pyo-docs' `main` starts a build too, through a Workers Builds deploy
+hook saved in pyo-docs as the secret `PYO_WEB_DEPLOY_HOOK`.
 
 ## Screenshots
 
