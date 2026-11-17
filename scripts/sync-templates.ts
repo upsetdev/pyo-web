@@ -1,15 +1,58 @@
-// Copies what the site shows out of pyo-templates' build (the same
-// dist/v1/index.json and logos the Pyo dashboard bundles), next to this repo.
-// Passwords and other environment values stay behind. In ../pyo-templates run
-// `bun run build` first, then here:
+// Writes src/data/templates.json, what the site shows of pyo-templates' build
+// (the same dist/v1/index.json and logos the Pyo dashboard bundles).
+// Passwords and other environment values stay behind. Part of `bun run build`.
+//
+// pyo-templates sits next to this repo when you work on the site: run
+// `bun run build` there first. A build in CI (Cloudflare's Workers Builds sets
+// WORKERS_CI=1, others set CI) has no copy of it, so it takes the public
+// repo's main branch, a shallow clone in a temporary folder, and builds it.
+// PYO_TEMPLATES_CLONE=1 does the same anywhere, and PYO_TEMPLATES_REF picks
+// another branch or tag. PYO_TEMPLATES_DIR always wins: then nothing is
+// cloned. With no pyo-templates at all, the committed templates.json stays.
+//
 // bun run sync-templates
 // bun run sync-templates --out /tmp/templates.json   (a dry run: written elsewhere)
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
+import { existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const DIST = new URL("../../pyo-templates/dist/v1/", import.meta.url);
-const indexFile = new URL("index.json", DIST);
+const PYO_TEMPLATES_GIT = "https://github.com/upsetdev/pyo-templates.git";
+
+const root = fileURLToPath(new URL("..", import.meta.url));
+const ci = Boolean(process.env.WORKERS_CI || process.env.CI);
+const asked = process.env.PYO_TEMPLATES_CLONE === "1";
+const sibling = join(root, "../pyo-templates");
+
+let repo = resolve(process.env.PYO_TEMPLATES_DIR || sibling);
+if (!process.env.PYO_TEMPLATES_DIR && !existsSync(sibling) && (ci || asked)) {
+  const ref = process.env.PYO_TEMPLATES_REF || "main";
+  repo = join(mkdtempSync(join(tmpdir(), "pyo-templates-")), "pyo-templates");
+  console.log(`No pyo-templates next to this repo: cloning ${PYO_TEMPLATES_GIT} (${ref})`);
+  execFileSync(
+    "git",
+    ["clone", "--quiet", "--depth", "1", "--branch", ref, PYO_TEMPLATES_GIT, repo],
+    { stdio: "inherit" },
+  );
+  const commit = execFileSync("git", ["-C", repo, "rev-parse", "--short", "HEAD"], {
+    encoding: "utf8",
+  }).trim();
+  console.log(`pyo-templates at ${commit}: building it`);
+  // This script runs in Bun, so its own binary installs and builds.
+  const bun = process.versions.bun ? process.execPath : "bun";
+  execFileSync(bun, ["install", "--frozen-lockfile"], { cwd: repo, stdio: "inherit" });
+  execFileSync(bun, ["run", "build"], { cwd: repo, stdio: "inherit" });
+}
+
+const DIST = join(repo, "dist/v1");
+const indexFile = join(DIST, "index.json");
 if (!existsSync(indexFile)) {
-  console.error("No index.json: run `bun run build` in ../pyo-templates first.");
+  if (!process.env.PYO_TEMPLATES_DIR && !existsSync(sibling)) {
+    console.log("No pyo-templates next to this repo: keeping src/data/templates.json as it is");
+    process.exit(0);
+  }
+  console.error(`No ${indexFile}: run \`bun run build\` in ${repo} first.`);
   process.exit(1);
 }
 
@@ -55,7 +98,7 @@ const healthCheck = (h: {
 /** The one path and colour each logo is, to draw in place. */
 function logoOf(path: string | null) {
   if (!path) return null;
-  const svg = readFileSync(new URL(path, DIST), "utf8");
+  const svg = readFileSync(join(DIST, path), "utf8");
   const hex = /fill="#([0-9A-Fa-f]{6})"/.exec(svg)?.[1];
   const d = /\sd="([^"]+)"/.exec(svg)?.[1];
   if (!hex || !d) throw new Error(`can't read ${path}`);
@@ -134,7 +177,7 @@ const categories = CATEGORIES.filter(([id]) =>
 
 const out = process.argv.indexOf("--out");
 writeFileSync(
-  out > 0 ? process.argv[out + 1] : new URL("../src/data/templates.json", import.meta.url),
+  out > 0 ? process.argv[out + 1] : join(root, "src/data/templates.json"),
   `${JSON.stringify({ categories, templates }, null, 2)}\n`,
 );
 

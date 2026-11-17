@@ -13,8 +13,13 @@ bun run build    # prerendered static site in dist/client
 
 `src/data/templates.json` comes from
 [pyo-templates](https://github.com/upsetdev/pyo-templates), next to this repo.
-Run `bun run build` there, then `bun run sync-templates` here. `bun run build`
-here writes `public/sitemap.xml` from it and the docs.
+Run `bun run build` there, then `bun run build` or `bun run sync-templates`
+here. Set `PYO_TEMPLATES_DIR` if it's elsewhere. Without pyo-templates the
+committed `templates.json` stays as it is.
+In CI (`CI` or `WORKERS_CI` set), with no pyo-templates next to the repo, the
+build clones and builds pyo-templates' `main` instead. `PYO_TEMPLATES_CLONE=1`
+does that anywhere, and `PYO_TEMPLATES_REF` picks another branch or tag.
+`bun run build` also writes `public/sitemap.xml` from it and the docs.
 
 ## Docs
 
@@ -31,8 +36,9 @@ time, and search runs in the browser.
 
 Cloudflare's Workers Builds builds and deploys the site on every push to
 `main`, with `bun run build` and the assets in `dist/client` (`wrangler.jsonc`).
-A push to pyo-docs' `main` starts a build too, through a Workers Builds deploy
-hook saved in pyo-docs as the secret `PYO_WEB_DEPLOY_HOOK`.
+A push to pyo-docs' `main`, or a template change on pyo-templates' `main`,
+starts a build too, through a Workers Builds deploy hook saved in each of those
+repos as the secret `PYO_WEB_DEPLOY_HOOK`.
 
 ## Screenshots
 

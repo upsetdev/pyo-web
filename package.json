@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun run sync-docs && vite dev --port 3000",
-    "build": "bun run sync-docs && bun run scripts/write-index-files.ts && vite build",
+    "build": "bun run sync-docs && bun run sync-templates && bun run scripts/write-index-files.ts && vite build",
     "preview": "vite preview --port 3000",
     "typecheck": "tsc --noEmit",
     "screenshots": "mkdir -p .screens-raw && node scripts/screenshots/capture.mjs && python3 scripts/screenshots/optimize.py",
