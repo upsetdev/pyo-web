@@ -32,13 +32,39 @@ clones pyo-docs' `main` instead. `PYO_DOCS_CLONE=1` does that anywhere, and
 The site is static, so docs pages and the search index are written out at build
 time, and search runs in the browser.
 
+## Install scripts
+
+pyo.dev serves Pyo's install scripts (`install.sh`, `cli.sh`, `connect.sh`,
+`join.sh`, `sandbox.sh`) byte for byte as Pyo's releases publish them:
+
+- `pyo.dev/<script>`: the latest release's, revalidated on every fetch
+- `pyo.dev/v/<version>/<script>`: each release's from 0.4.0 on, cached for good
+
+They never come from this repo. The last step of `bun run build`
+(`scripts/release-scripts/publish.ts`) downloads each release's
+`release.json` and its Sigstore bundle, checks the signature is Pyo's
+release workflow at that release's tag in upsetdev/pyo, then checks each
+script against the SHA-256 that `release.json` lists, and writes them to
+`dist/client` with their `_headers`. Anything that doesn't check out fails
+the build, so nothing is deployed. So does a script, `v/`, `_headers` or
+`_redirects` in `public/`. The build needs GitHub and Sigstore's TUF
+repository to be reachable.
+
+Releases up to 0.4.2 list no sums in their `release.json`. Theirs are in
+`scripts/release-scripts/legacy.json`, which `snapshot.ts` there wrote once
+after checking each script against the source at the commit the signed
+`release.json` names. The build uses those sums only with that same signed
+commit.
+
+`bun run test` runs the checks' tests, offline.
+
 ## Deploy
 
 Cloudflare's Workers Builds builds and deploys the site on every push to
 `main`, with `bun run build` and the assets in `dist/client` (`wrangler.jsonc`).
-A push to pyo-docs' `main`, or a template change on pyo-templates' `main`,
-starts a build too, through a Workers Builds deploy hook saved in each of those
-repos as the secret `PYO_WEB_DEPLOY_HOOK`.
+A push to pyo-docs' `main`, a template change on pyo-templates' `main`, or a
+Pyo release starts a build too, through a Workers Builds deploy hook saved in
+each of those repos as the secret `PYO_WEB_DEPLOY_HOOK`.
 
 ## Screenshots
 

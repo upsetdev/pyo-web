@@ -1,0 +1,35 @@
+{
+  "comment": "SHA-256 of the install scripts of Pyo releases whose signed release.json lists none (0.4.2 and earlier), by snapshot.ts. Each was checked once against the source at the commit its signed release.json names. Never edit by hand. Releases from 0.4.3 on list their sums in release.json, so nothing is added here.",
+  "releases": {
+    "0.4.0": {
+      "commit": "27a2f82a00260483f1e7dac9a39adb31564de496",
+      "scripts": {
+        "install.sh": "1d3703b6aa4d5a8ed824e1d79e187f894a838886397759f31347f54546543c00",
+        "cli.sh": "481ef4bcedcbc637b567dd8634b70de72ddafe87e1bb6e82f017477bcb0e9fc0",
+        "connect.sh": "e5db02db2f648eddda6f290368223b22ac0e2b6dd40fd84a80a8eba87fb87350",
+        "join.sh": "97503e7b1966b689bb4f12546670d82d097a0e8c50ee7a777ebbb06c90f2f7a0",
+        "sandbox.sh": "f77db76440667d4bb027ded94697fc3d3fd9dc6049dfe3d4c2ba492983c1a1e8"
+      }
+    },
+    "0.4.1": {
+      "commit": "1e1ae7786c09d2e028b0d5363927f07ee4872b27",
+      "scripts": {
+        "install.sh": "1d3703b6aa4d5a8ed824e1d79e187f894a838886397759f31347f54546543c00",
+        "cli.sh": "481ef4bcedcbc637b567dd8634b70de72ddafe87e1bb6e82f017477bcb0e9fc0",
+        "connect.sh": "e5db02db2f648eddda6f290368223b22ac0e2b6dd40fd84a80a8eba87fb87350",
+        "join.sh": "97503e7b1966b689bb4f12546670d82d097a0e8c50ee7a777ebbb06c90f2f7a0",
+        "sandbox.sh": "cd2f0777e5ec6f9812ca2f0125181e41dcf424e8ee30c1dad30ea0bd93bcdf2c"
+      }
+    },
+    "0.4.2": {
+      "commit": "f40b0ab78a517b29abb02e9e2db4065f11a64f8e",
+      "scripts": {
+        "install.sh": "b87d9b9e93e6950a1ffb65a6f8b750947507109f210c6d3fc1ceec7d151cde35",
+        "cli.sh": "481ef4bcedcbc637b567dd8634b70de72ddafe87e1bb6e82f017477bcb0e9fc0",
+        "connect.sh": "0a10678fb3a8b2ea2b7f5d1d6653eda1d5f45e791f57f3c57f97573b30bae1f1",
+        "join.sh": "cd3cc684456fb56614d46299da6018fe149eb3b258311629cd8dbc494663b9e9",
+        "sandbox.sh": "5552ac9cb70eab5f94852decd7824c7b50b13360b163f4b12fe8eef825e151c8"
+      }
+    }
+  }
+}
