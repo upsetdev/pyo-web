@@ -7,8 +7,9 @@
 # Your Pyo serves the same script at <your-pyo>/install/connect.sh, and its
 # dashboard shows the exact command to copy, with Pyo's address and the token.
 # Run without them on a cluster's first server, it reads both from the agent
-# already there. This one runs connect.sh from Pyo's latest release on GitHub,
-# and passes its arguments and environment on to it.
+# already there. This one runs connect.sh from the Pyo release given with
+# --version (else the latest release on GitHub), and passes its arguments
+# and environment on to it.
 # The script asks sudo for root when it needs it.
 #
 # To read the script before running it:
@@ -18,11 +19,29 @@
 # Docs: https://pyo.dev/docs/clusters
 set -euo pipefail
 
-PYO_SCRIPT_URL="https://github.com/upsetdev/pyo/releases/latest/download/connect.sh"
+PYO_RELEASES="https://github.com/upsetdev/pyo/releases"
 PYO_SCRIPT=""
 
 cleanup() {
   if [ -n "$PYO_SCRIPT" ]; then rm -f "$PYO_SCRIPT"; fi
+}
+
+# The release's connect.sh when --version names one, so a Pyo's command runs
+# the script of its own release. Else the latest release's.
+script_url() {
+  local version=""
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --version) version="${2:-}"; shift 2 || shift ;;
+      *) shift ;;
+    esac
+  done
+  version="${version#v}"
+  if [[ $version =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]+)?$ ]]; then
+    echo "$PYO_RELEASES/download/v$version/connect.sh"
+  else
+    echo "$PYO_RELEASES/latest/download/connect.sh"
+  fi
 }
 
 # connect.sh needs Pyo's address and the cluster's token (--api, --token),
@@ -50,10 +69,12 @@ main() {
     echo "  cluster's Settings to refresh one. It fills in --api and --token." >&2
     exit 2
   fi
+  local url
+  url="$(script_url "$@")"
   PYO_SCRIPT="$(mktemp)"
   trap cleanup EXIT
-  if ! curl -fsSL "$PYO_SCRIPT_URL" -o "$PYO_SCRIPT"; then
-    echo "pyo: couldn't download connect.sh from $PYO_SCRIPT_URL" >&2
+  if ! curl -fsSL "$url" -o "$PYO_SCRIPT"; then
+    echo "pyo: couldn't download connect.sh from $url" >&2
     exit 1
   fi
   bash "$PYO_SCRIPT" "$@"
