@@ -197,7 +197,7 @@ export const GROUPS: Group[] = [
     body: "Work from the dashboard, your terminal, your code or your AI assistant.",
     items: [
       [TerminalIcon, "The pyo CLI", "Deploy, follow logs, set variables, roll back and open a shell."],
-      [GearSixIcon, "Config in your repo", "Keep a service's build and deploy settings in pyo.toml."],
+      [GearSixIcon, "Config in your repo", "Keep a service's build and deploy settings in pyo.jsonc."],
       [CodeIcon, "API and scoped keys", "A documented API, with keys that can read, deploy or do everything."],
       [BrainIcon, "MCP for AI assistants", "131 tools that cover everything the API can do."],
       [CubeTransparentIcon, "Sandbox", "Isolated machines for AI agents, code interpreters, previews and CI, on your own infrastructure.", "/sandbox"],
