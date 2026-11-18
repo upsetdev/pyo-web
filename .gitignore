@@ -12,6 +12,7 @@ dist
 content/docs
 content/openapi
 public/openapi.json
+public/schema
 public/md
 public/llms.txt
 public/llms-full.txt

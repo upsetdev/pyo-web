@@ -1,7 +1,7 @@
-// Keeps content/docs and content/openapi (not committed) the same as pyo-docs,
-// next to this repo. It only touches what changed, so a running dev server
-// never sees the whole tree vanish. Set PYO_DOCS_DIR when pyo-docs is
-// somewhere else.
+// Keeps content/docs, content/openapi and public/schema (not committed) the
+// same as pyo-docs, next to this repo. It only touches what changed, so a
+// running dev server never sees the whole tree vanish. Set PYO_DOCS_DIR when
+// pyo-docs is somewhere else.
 //
 // Besides copying, it builds the API reference: one page per operation in
 // pyo-docs/openapi/pyo.json, under docs/api/reference, grouped by tag.
@@ -29,6 +29,9 @@ export const specSource = join(docsRepo, "openapi/pyo.json");
 export const docsTarget = join(root, "content/docs");
 /** The spec, for the API pages to load in the browser. */
 export const specTarget = join(root, "content/openapi/pyo.json");
+/** pyo.jsonc's JSON Schema, which editors load from https://pyo.dev/schema/pyo.json. */
+export const schemaSource = join(docsRepo, "schema/pyo.json");
+export const schemaTarget = join(root, "public/schema/pyo.json");
 
 /** Where the generated pages go, inside the API section. */
 const REFERENCE = "api/reference";
@@ -158,5 +161,12 @@ export async function syncDocs() {
   const spec = new Map<string, Buffer>();
   if (existsSync(specSource)) spec.set("pyo.json", readFileSync(specSource));
 
-  return mirror(docsTarget, want) + mirror(dirname(specTarget), spec);
+  const schema = new Map<string, Buffer>();
+  if (existsSync(schemaSource)) schema.set("pyo.json", readFileSync(schemaSource));
+
+  return (
+    mirror(docsTarget, want) +
+    mirror(dirname(specTarget), spec) +
+    mirror(dirname(schemaTarget), schema)
+  );
 }
