@@ -120,17 +120,14 @@ export function Header() {
       className="sticky top-0 z-40 border-b border-shell-border bg-background/70 backdrop-blur-xl"
     >
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-5">
-        <div className="flex items-center gap-8 md:gap-5 lg:gap-8">
+        <div className="flex items-center gap-8">
           <Link to="/" aria-label="Pyo home">
             <Logo />
           </Link>
           <nav
             aria-label="Main"
-            className="hidden items-center gap-4 md:flex lg:gap-6"
+            className="hidden items-center gap-5 md:flex lg:gap-6"
           >
-            <Link to="/" hash="screenshots" className={LINK}>
-              Screenshots
-            </Link>
             <button {...triggerProps("features")}>
               Features
               {caret("features")}
@@ -157,14 +154,14 @@ export function Header() {
           <a
             href={site.github}
             aria-label="Pyo on GitHub"
-            className="inline-flex h-8 w-8 md:hidden lg:inline-flex items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground"
           >
             <GithubIcon size={15} />
           </a>
           <a
             href={site.x}
             aria-label="Pyo on X"
-            className="inline-flex h-8 w-8 md:hidden lg:inline-flex items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground"
           >
             <XLogoIcon size={14} />
           </a>
@@ -202,15 +199,6 @@ export function Header() {
           ) : (
             <nav aria-label="Features" className="mx-auto max-w-6xl px-5 py-6">
               <ul className="mb-4 flex flex-col gap-3 border-b border-border pb-4 md:hidden">
-                <li>
-                  <Link
-                    to="/"
-                    hash="screenshots"
-                    className="text-[14px] font-medium"
-                  >
-                    Screenshots
-                  </Link>
-                </li>
                 <li>
                   <Link to="/templates" className="text-[14px] font-medium">
                     Templates
