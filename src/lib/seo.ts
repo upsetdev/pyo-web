@@ -57,6 +57,8 @@ export function seo({
       { property: "og:image:height", content: "630" },
       { property: "og:image:alt", content: alt },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: site.xHandle },
+      { name: "twitter:creator", content: site.xHandle },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: image },

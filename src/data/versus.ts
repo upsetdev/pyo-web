@@ -12,6 +12,8 @@ export type Row = { topic: string; pyo: Cell; them: Cell };
 export type Competitor = {
   slug: string;
   name: string;
+  /** Where it runs: on your own servers, or as a hosted cloud. */
+  kind: "self-hosted" | "cloud";
   /** A trademark notice the owner asks for wherever its logo appears. */
   trademark?: string;
   seoDescription: string;
@@ -24,6 +26,7 @@ export type Competitor = {
 export const COMPETITORS: Competitor[] = [
   {
     slug: "coolify",
+    kind: "self-hosted",
     name: "Coolify",
     seoDescription: "Autoscaling, clusters and self-healing on your own infrastructure. Compare Pyo and Coolify, feature by feature.",
     subtitle: "Autoscaling, clusters and self-healing on your own infrastructure, all from one dashboard. Here's how Pyo compares, feature by feature.",
@@ -105,6 +108,7 @@ export const COMPETITORS: Competitor[] = [
   },
   {
     slug: "dokploy",
+    kind: "self-hosted",
     name: "Dokploy",
     seoDescription: "Autoscaling, self-healing replicas and scheduled backups on your own infrastructure. Compare Pyo and Dokploy, feature by feature.",
     subtitle: "Autoscaling, self-healing replicas and scheduled backups on your own infrastructure, all from one dashboard. Here's how Pyo compares, feature by feature.",
@@ -184,6 +188,7 @@ export const COMPETITORS: Competitor[] = [
   },
   {
     slug: "caprover",
+    kind: "self-hosted",
     name: "CapRover",
     seoDescription: "Autoscaling, team roles and scheduled backups on your own infrastructure. Compare Pyo and CapRover, feature by feature.",
     subtitle: "Autoscaling, team roles and scheduled backups on your own infrastructure, all from one dashboard. Here's how Pyo compares, feature by feature.",
@@ -260,6 +265,7 @@ export const COMPETITORS: Competitor[] = [
   },
   {
     slug: "dokku",
+    kind: "self-hosted",
     name: "Dokku",
     seoDescription: "Push-to-deploy with a dashboard, autoscaling and team roles, on your own infrastructure. Compare Pyo and Dokku, feature by feature.",
     subtitle: "Push to deploy, with a dashboard, autoscaling, team roles and scheduled backups on your own infrastructure. Here's how Pyo compares, feature by feature.",
@@ -336,6 +342,7 @@ export const COMPETITORS: Competitor[] = [
   },
   {
     slug: "portainer",
+    kind: "self-hosted",
     name: "Portainer",
     seoDescription: "Git deploys, autoscaling, rollbacks and backups for your services, on your own infrastructure. Compare Pyo and Portainer, feature by feature.",
     subtitle: "Pyo builds, deploys, scales and backs up your services for you, on your own infrastructure and from one dashboard. Here's how it compares, feature by feature.",
@@ -412,6 +419,7 @@ export const COMPETITORS: Competitor[] = [
   },
   {
     slug: "openship",
+    kind: "self-hosted",
     name: "OpenShip",
     seoDescription: "Autoscaling, a web application firewall and databases that fail over, on your own infrastructure. Compare Pyo and OpenShip, feature by feature.",
     subtitle: "Autoscaling, a web application firewall and databases that fail over on your own infrastructure, all from one dashboard. Here's how Pyo compares, feature by feature.",
@@ -503,6 +511,7 @@ export const COMPETITORS: Competitor[] = [
   },
   {
     slug: "render",
+    kind: "cloud",
     name: "Render",
     seoDescription: "Pyo is an open-source alternative to Render that runs on your own infrastructure. Compare features, costs and control, side by side.",
     subtitle: "Everything you like about a modern platform, on servers you own. Pyo is open source, and free to run for as many services as your servers can hold.",
@@ -582,6 +591,7 @@ export const COMPETITORS: Competitor[] = [
   },
   {
     slug: "railway",
+    kind: "cloud",
     name: "Railway",
     seoDescription: "Pyo is an open-source alternative to Railway that runs on your own infrastructure. Compare features, costs and control, side by side.",
     subtitle: "Services, databases and cron jobs from one dashboard, on servers you own. Pyo is open source, and free to run for as many services as your servers can hold.",
@@ -661,6 +671,7 @@ export const COMPETITORS: Competitor[] = [
   },
   {
     slug: "vercel",
+    kind: "cloud",
     name: "Vercel",
     trademark: "Vercel, the Vercel design, Next.js and related marks, designs and logos are trademarks or registered trademarks of Vercel, Inc. or its affiliates in the US and other countries.",
     seoDescription: "Pyo is an open-source alternative to Vercel that runs on your own infrastructure. Compare features, costs and control, side by side.",
@@ -741,6 +752,7 @@ export const COMPETITORS: Competitor[] = [
   },
   {
     slug: "netlify",
+    kind: "cloud",
     name: "Netlify",
     seoDescription: "Pyo is an open-source alternative to Netlify that runs on your own infrastructure. Compare features, costs and control, side by side.",
     subtitle: "Sites, APIs, workers and databases from one dashboard, on servers you own. Pyo is open source, and free to run for as many services as your servers can hold.",
@@ -820,6 +832,7 @@ export const COMPETITORS: Competitor[] = [
   },
   {
     slug: "fly",
+    kind: "cloud",
     name: "Fly.io",
     seoDescription: "Pyo is an open-source alternative to Fly.io that runs on your own infrastructure. Compare features, costs and control, side by side.",
     subtitle: "Services, databases and cron jobs from one dashboard, on servers you own. Pyo is open source, and free to run for as many services as your servers can hold.",
