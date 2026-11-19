@@ -170,18 +170,21 @@ describe("the built site", () => {
       expect(() => refuseOwnScripts(site([own]))).toThrow("came from public/");
     }
   });
-  test("serves them nosniff, each release's cached for good", () => {
+  test("serves them nosniff as text/plain, each release's cached for good", () => {
     const h = headers(["0.4.1", "0.4.10", "0.4.2"]);
     expect(h).toContain("/*\n  X-Content-Type-Options: nosniff\n");
     expect(h).toContain("/v/0.4.10/*\n  Cache-Control: public, max-age=31536000, immutable\n/v/0.4.2/*\n");
     expect(h).not.toContain("/v/*");
-    expect(h).not.toContain("Content-Type:");
+    // Every script, at the root and under /v/<version>/, and only scripts.
+    // One rule only: a second Content-Type would be joined to it.
+    expect(h).toContain("/*.sh\n  Content-Type: text/plain; charset=utf-8\n");
+    expect(h.match(/Content-Type:/g)).toEqual(["Content-Type:"]);
     // Workers static assets take 100 rules: the newest releases get them.
     const many = Array.from({ length: 150 }, (_, i) => `1.${i}.0`);
     const rules = headers(many).split("\n").filter((l) => l.startsWith("/"));
     expect(rules.length).toBe(100);
-    expect(rules[1]).toBe("/v/1.149.0/*");
-    expect(rules.at(-1)).toBe("/v/1.51.0/*");
+    expect(rules.slice(0, 3)).toEqual(["/*", "/*.sh", "/v/1.149.0/*"]);
+    expect(rules.at(-1)).toBe("/v/1.52.0/*");
   });
 });
 

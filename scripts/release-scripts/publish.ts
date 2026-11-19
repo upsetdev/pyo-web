@@ -33,20 +33,27 @@ const MAX_RULES = 100;
 
 /**
  * How the site serves the scripts (Workers static assets' _headers). Every
- * response is nosniff. The scripts' type is application/x-sh by their
- * extension, and the latest are revalidated on every fetch (the default
- * max-age=0, must-revalidate). Each release's under /v/<version>/ never
- * change, so they're cached for good. Only releases served get that: a
- * version pyo.dev doesn't have yet isn't cached as missing. Past the rule
- * limit, the oldest releases are revalidated like the latest.
+ * response is nosniff. Every script, the latest and each release's, is
+ * text/plain, so a browser shows it instead of downloading it. That one
+ * rule replaces the type Workers guess from the extension (application/x-sh):
+ * no other rule may set Content-Type, or the values would be joined. "/*.sh"
+ * is a single splat, which matches any path ending in .sh, and only scripts
+ * end in .sh (verify.ts takes no other name). The latest are revalidated on
+ * every fetch (the default max-age=0, must-revalidate). Each release's under
+ * /v/<version>/ never change, so they're cached for good. Only releases
+ * served get that: a version pyo.dev doesn't have yet isn't cached as
+ * missing. Past the rule limit, the oldest releases are revalidated like the
+ * latest.
  */
 export function headers(versions: string[]) {
-  const newest = [...versions].sort(compareVersions).reverse().slice(0, MAX_RULES - 1);
+  const newest = [...versions].sort(compareVersions).reverse().slice(0, MAX_RULES - 2);
   return [
     "",
     "# Pyo's install scripts, from its signed releases (scripts/release-scripts).",
     "/*",
     "  X-Content-Type-Options: nosniff",
+    "/*.sh",
+    "  Content-Type: text/plain; charset=utf-8",
     ...newest.flatMap((v) => [`/v/${v}/*`, "  Cache-Control: public, max-age=31536000, immutable"]),
     "",
   ].join("\n");
