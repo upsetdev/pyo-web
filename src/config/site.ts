@@ -11,6 +11,8 @@ export const site = {
   ogImageUrl: "https://og.upset.dev/image",
   url: "https://pyo.dev",
   github: "https://github.com/upsetdev/pyo",
+  x: "https://x.com/pyo_dev",
+  xHandle: "@pyo_dev",
   docsRepo: "https://github.com/upsetdev/pyo-docs",
   license: "https://github.com/upsetdev/pyo/blob/main/LICENSE",
   setupCommand: "curl -fsSL https://pyo.dev/install.sh | bash",

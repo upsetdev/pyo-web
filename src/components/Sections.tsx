@@ -13,6 +13,7 @@ import { iconColor } from "./Features";
 import { ButtonLink } from "./Button";
 import { CopyCommand } from "./CopyCommand";
 import { GithubIcon } from "./GithubIcon";
+import { XLogoIcon } from "./XLogoIcon";
 import { Logo } from "./Logo";
 
 const PRODUCTION: [Icon, string, string][] = [
@@ -135,13 +136,22 @@ export function Footer() {
           <p className="mt-4 max-w-xs text-[13px] leading-relaxed">
             {site.description}
           </p>
-          <a
-            href={site.github}
-            aria-label="Pyo on GitHub"
-            className="mt-5 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border/60 text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <GithubIcon size={15} />
-          </a>
+          <div className="mt-5 flex items-center gap-2">
+            <a
+              href={site.github}
+              aria-label="Pyo on GitHub"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border/60 text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <GithubIcon size={15} />
+            </a>
+            <a
+              href={site.x}
+              aria-label="Pyo on X"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border/60 text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <XLogoIcon size={14} />
+            </a>
+          </div>
         </div>
         <FooterColumn title="Product">
           <li>
@@ -184,6 +194,11 @@ export function Footer() {
           <li>
             <a href={site.github} className={FOOTER_LINK}>
               GitHub
+            </a>
+          </li>
+          <li>
+            <a href={site.x} className={FOOTER_LINK}>
+              X
             </a>
           </li>
           <li>

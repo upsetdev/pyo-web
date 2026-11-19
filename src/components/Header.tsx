@@ -10,6 +10,7 @@ import { site } from "~/config/site";
 import { RouteButton } from "./Button";
 import { GROUPS, iconColor } from "./Features";
 import { GithubIcon } from "./GithubIcon";
+import { XLogoIcon } from "./XLogoIcon";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -110,6 +111,13 @@ export function Header() {
             className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground"
           >
             <GithubIcon size={15} />
+          </a>
+          <a
+            href={site.x}
+            aria-label="Pyo on X"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground"
+          >
+            <XLogoIcon size={14} />
           </a>
           <ThemeToggle />
           <RouteButton to="/pricing" size="sm" className="ml-1.5">
