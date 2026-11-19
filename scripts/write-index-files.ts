@@ -91,6 +91,7 @@ const paths = [
   "/architecture",
   "/sandbox",
   "/sponsors",
+  "/deploy",
   ...templates.map((t: { id: string }) => `/templates/${t.id}`),
   ...COMPETITORS.map((c) => `/vs/${c.slug}`),
   ...docs.map((d) => d.path),

@@ -191,6 +191,11 @@ export function Footer() {
               Sponsors
             </Link>
           </li>
+          <li>
+            <Link to="/deploy" className={FOOTER_LINK}>
+              Deploy button
+            </Link>
+          </li>
         </FooterColumn>
         <FooterColumn title="Compare">
           {COMPETITORS.map((c) => (

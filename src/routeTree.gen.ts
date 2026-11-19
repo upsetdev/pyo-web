@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
+import { Route as DeployRouteImport } from './routes/deploy'
 import { Route as DocsSearchDotjsonRouteImport } from './routes/docs-search[.]json'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as SandboxRouteImport } from './routes/sandbox'
@@ -28,6 +29,11 @@ const IndexRoute = IndexRouteImport.update({
 const ArchitectureRoute = ArchitectureRouteImport.update({
   id: '/architecture',
   path: '/architecture',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeployRoute = DeployRouteImport.update({
+  id: '/deploy',
+  path: '/deploy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocsSearchDotjsonRoute = DocsSearchDotjsonRouteImport.update({
@@ -74,6 +80,7 @@ const VsCompetitorRoute = VsCompetitorRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/architecture': typeof ArchitectureRoute
+  '/deploy': typeof DeployRoute
   '/docs-search.json': typeof DocsSearchDotjsonRoute
   '/pricing': typeof PricingRoute
   '/sandbox': typeof SandboxRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/architecture': typeof ArchitectureRoute
+  '/deploy': typeof DeployRoute
   '/docs-search.json': typeof DocsSearchDotjsonRoute
   '/pricing': typeof PricingRoute
   '/sandbox': typeof SandboxRoute
@@ -99,6 +107,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/architecture': typeof ArchitectureRoute
+  '/deploy': typeof DeployRoute
   '/docs-search.json': typeof DocsSearchDotjsonRoute
   '/pricing': typeof PricingRoute
   '/sandbox': typeof SandboxRoute
@@ -113,6 +122,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/architecture'
+    | '/deploy'
     | '/docs-search.json'
     | '/pricing'
     | '/sandbox'
@@ -125,6 +135,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/architecture'
+    | '/deploy'
     | '/docs-search.json'
     | '/pricing'
     | '/sandbox'
@@ -137,6 +148,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/architecture'
+    | '/deploy'
     | '/docs-search.json'
     | '/pricing'
     | '/sandbox'
@@ -150,6 +162,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ArchitectureRoute: typeof ArchitectureRoute
+  DeployRoute: typeof DeployRoute
   DocsSearchDotjsonRoute: typeof DocsSearchDotjsonRoute
   PricingRoute: typeof PricingRoute
   SandboxRoute: typeof SandboxRoute
@@ -174,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/architecture'
       fullPath: '/architecture'
       preLoaderRoute: typeof ArchitectureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deploy': {
+      id: '/deploy'
+      path: '/deploy'
+      fullPath: '/deploy'
+      preLoaderRoute: typeof DeployRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/docs-search.json': {
@@ -238,6 +258,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ArchitectureRoute: ArchitectureRoute,
+  DeployRoute: DeployRoute,
   DocsSearchDotjsonRoute: DocsSearchDotjsonRoute,
   PricingRoute: PricingRoute,
   SandboxRoute: SandboxRoute,
