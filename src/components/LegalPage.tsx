@@ -51,7 +51,7 @@ export function legalHead(slug: LegalSlug) {
 }
 
 const LINK =
-  "rounded-lg px-2.5 py-1.5 text-[13px] text-muted-foreground transition-colors hover:bg-accent hover:text-foreground aria-[current=page]:bg-accent aria-[current=page]:text-foreground";
+  "rounded-lg px-2.5 py-1.5 text-[13px] text-muted-foreground hover:bg-accent hover:text-foreground aria-[current=page]:bg-accent aria-[current=page]:text-foreground";
 
 function LegalLinks({ slug, className }: { slug: LegalSlug; className: string }) {
   return (
@@ -75,7 +75,7 @@ export function LegalPage({ slug }: { slug: LegalSlug }) {
   const page = pages[slug];
   const Body = page.default;
   return (
-    <main className="mx-auto grid max-w-6xl animate-fade-up gap-16 px-5 pb-24 pt-10 sm:pt-16 lg:grid-cols-[200px_minmax(0,1fr)] lg:pt-24">
+    <main className="mx-auto grid max-w-6xl gap-16 px-5 pb-24 pt-10 sm:pt-16 lg:grid-cols-[200px_minmax(0,1fr)] lg:pt-24">
       <aside className="hidden lg:block">
         <nav aria-label="Legal" className="sticky top-24">
           <p className="px-2.5 pb-2 text-[12px] font-medium text-muted-foreground">
