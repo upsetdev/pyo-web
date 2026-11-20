@@ -139,6 +139,10 @@ const FAQ: [string, ReactNode][] = [
     "When you connect your first server, then every month or year.",
   ],
   [
+    "How can I pay?",
+    "By card. In Indonesia you can also pay with QRIS, bank transfer or e-wallets.",
+  ],
+  [
     "What happens when I add or remove a server?",
     "A server added mid-month is charged for the rest of the month. A removed one is credited on your next invoice.",
   ],
