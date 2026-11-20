@@ -227,9 +227,24 @@ export function Footer() {
         </FooterColumn>
       </div>
       <div className="border-t border-border/60">
-        <p className="mx-auto max-w-6xl px-5 py-6 text-[12px]">
-          © {new Date().getFullYear()} {site.name}.
-        </p>
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-6 text-[12px]">
+          <p>
+            © {new Date().getFullYear()} {site.name}.
+          </p>
+          <ul className="flex flex-wrap gap-x-5 gap-y-1">
+            {[
+              ["Terms", "/legal/terms"],
+              ["Privacy", "/legal/privacy"],
+              ["DPA", "/legal/dpa"],
+            ].map(([label, href]) => (
+              <li key={href}>
+                <a href={href} className={FOOTER_LINK}>
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </footer>
   );
