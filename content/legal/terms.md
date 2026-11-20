@@ -28,6 +28,13 @@ beta". The product has no beta label, so the section now says plainly
 that there is no service level agreement and no uptime commitment, with
 no end date. Check this still holds up and fits the disclaimers in
 section 11.
+Fair use (section 3): Pyo Cloud has no request or traffic limits. The
+fair-use point lets us contact a team and, if needed, limit or suspend
+use that harms Pyo Cloud or other customers. It covers load on Pyo's own
+systems only (API calls, agent traffic, build load), never the customer's
+own servers or their traffic. Check it is clear enough to rely on, how it
+fits the suspension rules in section 9 and the Acceptable Use Policy, and
+whether we must give notice before we limit anything.
 -->
 
 These terms are an agreement between you and {{ENTITY}}, {{ADDRESS}} ("Pyo", "we", "us"). They cover Pyo Cloud at cloud.pyo.dev and everything that comes with it ("Pyo Cloud").
@@ -54,6 +61,7 @@ Pyo Cloud is a hosted version of Pyo's control plane. We run the dashboard, the 
 - You must follow our [Acceptable Use Policy](/legal/acceptable-use). It is part of these terms.
 - Do not try to reach other teams' data, get around limits or security checks, or disrupt Pyo Cloud for others.
 - Do not resell or rent out access to Pyo Cloud itself without our written permission. You may run services for your own customers on your servers.
+- **Fair use.** Pyo Cloud has no request or traffic limits. Your servers and the traffic to your services are yours. If your use harms Pyo Cloud or other customers, we may contact you and, if needed, limit or suspend that use. Examples are abusive volumes of API calls, agent traffic or build load against Pyo's own systems.
 
 ## 4. Your servers and your content
 
