@@ -22,6 +22,13 @@ const pages: Record<string, LegalPage> = Object.fromEntries(
   ]),
 );
 
+/** The date line under the title. The date is set on publishing, so an
+ * empty or "{{EFFECTIVE_DATE}}" value shows that the page is a draft. */
+function effective(updated: string | undefined) {
+  if (!updated || updated.includes("{{")) return "Draft, not yet in effect";
+  return `Last updated ${updated}`;
+}
+
 /** In the order they are listed at the foot of each page. */
 const ORDER = ["terms", "privacy", "dpa"];
 
@@ -55,7 +62,7 @@ function LegalRoute() {
         {page.frontmatter.title}
       </h1>
       <p className="mt-4 text-[14px] text-muted-foreground">
-        Last updated {page.frontmatter.updated}
+        {effective(page.frontmatter.updated)}
       </p>
       <article className="legal-page prose mt-10 max-w-none">
         <Body />

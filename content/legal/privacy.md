@@ -9,8 +9,19 @@ status: "DRAFT for legal review. Not final and not legal advice. A qualified law
 DRAFT FOR LEGAL REVIEW. NOT FINAL. NOT LEGAL ADVICE.
 This text is a starting point only. A qualified lawyer must review and adapt
 it before it is published, linked or relied on.
-Fill in every {{PLACEHOLDER}} before publishing:
-  {{DATA_REGION}} {{EFFECTIVE_DATE}} {{DELETION_DAYS}} {{BACKUP_DAYS}}
+Values chosen (only the effective date is left):
+  Effective date: still a placeholder in "updated". Set it on publishing.
+    Until then the page shows "Draft, not yet in effect".
+  Data region: the European Union. Pyo Cloud stores and processes data
+    in the EU.
+  Data kept after a subscription ends or an account is deleted: 30 days.
+  Backups: 30 days.
+Transfers: some subprocessors may process data outside the EU, under
+standard contractual clauses or another lawful safeguard: Cloudflare's
+global network, Polar, Midtrans for payments in Indonesia, and AWS for
+KMS calls (the keys live in an EU region, but AWS is a US company and
+the calls carry only hashes of commands). Check the safeguard for each
+and that "Where it is stored" says it correctly.
 The contact for privacy requests is support@pyo.dev, the general
 contact. Check whether a data protection officer or a separate privacy
 contact is needed. If so, add it here.
@@ -23,7 +34,7 @@ No legal entity or governing law exists yet. The text names "Pyo
 the governing law must be added here before publishing.
 Open points for the lawyer: lawful bases, whether an EU or UK
 representative is needed (GDPR art. 27), the transfer mechanism for each
-subprocessor outside {{DATA_REGION}}, the supervisory authority to name,
+subprocessor outside the EU, the supervisory authority to name,
 and whether the pyo.dev website's cookieless analytics need a mention here.
 What moved: the subprocessors list is no longer its own page. It is now
 Annex 3 of the Data Processing Agreement (/legal/dpa#annex-3-subprocessors).
@@ -92,7 +103,7 @@ We do not use advertising or tracking cookies.
 
 | Data | How long |
 |---|---|
-| Account and team data, configuration and secrets | While your account or team exists, then {{DELETION_DAYS}} days after the subscription ends or the account is deleted |
+| Account and team data, configuration and secrets | While your account or team exists, then 30 days after the subscription ends or the account is deleted |
 | Build logs | 90 days |
 | Deployment history | While the service exists |
 | Analytics totals | 13 months |
@@ -102,7 +113,7 @@ We do not use advertising or tracking cookies.
 | Sessions | Up to 30 days |
 | Sign-in rate limit records | Up to 1 day |
 | Payment records | As long as tax and accounting law requires |
-| Backups of our database | {{BACKUP_DAYS}} days |
+| Backups of our database | 30 days |
 
 When a team is deleted, its encryption keys are deleted too, so its secrets can no longer be read, even in a backup.
 
@@ -114,7 +125,7 @@ We may also share personal data when the law requires it, to protect our rights 
 
 ## Where it is stored
 
-Pyo Cloud's database is in {{DATA_REGION}}. Some subprocessors are in other countries. When personal data leaves the European Economic Area, the United Kingdom or Switzerland, we use safeguards that the law accepts, such as the European Commission's standard contractual clauses.
+We store and process Pyo Cloud's data in the European Union. Some subprocessors may process personal data outside the EU. These include Cloudflare's global network, Polar, Midtrans for payments in Indonesia, and AWS for the keys that sign commands. When personal data leaves the European Economic Area, the United Kingdom or Switzerland, we use safeguards that the law accepts, such as the European Commission's standard contractual clauses.
 
 ## How we protect it
 
