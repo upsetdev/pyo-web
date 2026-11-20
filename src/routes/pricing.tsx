@@ -223,10 +223,20 @@ function Plan({
           <span className="text-[14px] text-muted-foreground">{unit}</span>
         ) : null}
       </p>
+      {/* The note and summary keep the same height on both cards, so the
+          buttons line up side by side. */}
+      <p
+        aria-hidden={note ? undefined : true}
+        className="mt-2 hidden min-h-5 text-[13px] leading-5 text-muted-foreground md:block"
+      >
+        {note}
+      </p>
       {note ? (
-        <p className="mt-2 text-[13px] text-muted-foreground">{note}</p>
+        <p className="mt-2 text-[13px] leading-5 text-muted-foreground md:hidden">
+          {note}
+        </p>
       ) : null}
-      <p className="mt-4 text-[14px] leading-relaxed text-muted-foreground">
+      <p className="mt-4 text-[14px] leading-relaxed text-muted-foreground md:min-h-[2lh]">
         {summary}
       </p>
       <div className="mt-6">{action}</div>
