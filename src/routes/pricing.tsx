@@ -64,7 +64,7 @@ const INCLUDED: {
   { icon: ShieldCheckIcon, title: "WAF, firewall and analytics", body: "Built in. Pyo keeps the totals and raw requests stay on your servers." },
   { icon: CubeTransparentIcon, title: "Sandboxes", body: "Isolated machines for code and agents, including a full desktop in the browser.", page: "/sandbox" },
   { icon: BellIcon, title: "Alerts", body: "Get alerts in Telegram, Discord and Slack, or send them to a webhook." },
-  { icon: SignatureIcon, title: "Signed commands", body: "Every command to your servers is signed. On Pyo Cloud the keys stay in AWS KMS." },
+  { icon: SignatureIcon, title: "Signed commands", body: "On Pyo Cloud, every command to your servers is signed with keys kept in AWS KMS." },
   { icon: UsersThreeIcon, title: "Teams kept apart", body: "Each team's data is kept apart from every other team's." },
   { icon: GitPullRequestIcon, title: "Preview environments", body: "A live preview of every pull request.", soon: true },
 ];
