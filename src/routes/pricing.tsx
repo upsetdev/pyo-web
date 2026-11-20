@@ -66,7 +66,7 @@ const INCLUDED: {
   { icon: BellIcon, title: "Alerts", body: "In Telegram, Discord, Slack or any webhook." },
   { icon: SignatureIcon, title: "Signed commands", body: "On Pyo Cloud, every command to your servers is signed with keys in AWS KMS." },
   { icon: UsersThreeIcon, title: "Teams kept apart", body: "No team can see another team's data." },
-  { icon: GitPullRequestIcon, title: "Preview environments", body: "A live preview of every pull request.", soon: true },
+  { icon: GitPullRequestIcon, title: "Preview environments", body: "A live preview of every pull request." },
 ];
 
 /** Pyo Cloud (highlighted) next to self-hosted Pyo, grouped. */
