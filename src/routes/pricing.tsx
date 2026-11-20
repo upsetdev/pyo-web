@@ -63,9 +63,9 @@ const INCLUDED: {
   { icon: DatabaseIcon, title: "Built-in databases", body: "Postgres, MySQL and KV with replicas, point-in-time restore and backups." },
   { icon: ShieldCheckIcon, title: "WAF, firewall and analytics", body: "Raw requests stay on your servers. Pyo keeps only the totals." },
   { icon: CubeTransparentIcon, title: "Sandboxes", body: "Isolated machines for code and agents, with a full desktop in the browser.", page: "/sandbox" },
-  { icon: BellIcon, title: "Alerts", body: "In Telegram, Discord, Slack or any webhook." },
   { icon: RocketLaunchIcon, title: "Push to deploy", body: "Deploy from GitHub, GitLab or any image. Roll back in one click." },
   { icon: RobotIcon, title: "MCP, API and CLI", body: "Let AI agents and scripts run Pyo through its MCP server, API or CLI." },
+  { icon: BellIcon, title: "Alerts", body: "In Telegram, Discord, Slack or any webhook." },
   { icon: GitPullRequestIcon, title: "Preview environments", body: "A live preview of every pull request." },
 ];
 
