@@ -15,7 +15,7 @@ import { site } from "~/config/site";
 import { COMPETITORS } from "~/data/versus";
 import { RouteButton } from "./Button";
 import { GROUPS, iconColor } from "./Features";
-import { GithubIcon } from "./GithubIcon";
+import { GithubLink } from "./GithubLink";
 import { XLogoIcon } from "./XLogoIcon";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
@@ -120,13 +120,13 @@ export function Header() {
       className="sticky top-0 z-40 border-b border-shell-border bg-background/70 backdrop-blur-xl"
     >
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-5">
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-8 md:max-lg:gap-6">
           <Link to="/" aria-label="Pyo home">
             <Logo />
           </Link>
           <nav
             aria-label="Main"
-            className="hidden items-center gap-5 md:flex lg:gap-6"
+            className="hidden items-center gap-4 md:flex lg:gap-6"
           >
             <button {...triggerProps("features")}>
               Features
@@ -150,14 +150,8 @@ export function Header() {
             </Link>
           </nav>
         </div>
-        <div className="flex items-center gap-1.5">
-          <a
-            href={site.github}
-            aria-label="Pyo on GitHub"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground"
-          >
-            <GithubIcon size={15} />
-          </a>
+        <div className="flex shrink-0 items-center gap-1 lg:gap-1.5">
+          <GithubLink cramped />
           <a
             href={site.x}
             aria-label="Pyo on X"
@@ -175,7 +169,7 @@ export function Header() {
             aria-controls={menu ? MENU_ID[menu] : MENU_ID.features}
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => (open ? setMenu(null) : toggle("features"))}
-            className="ml-1 inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground md:hidden"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground md:hidden"
           >
             {open ? <XIcon size={16} /> : <ListIcon size={16} />}
           </button>

@@ -21,7 +21,7 @@ import { DocsBreadcrumb } from "~/components/DocsBreadcrumb";
 import { DocsMenu } from "~/components/DocsMenu";
 import { ApiPage } from "~/components/ApiPage";
 import { Strong, Term } from "~/components/DocsInline";
-import { GithubIcon } from "~/components/GithubIcon";
+import { GithubLink } from "~/components/GithubLink";
 import { XLogoIcon } from "~/components/XLogoIcon";
 import { Logo } from "~/components/Logo";
 import { PageActions } from "~/components/PageActions";
@@ -108,6 +108,37 @@ function EditPage({ href, className }: { href: string; className: string }) {
   );
 }
 
+/** GitHub, X and the theme switch, top right of every docs page. */
+function SiteLinks() {
+  return (
+    <>
+      <GithubLink />
+      <a
+        href={site.x}
+        aria-label="Pyo on X"
+        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground"
+      >
+        <XLogoIcon size={14} />
+      </a>
+      <ThemeToggle />
+    </>
+  );
+}
+
+/** On phones the top bar is full, so the site links sit beside the breadcrumb. */
+function Breadcrumb() {
+  return (
+    <div className="flex items-start gap-3">
+      <div className="min-w-0 flex-1">
+        <DocsBreadcrumb />
+      </div>
+      <div className="-my-1.5 flex shrink-0 items-center gap-1 md:hidden">
+        <SiteLinks />
+      </div>
+    </div>
+  );
+}
+
 function Content({ path, url }: { path: string; url: string }) {
   const page = docs.getPage(path);
   if (!page) throw new Error(`Unknown page: ${path}`);
@@ -123,7 +154,7 @@ function Content({ path, url }: { path: string; url: string }) {
       toc={toc}
       full={full}
       // Section › sidebar group › page, every part a link.
-      slots={{ breadcrumb: DocsBreadcrumb }}
+      slots={{ breadcrumb: Breadcrumb }}
       tableOfContent={{
         footer: <EditPage href={sourceUrl} className="mt-4 self-start" />,
       }}
@@ -196,23 +227,10 @@ function Page() {
     >
       <Suspense>
         <AddressInCode />
-        <div className="absolute right-3 top-3 z-10 flex items-center gap-2 md:right-5 md:top-5">
-          <PyoAddressMenu className="hidden md:block" />
-          <a
-            href={site.github}
-            aria-label="Pyo on GitHub"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground"
-          >
-            <GithubIcon size={15} />
-          </a>
-          <a
-            href={site.x}
-            aria-label="Pyo on X"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground"
-          >
-            <XLogoIcon size={14} />
-          </a>
-          <ThemeToggle />
+        {/* Below the page-outline bar, where the layout shows one. */}
+        <div className="absolute right-5 top-[calc(var(--fd-toc-popover-height,0px)+1.25rem)] z-10 hidden items-center gap-2 md:flex">
+          <PyoAddressMenu />
+          <SiteLinks />
         </div>
         <Content path={data.path} url={data.url} />
       </Suspense>
