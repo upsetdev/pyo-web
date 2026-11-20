@@ -998,3 +998,9 @@
     stroke-dashoffset: calc(var(--len) * -0.5px + 5px);
   }
 }
+
+/* Legal pages: wide tables scroll on their own instead of the page. */
+.legal-page table {
+  display: block;
+  overflow-x: auto;
+}
