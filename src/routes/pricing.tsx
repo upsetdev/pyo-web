@@ -6,8 +6,8 @@ import {
   GitPullRequestIcon,
   HardDrivesIcon,
   ShieldCheckIcon,
+  RobotIcon,
   RocketLaunchIcon,
-  UsersThreeIcon,
   type Icon,
 } from "@phosphor-icons/react";
 import { FeatureCard, FeatureGrid, iconColor } from "~/components/Features";
@@ -65,7 +65,7 @@ const INCLUDED: {
   { icon: CubeTransparentIcon, title: "Sandboxes", body: "Isolated machines for code and agents, with a full desktop in the browser.", page: "/sandbox" },
   { icon: BellIcon, title: "Alerts", body: "In Telegram, Discord, Slack or any webhook." },
   { icon: RocketLaunchIcon, title: "Push to deploy", body: "Deploy from GitHub, GitLab or any image. Roll back in one click." },
-  { icon: UsersThreeIcon, title: "Teams kept apart", body: "No team can see another team's data." },
+  { icon: RobotIcon, title: "MCP, API and CLI", body: "Let AI agents and scripts run Pyo through its MCP server, API or CLI." },
   { icon: GitPullRequestIcon, title: "Preview environments", body: "A live preview of every pull request." },
 ];
 
