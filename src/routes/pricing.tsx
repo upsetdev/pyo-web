@@ -5,6 +5,7 @@ import type { Row } from "~/data/versus";
 import { createFileRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { ButtonLink } from "~/components/Button";
+import { CloudButton } from "~/components/CloudButton";
 import { CopyCommand } from "~/components/CopyCommand";
 import { site } from "~/config/site";
 import { seo } from "~/lib/seo";
@@ -32,15 +33,18 @@ const SELF_HOSTED = [
   "Unlimited teams, members, projects, services and clusters",
 ];
 
-const CLOUD = [
-  "Fully managed by the Pyo team",
-  "Deploy to your own infrastructure",
-  "Login and MFA",
-  "The GitHub App",
-  "Managed updates",
-  "Uptime alerts",
-  "Support",
-  "Unlimited teams, members, projects, services and clusters",
+/** What Pyo Cloud includes, headline level. `soon` marks what isn't shipped yet. */
+const CLOUD: { text: string; soon?: boolean }[] = [
+  { text: "Multi-server clusters over your own Tailscale tailnet. Choose where each service runs." },
+  { text: "Built-in Postgres, MySQL and KV, with replicas, point-in-time restore and scheduled backups" },
+  { text: "Built-in WAF, firewall and analytics. Totals on Pyo, raw requests on your servers." },
+  { text: "Sandboxes, including a full desktop in the browser" },
+  { text: "Alerts to Telegram, Discord, Slack and webhooks" },
+  { text: "Every command to your servers signed with keys kept in AWS KMS, a hardware security module" },
+  { text: "Each team's data kept apart in the database" },
+  { text: "Preview environments for pull requests", soon: true },
+  { text: "Unlimited users, projects and services" },
+  { text: "Updates handled by us" },
 ];
 
 /** Pyo Cloud (highlighted) next to self-hosted Pyo, grouped. */
@@ -66,9 +70,9 @@ const COMPARE: { group: string; rows: Row[] }[] = [
         them: ["yes", "Handled by us, and your services keep running"],
       },
       {
-        topic: "Uptime",
-        pyo: ["partly", "Keeping Pyo up is on you"],
-        them: ["yes", "Monitored by us, with uptime alerts"],
+        topic: "Agent updates",
+        pyo: ["yes", "With each Pyo update"],
+        them: ["yes", "Automatic, or when your team chooses"],
       },
       {
         topic: "Pyo's own backups",
@@ -83,7 +87,7 @@ const COMPARE: { group: string; rows: Row[] }[] = [
       {
         topic: "Inbound ports",
         pyo: ["partly", "Your team must be able to reach your dashboard"],
-        them: ["yes", "None: your servers only connect out"],
+        them: ["yes", "None for Pyo: your servers only connect out"],
       },
       {
         topic: "Support",
@@ -98,7 +102,7 @@ const COMPARE: { group: string; rows: Row[] }[] = [
       {
         topic: "Cost",
         pyo: ["yes", "Free and open source"],
-        them: ["yes", "$5 per server per month"],
+        them: ["yes", "$5 per server per month, 20% off yearly"],
       },
     ],
   },
@@ -107,11 +111,11 @@ const COMPARE: { group: string; rows: Row[] }[] = [
 const FAQ: [string, ReactNode][] = [
   [
     "What counts as a server?",
-    "Each machine you connect counts once, whatever it does. One server that runs your services, the control plane and your builds is $5 a month. Clusters, teams, members, projects and services are free and unlimited.",
+    "Each machine you connect counts once, whatever it does. One server that runs your services, databases and builds is $5 a month. Clusters, teams, members, projects and services are free and unlimited.",
   ],
   [
     "When am I charged?",
-    "You add a card when you connect your first server, and it's charged right away. After that, you pay $5 per server each month.",
+    "You pay when you connect your first server. After that, you pay $5 per server each month, or $48 per server each year.",
   ],
   [
     "What happens when I add or remove a server?",
@@ -119,15 +123,35 @@ const FAQ: [string, ReactNode][] = [
   ],
   [
     "What if a payment fails?",
-    "Your services keep running. After a 7-day grace period, the dashboard and deploys pause until the payment goes through.",
+    "Your services keep running. After 7 days, deploys pause until the payment goes through.",
   ],
   [
     "Can I cancel or leave?",
-    "Cancel anytime: remove your servers and the charges stop. To leave, export your team and import it into self-hosted Pyo.",
+    "Cancel anytime. Remove your servers and the charges stop. Your services keep running on your servers.",
   ],
   [
     "Where does my data live?",
-    "Your services, images, logs, backups and analytics stay on your servers. Pyo Cloud keeps only the metadata the dashboard needs. Your servers only connect out, so you need no inbound ports. The one firewall rule you need allows outbound traffic to agent.pyo.dev on port 443.",
+    <>
+      Your services, databases, images, backups and raw request logs stay on
+      your servers. Pyo Cloud keeps your settings, encrypted environment
+      variables, build logs and analytics totals. Your servers only connect
+      out, so Pyo needs no inbound ports. See{" "}
+      <a href="/docs/cloud/security" className="font-medium text-foreground underline underline-offset-4">
+        Security on Pyo Cloud
+      </a>
+      .
+    </>,
+  ],
+  [
+    "What server do I need?",
+    <>
+      Linux on x86-64 with at least 2 CPU cores, 2 GB of memory and 40 GB of
+      disk. 4 GB of memory is recommended. Pyo uses about 1 GB of it. See{" "}
+      <a href="/docs/cloud/server-requirements" className="font-medium text-foreground underline underline-offset-4">
+        Server requirements
+      </a>
+      .
+    </>,
   ],
   [
     "What else do I pay for?",
@@ -135,9 +159,20 @@ const FAQ: [string, ReactNode][] = [
   ],
   [
     "Is there a free trial?",
-    "No. Self-hosted Pyo is the free option: it's open source and has every feature.",
+    "No. Self-hosted Pyo is the free option. It's open source and has every feature.",
   ],
+  ...(site.cloudLive
+    ? []
+    : ([["When does Pyo Cloud open?", "Soon. Until then, self-host Pyo for free."]] as [string, ReactNode][])),
 ];
+
+function Soon() {
+  return (
+    <span className="ml-1.5 inline-flex h-5 items-center rounded-full border border-border px-2 align-middle text-[11px] font-medium text-muted-foreground">
+      Coming soon
+    </span>
+  );
+}
 
 function Feature({ children }: { children: ReactNode }) {
   return (
@@ -157,17 +192,21 @@ function Plan({
   name,
   price,
   unit,
+  note,
   summary,
   action,
+  label,
   features,
   footer,
 }: {
   name: string;
   price: string;
   unit?: string;
+  note?: string;
   summary: string;
   action: ReactNode;
-  features: string[];
+  label?: string;
+  features: ReactNode[];
   footer?: ReactNode;
 }) {
   return (
@@ -181,13 +220,19 @@ function Plan({
           <span className="text-[14px] text-muted-foreground">{unit}</span>
         ) : null}
       </p>
+      {note ? (
+        <p className="mt-2 text-[13px] text-muted-foreground">{note}</p>
+      ) : null}
       <p className="mt-4 text-[14px] leading-relaxed text-muted-foreground">
         {summary}
       </p>
       <div className="mt-6">{action}</div>
-      <ul className="mt-8 space-y-2.5">
-        {features.map((f) => (
-          <Feature key={f}>{f}</Feature>
+      {label ? (
+        <h3 className="mt-8 text-[13px] font-semibold">{label}</h3>
+      ) : null}
+      <ul className={`${label ? "mt-3" : "mt-8"} space-y-2.5`}>
+        {features.map((f, i) => (
+          <Feature key={i}>{f}</Feature>
         ))}
       </ul>
       {footer ? <div className="mt-auto pt-8">{footer}</div> : null}
@@ -230,19 +275,28 @@ function PricingPage() {
             name="Pyo Cloud"
             price="$5"
             unit="/ server / month"
-            summary="Pyo, fully managed by us. Connect your servers and deploy to them, with nothing to run or update."
+            note="Or $48 per server per year, 20% off."
+            summary="Pyo, run by us. Connect your servers and deploy to them, with nothing to run or update."
             action={
-              <span
-                aria-disabled="true"
-                className="inline-flex h-11 w-full cursor-default items-center justify-center rounded-full border border-border bg-secondary text-[14px] font-medium text-muted-foreground"
-              >
-                Coming soon
-              </span>
+              <CloudButton href={`${site.cloudUrl}/signup`}>Get started</CloudButton>
             }
-            features={CLOUD}
+            label="Everything included"
+            features={CLOUD.map((f) => (
+              <>
+                {f.text}
+                {f.soon ? <Soon /> : null}
+              </>
+            ))}
           />
         </div>
         <p className="mt-4 text-[12px] leading-5 text-muted-foreground">
+          Each server needs Linux on x86-64 with at least 2 CPU cores, 2 GB of
+          memory and 40 GB of disk. 4 GB is recommended.{" "}
+          <a href="/docs/cloud/server-requirements" className="underline underline-offset-4 hover:text-foreground">
+            Server requirements
+          </a>
+        </p>
+        <p className="mt-1 text-[12px] leading-5 text-muted-foreground">
           Your servers, bandwidth and S3 storage are billed by your own
           providers, on either plan.
         </p>
@@ -260,7 +314,7 @@ function PricingPage() {
           <CompareTable
             caption="How self-hosted Pyo compares with Pyo Cloud"
             first={{ mark: <Logo showName={false} />, name: "Self-hosted", tagline: "Open source, run by you" }}
-            second={{ mark: <Logo showName={false} />, name: "Pyo Cloud", tagline: "Managed by us" }}
+            second={{ mark: <Logo showName={false} />, name: "Pyo Cloud", tagline: "Run by us" }}
             groups={COMPARE}
             highlight="second"
           />
