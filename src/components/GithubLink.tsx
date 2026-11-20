@@ -94,15 +94,15 @@ export function GithubLink({ cramped = false }: {
       }
       className="inline-flex h-8 min-w-8 shrink-0 items-center justify-center rounded-full px-[8.5px] text-muted-foreground transition hover:bg-accent hover:text-foreground"
     >
-      <GithubIcon size={15} />
+      <span className="flex shrink-0"><GithubIcon size={15} /></span>
       <span
         aria-hidden="true"
-        className={`grid transition-[grid-template-columns] duration-300 ease-out ${cramped && label.length > 3 ? "max-[374px]:hidden" : ""}`}
+        className={`grid items-center transition-[grid-template-columns] duration-300 ease-out ${cramped && label.length > 3 ? "max-[374px]:hidden" : ""}`}
         style={{ gridTemplateColumns: shown ? "1fr" : "0fr" }}
       >
         <span className="min-w-0 overflow-hidden">
           <span
-            className={`block whitespace-nowrap pl-1.5 text-[12px] font-medium tabular-nums transition duration-300 ease-out ${shown ? "translate-x-0 opacity-100" : "-translate-x-1 opacity-0"}`}
+            className={`block whitespace-nowrap pl-1.5 text-[12px] font-medium leading-none tabular-nums transition duration-300 ease-out ${shown ? "translate-x-0 opacity-100" : "-translate-x-1 opacity-0"}`}
           >
             {label}
           </span>
