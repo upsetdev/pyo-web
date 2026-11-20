@@ -177,7 +177,7 @@ Visitors who have a problem with a service that runs on Pyo should usually conta
 
 ## 6. Personal data
 
-Our [Privacy Policy](/legal/privacy) explains what we collect about you and why. When Pyo Cloud processes personal data for you, such as data about the visitors to your services, our [Data Processing Agreement](/legal/dpa) applies. It is part of these terms. Its [Annex 3](/legal/dpa#annex-3-subprocessors) lists the companies that help us run Pyo Cloud.
+Our [Privacy Policy](/privacy) explains what we collect about you and why. When Pyo Cloud processes personal data for you, such as data about the visitors to your services, our [Data Processing Agreement](/dpa) applies. It is part of these terms. Its [Annex 3](/dpa#annex-3-subprocessors) lists the companies that help us run Pyo Cloud.
 
 ## 7. Price and payment
 
@@ -221,7 +221,7 @@ Our [Privacy Policy](/legal/privacy) explains what we collect about you and why.
 - **We can end or suspend your account** if you break these terms, including the acceptable use rules in [section 4](#4-acceptable-use), if you do not pay, or if the law requires it. If we can, we tell you first and give you a fair chance to fix the problem. We can act at once when there is a serious risk to Pyo Cloud, other customers or the public.
 - **We can stop offering Pyo Cloud.** If we do, we tell you at least 30 days ahead and refund what you paid for time you could not use, as in [section 8](#8-refunds).
 - **Leaving with your data.** You can move your team to self-hosted Pyo at any time. Follow the manual steps in [Moving to self-hosted Pyo](/docs/cloud/moving-to-self-hosted). Your services and data are already on your servers.
-- **What happens to your data.** After your subscription ends, we keep your team's data for 30 days so that you can come back or move to self-hosted Pyo. Then we delete it. Copies in our backups are deleted when those backups expire, within 30 more days. Our [Privacy Policy](/legal/privacy) lists how long we keep each kind of data.
+- **What happens to your data.** After your subscription ends, we keep your team's data for 30 days so that you can come back or move to self-hosted Pyo. Then we delete it. Copies in our backups are deleted when those backups expire, within 30 more days. Our [Privacy Policy](/privacy) lists how long we keep each kind of data.
 - **The agent.** When your subscription ends, the agent on your servers stops receiving commands. Your services keep running until you change or remove them. Removing the agent is up to you.
 
 ## 12. Open-source software

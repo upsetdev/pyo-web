@@ -233,9 +233,9 @@ export function Footer() {
           </p>
           <ul className="flex flex-wrap gap-x-5 gap-y-1">
             {[
-              ["Terms", "/legal/terms"],
-              ["Privacy", "/legal/privacy"],
-              ["DPA", "/legal/dpa"],
+              ["Terms", "/terms"],
+              ["Privacy", "/privacy"],
+              ["DPA", "/dpa"],
             ].map(([label, href]) => (
               <li key={href}>
                 <a href={href} className={FOOTER_LINK}>

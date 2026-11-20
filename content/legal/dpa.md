@@ -60,7 +60,7 @@ Check whether Midtrans belongs in Annex 3 as a processor, or is an
 independent controller like Polar.
 -->
 
-This Data Processing Agreement ("DPA") is part of the Pyo Cloud [Terms of Service](/legal/terms) between you, the customer, and Pyo (pyo.dev, "we", "us"). It applies when Pyo processes personal data for you while providing Pyo Cloud. If this DPA and the Terms differ on personal data, this DPA wins.
+This Data Processing Agreement ("DPA") is part of the Pyo Cloud [Terms of Service](/terms) between you, the customer, and Pyo (pyo.dev, "we", "us"). It applies when Pyo processes personal data for you while providing Pyo Cloud. If this DPA and the Terms differ on personal data, this DPA wins.
 
 ## 1. Words we use
 
@@ -74,7 +74,7 @@ This Data Processing Agreement ("DPA") is part of the Pyo Cloud [Terms of Servic
 
 You are the controller of customer personal data, or a processor acting for your own customers. Pyo is your processor, or your subprocessor.
 
-For the personal data of the people who hold Pyo Cloud accounts, Pyo is a controller. The [Privacy Policy](/legal/privacy) covers that, not this DPA.
+For the personal data of the people who hold Pyo Cloud accounts, Pyo is a controller. The [Privacy Policy](/privacy) covers that, not this DPA.
 
 ## 3. What Pyo processes
 
@@ -191,7 +191,7 @@ Questions about this DPA go to support@pyo.dev.
 
 ## Annex 3. Subprocessors
 
-These are the companies that help us run Pyo Cloud and may process personal data for it. Each one has signed terms with us that protect that data. Section 7 explains how we choose and change them. We also use them for the personal data in Pyo Cloud accounts, which our [Privacy Policy](/legal/privacy) covers.
+These are the companies that help us run Pyo Cloud and may process personal data for it. Each one has signed terms with us that protect that data. Section 7 explains how we choose and change them. We also use them for the personal data in Pyo Cloud accounts, which our [Privacy Policy](/privacy) covers.
 
 | Subprocessor | What it does for Pyo Cloud | Data it handles | Location |
 |---|---|---|---|

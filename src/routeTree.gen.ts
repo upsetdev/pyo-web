@@ -13,12 +13,14 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as DeployRouteImport } from './routes/deploy'
 import { Route as DocsSearchDotjsonRouteImport } from './routes/docs-search[.]json'
+import { Route as DpaRouteImport } from './routes/dpa'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SandboxRouteImport } from './routes/sandbox'
 import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as TemplatesRouteImport } from './routes/templates'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as DocsSplatRouteImport } from './routes/docs/$'
-import { Route as LegalPageRouteImport } from './routes/legal/$page'
 import { Route as TemplatesIdRouteImport } from './routes/templates_.$id'
 import { Route as VsCompetitorRouteImport } from './routes/vs.$competitor'
 
@@ -42,9 +44,19 @@ const DocsSearchDotjsonRoute = DocsSearchDotjsonRouteImport.update({
   path: '/docs-search.json',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DpaRoute = DpaRouteImport.update({
+  id: '/dpa',
+  path: '/dpa',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SandboxRoute = SandboxRouteImport.update({
@@ -62,14 +74,14 @@ const TemplatesRoute = TemplatesRouteImport.update({
   path: '/templates',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DocsSplatRoute = DocsSplatRouteImport.update({
   id: '/docs/$',
   path: '/docs/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LegalPageRoute = LegalPageRouteImport.update({
-  id: '/legal/$page',
-  path: '/legal/$page',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TemplatesIdRoute = TemplatesIdRouteImport.update({
@@ -88,12 +100,14 @@ export interface FileRoutesByFullPath {
   '/architecture': typeof ArchitectureRoute
   '/deploy': typeof DeployRoute
   '/docs-search.json': typeof DocsSearchDotjsonRoute
+  '/dpa': typeof DpaRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/sandbox': typeof SandboxRoute
   '/sponsors': typeof SponsorsRoute
   '/templates': typeof TemplatesRoute
+  '/terms': typeof TermsRoute
   '/docs/$': typeof DocsSplatRoute
-  '/legal/$page': typeof LegalPageRoute
   '/templates/$id': typeof TemplatesIdRoute
   '/vs/$competitor': typeof VsCompetitorRoute
 }
@@ -102,12 +116,14 @@ export interface FileRoutesByTo {
   '/architecture': typeof ArchitectureRoute
   '/deploy': typeof DeployRoute
   '/docs-search.json': typeof DocsSearchDotjsonRoute
+  '/dpa': typeof DpaRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/sandbox': typeof SandboxRoute
   '/sponsors': typeof SponsorsRoute
   '/templates': typeof TemplatesRoute
+  '/terms': typeof TermsRoute
   '/docs/$': typeof DocsSplatRoute
-  '/legal/$page': typeof LegalPageRoute
   '/templates/$id': typeof TemplatesIdRoute
   '/vs/$competitor': typeof VsCompetitorRoute
 }
@@ -117,12 +133,14 @@ export interface FileRoutesById {
   '/architecture': typeof ArchitectureRoute
   '/deploy': typeof DeployRoute
   '/docs-search.json': typeof DocsSearchDotjsonRoute
+  '/dpa': typeof DpaRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/sandbox': typeof SandboxRoute
   '/sponsors': typeof SponsorsRoute
   '/templates': typeof TemplatesRoute
+  '/terms': typeof TermsRoute
   '/docs/$': typeof DocsSplatRoute
-  '/legal/$page': typeof LegalPageRoute
   '/templates_/$id': typeof TemplatesIdRoute
   '/vs/$competitor': typeof VsCompetitorRoute
 }
@@ -133,12 +151,14 @@ export interface FileRouteTypes {
     | '/architecture'
     | '/deploy'
     | '/docs-search.json'
+    | '/dpa'
     | '/pricing'
+    | '/privacy'
     | '/sandbox'
     | '/sponsors'
     | '/templates'
+    | '/terms'
     | '/docs/$'
-    | '/legal/$page'
     | '/templates/$id'
     | '/vs/$competitor'
   fileRoutesByTo: FileRoutesByTo
@@ -147,12 +167,14 @@ export interface FileRouteTypes {
     | '/architecture'
     | '/deploy'
     | '/docs-search.json'
+    | '/dpa'
     | '/pricing'
+    | '/privacy'
     | '/sandbox'
     | '/sponsors'
     | '/templates'
+    | '/terms'
     | '/docs/$'
-    | '/legal/$page'
     | '/templates/$id'
     | '/vs/$competitor'
   id:
@@ -161,12 +183,14 @@ export interface FileRouteTypes {
     | '/architecture'
     | '/deploy'
     | '/docs-search.json'
+    | '/dpa'
     | '/pricing'
+    | '/privacy'
     | '/sandbox'
     | '/sponsors'
     | '/templates'
+    | '/terms'
     | '/docs/$'
-    | '/legal/$page'
     | '/templates_/$id'
     | '/vs/$competitor'
   fileRoutesById: FileRoutesById
@@ -176,12 +200,14 @@ export interface RootRouteChildren {
   ArchitectureRoute: typeof ArchitectureRoute
   DeployRoute: typeof DeployRoute
   DocsSearchDotjsonRoute: typeof DocsSearchDotjsonRoute
+  DpaRoute: typeof DpaRoute
   PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
   SandboxRoute: typeof SandboxRoute
   SponsorsRoute: typeof SponsorsRoute
   TemplatesRoute: typeof TemplatesRoute
+  TermsRoute: typeof TermsRoute
   DocsSplatRoute: typeof DocsSplatRoute
-  LegalPageRoute: typeof LegalPageRoute
   TemplatesIdRoute: typeof TemplatesIdRoute
   VsCompetitorRoute: typeof VsCompetitorRoute
 }
@@ -216,11 +242,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsSearchDotjsonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dpa': {
+      id: '/dpa'
+      path: '/dpa'
+      fullPath: '/dpa'
+      preLoaderRoute: typeof DpaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pricing': {
       id: '/pricing'
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sandbox': {
@@ -244,18 +284,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemplatesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/docs/$': {
       id: '/docs/$'
       path: '/docs/$'
       fullPath: '/docs/$'
       preLoaderRoute: typeof DocsSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/legal/$page': {
-      id: '/legal/$page'
-      path: '/legal/$page'
-      fullPath: '/legal/$page'
-      preLoaderRoute: typeof LegalPageRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/templates_/$id': {
@@ -280,12 +320,14 @@ const rootRouteChildren: RootRouteChildren = {
   ArchitectureRoute: ArchitectureRoute,
   DeployRoute: DeployRoute,
   DocsSearchDotjsonRoute: DocsSearchDotjsonRoute,
+  DpaRoute: DpaRoute,
   PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
   SandboxRoute: SandboxRoute,
   SponsorsRoute: SponsorsRoute,
   TemplatesRoute: TemplatesRoute,
+  TermsRoute: TermsRoute,
   DocsSplatRoute: DocsSplatRoute,
-  LegalPageRoute: LegalPageRoute,
   TemplatesIdRoute: TemplatesIdRoute,
   VsCompetitorRoute: VsCompetitorRoute,
 }

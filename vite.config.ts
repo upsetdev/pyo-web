@@ -84,13 +84,13 @@ export default defineConfig({
     fumadocsMdx(),
     tanstackStart({
       prerender: { enabled: true, crawlLinks: true },
-      // Nothing links to these: DocsSearch fetches the first, and the legal
-      // drafts stay unlinked (and noindex) until they are published.
+      // Nothing links to the first: DocsSearch fetches it. The legal drafts
+      // are listed so they build whatever links to them (they stay noindex).
       pages: [
         { path: "/docs-search.json" },
-        { path: "/legal/terms" },
-        { path: "/legal/privacy" },
-        { path: "/legal/dpa" },
+        { path: "/terms" },
+        { path: "/privacy" },
+        { path: "/dpa" },
       ],
     }),
     viteReact(),
