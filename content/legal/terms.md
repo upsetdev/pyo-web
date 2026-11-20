@@ -1,0 +1,129 @@
+---
+title: Terms of Service
+description: The terms for using Pyo Cloud, the hosted Pyo control plane run by the Pyo team.
+updated: "{{EFFECTIVE_DATE}}"
+status: "DRAFT for legal review. Not final and not legal advice. A qualified lawyer must review and adapt this before it is published or relied on."
+---
+
+<!--
+DRAFT FOR LEGAL REVIEW. NOT FINAL. NOT LEGAL ADVICE.
+This text is a starting point only. A qualified lawyer must review and adapt
+it to the operator's entity, jurisdiction and payment setup before it is
+published, linked or relied on.
+Fill in every {{PLACEHOLDER}} before publishing:
+  {{ENTITY}} {{ADDRESS}} {{JURISDICTION}} {{CONTACT_EMAIL}} {{EFFECTIVE_DATE}}
+  {{GRACE_DAYS}} (the code uses 7) {{DELETION_DAYS}} {{NOTICE_DAYS}}
+Open points for the lawyer: liability cap, indemnity, consumer law where
+customers are individuals, the Midtrans setup (the operator is the seller
+there, not Polar), dispute resolution and venue.
+-->
+
+These terms are an agreement between you and {{ENTITY}}, {{ADDRESS}} ("Pyo", "we", "us"). They cover Pyo Cloud at cloud.pyo.dev and everything that comes with it ("Pyo Cloud").
+
+If you use Pyo Cloud for a company or another organization, you accept these terms for it, and you confirm that you may do so. "You" then means that organization.
+
+## 1. What Pyo Cloud is
+
+Pyo is open-source software under the Apache License 2.0. Anyone may run it on their own servers for free. These terms do not cover that software or self-hosted installs. The Apache License covers those.
+
+Pyo Cloud is a hosted version of Pyo's control plane. We run the dashboard, the API and the database that holds your team's configuration. You install Pyo's agent on servers that you own or rent. Your services, images, backups, logs and data stay on those servers. The agent connects out to Pyo Cloud and carries out the commands that you or your team give in Pyo Cloud.
+
+## 2. Your account
+
+- You need an account to use Pyo Cloud. Give us true and current details, and keep them up to date.
+- You must be at least 18 years old, or the age of majority where you live.
+- Keep your password, passkeys, API keys and connect commands safe. You are responsible for what happens under your account and your teams, unless it is our fault.
+- Tell us at {{CONTACT_EMAIL}} as soon as you think someone has used your account without your permission.
+- A team is a group of accounts that share servers, projects and services. Team owners decide who joins a team and what each member may do. A team's owners are responsible for the team's members.
+
+## 3. Using Pyo Cloud
+
+- You may use Pyo Cloud to deploy and run your services on your own servers.
+- You must follow our [Acceptable Use Policy](/legal/acceptable-use). It is part of these terms.
+- Do not try to reach other teams' data, get around limits or security checks, or disrupt Pyo Cloud for others.
+- Do not resell or rent out access to Pyo Cloud itself without our written permission. You may run services for your own customers on your servers.
+
+## 4. Your servers and your content
+
+- **Your servers are yours.** You choose and pay the provider. You are responsible for the servers, their operating system, their network and firewall, their backups and their costs. This includes bandwidth and storage your providers bill you for.
+- **Your content is yours.** Your code, images, configuration, secrets and data stay yours. You give us only the rights we need to run Pyo Cloud for you. That means storing, copying, processing and sending your content as the service requires.
+- **You are responsible for your content and your services.** This includes what your services do, what they store and how they treat the people who use them. You must have the rights and permissions you need for them.
+- **Backups.** Pyo Cloud helps you set up backups to storage you choose. Pyo Cloud does not keep copies of your services' data. You are responsible for checking that your backups work.
+- **Commands to your servers.** The agent runs on your servers with broad rights, because it deploys and manages your services. It accepts only commands that Pyo Cloud has signed for your cluster. You can stop it, or remove it from your servers, at any time.
+
+## 5. Personal data
+
+Our [Privacy Policy](/legal/privacy) explains what we collect about you and why. When Pyo Cloud processes personal data for you, such as data about the visitors to your services, our [Data Processing Agreement](/legal/dpa) applies. It is part of these terms.
+
+## 6. Price and payment
+
+- **Price.** Pyo Cloud costs $5 per server per month, or 20% less when you pay for a year. A server is each machine you connect, counted once, whatever its roles. Clusters, teams, members, projects and services cost nothing extra. Prices do not include taxes unless we say so.
+- **No trial.** There is no free trial. Self-hosted Pyo is the free option.
+- **When you pay.** You add a payment method before you connect your first server. You pay in advance for each month or year. A server added during a billing period is charged for the rest of that period. A server removed during a period is credited on your next invoice.
+- **Who you pay.** Most payments go through Polar, which acts as the merchant of record. Polar is the seller for those payments. It charges you, sends invoices and handles sales tax and VAT. Polar's own terms also apply to those payments. Customers in Indonesia may pay through Midtrans instead. For those payments, we are the seller and we send the invoice.
+- **Price changes.** We may change prices. We will tell you at least {{NOTICE_DAYS}} days before a change applies to you. A new price applies from your next billing period after that notice.
+- **Refunds.** Payments are not refunded, except where the law requires it or where we say so in writing.
+
+## 7. Failed payments
+
+- If a payment fails, we tell you and try again.
+- Your services keep running on your servers.
+- If the payment still has not gone through after {{GRACE_DAYS}} days, deploys pause. While paused, you cannot deploy or connect new servers. Your services keep running, and you can still sign in, see your team and pay.
+- Deploys resume as soon as the payment goes through.
+- If a payment stays unpaid for a long time, we may end your subscription as in section 9.
+
+## 8. Availability during beta
+
+- Pyo Cloud is new. Until we say that it has left beta, there is no service level agreement and no promise of uptime.
+- We work to keep Pyo Cloud available and to fix problems quickly. We may need to stop it for maintenance or in an emergency, and we try to warn you first.
+- Your services run on your servers. When Pyo Cloud is down, your services keep running, but you may not be able to deploy or change them until it is back.
+- We may change, add or remove features. If we remove a feature you rely on in a way that matters, we will tell you first when we can.
+
+## 9. Cancelling and ending
+
+- **You can cancel at any time.** Cancel in Settings › Billing, or remove all your servers. Cancelling stops future charges. You keep access until the end of the period you paid for.
+- **We can end or suspend your account** if you break these terms or the Acceptable Use Policy, if you do not pay, or if the law requires it. If we can, we tell you first and give you a fair chance to fix the problem. We can act at once when there is a serious risk to Pyo Cloud, other customers or the public.
+- **We can stop offering Pyo Cloud.** If we do, we tell you at least {{NOTICE_DAYS}} days ahead and refund what you paid for time you could not use.
+- **Leaving with your data.** You can export your team at any time and import it into self-hosted Pyo. Your services and data are already on your servers.
+- **What happens to your data.** After your subscription ends, we keep your team's data for {{DELETION_DAYS}} days so that you can come back or export it. Then we delete it. Copies in our backups are deleted when those backups expire. Our [Privacy Policy](/legal/privacy) lists how long we keep each kind of data.
+- **The agent.** When your subscription ends, the agent on your servers stops receiving commands. Your services keep running until you change or remove them. Removing the agent is up to you.
+
+## 10. Open-source software
+
+Pyo, including the agent, is open-source software under the Apache License 2.0. Your use of that software is covered by its license. These terms cover only the service we run.
+
+## 11. Disclaimers
+
+We provide Pyo Cloud "as is" and "as available". As far as the law allows, we give no promises that are not written in these terms. This includes promises that Pyo Cloud will be free of errors, will always be available, or will suit a particular purpose.
+
+## 12. Limits on our liability
+
+As far as the law allows:
+
+- We are not liable for indirect or consequential losses. This includes lost profits, lost revenue, lost data and lost business, even if we knew they could happen.
+- Our total liability for all claims about Pyo Cloud is limited to what you paid us for Pyo Cloud in the 12 months before the event that caused the claim.
+- These limits do not apply where the law does not allow them. This can include death or personal injury caused by negligence, fraud, or anything else that cannot be limited by law.
+
+## 13. Your responsibility to us
+
+If someone makes a claim against us because of your content, your services or your breach of these terms, you will cover our reasonable costs of that claim. This does not apply where the claim is caused by us.
+
+## 14. Changes to these terms
+
+We may change these terms. We tell you about important changes by email or in the dashboard at least {{NOTICE_DAYS}} days before they apply. If you keep using Pyo Cloud after that, the new terms apply. If you do not agree, you can cancel before they apply.
+
+## 15. Law and disputes
+
+These terms are governed by the laws of {{JURISDICTION}}. The courts of {{JURISDICTION}} decide any disputes, unless the law where you live gives you the right to go to your local courts.
+
+## 16. Everything else
+
+- These terms, the Acceptable Use Policy, the Privacy Policy and the Data Processing Agreement are the whole agreement about Pyo Cloud.
+- If a part of these terms cannot be enforced, the rest still applies.
+- If we do not enforce a part of these terms right away, we can still enforce it later.
+- You may not transfer these terms to someone else without our permission. We may transfer them to a company that takes over Pyo Cloud, and we will tell you if we do.
+- Neither of us is responsible for delays caused by events outside reasonable control.
+
+## 17. Contact
+
+{{ENTITY}}, {{ADDRESS}}. Email {{CONTACT_EMAIL}}.
