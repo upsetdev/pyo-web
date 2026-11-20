@@ -106,7 +106,7 @@ We do not use advertising or tracking cookies.
 | Account and team data, configuration and secrets | While your account or team exists, then 30 days after the subscription ends or the account is deleted |
 | Build logs | 90 days |
 | Deployment history | While the service exists |
-| Analytics totals | 13 months |
+| Analytics totals | 12 months |
 | Raw request logs | Not kept by Pyo Cloud. They stay on your servers, 7 days by default, and you can change that |
 | Server metrics | 30 days |
 | Audit log | 1 year |

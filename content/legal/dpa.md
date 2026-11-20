@@ -155,7 +155,7 @@ Questions about this DPA go to support@pyo.dev.
 | **Types of personal data** | Visitor analytics totals (country, paths, referrers, unique visitor estimates), build log contents, data in configuration and secrets, and data in live logs, request details and terminal sessions while they pass through |
 | **Special categories** | None intended. Do not put special category data in configuration, secrets or build output |
 | **Frequency** | Continuous while your servers are connected |
-| **Retention** | Build logs 90 days, analytics totals 13 months, server metrics 30 days, audit log 1 year, configuration and secrets while the team exists |
+| **Retention** | Build logs 90 days, analytics totals 12 months, server metrics 30 days, audit log 1 year, configuration and secrets while the team exists |
 | **Location** | The European Union, and the subprocessors' locations in Annex 3 |
 
 ## Annex 2. Security measures
