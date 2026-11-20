@@ -6,7 +6,7 @@ import {
   GitPullRequestIcon,
   HardDrivesIcon,
   ShieldCheckIcon,
-  SignatureIcon,
+  RocketLaunchIcon,
   UsersThreeIcon,
   type Icon,
 } from "@phosphor-icons/react";
@@ -64,7 +64,7 @@ const INCLUDED: {
   { icon: ShieldCheckIcon, title: "WAF, firewall and analytics", body: "Raw requests stay on your servers. Pyo keeps only the totals." },
   { icon: CubeTransparentIcon, title: "Sandboxes", body: "Isolated machines for code and agents, with a full desktop in the browser.", page: "/sandbox" },
   { icon: BellIcon, title: "Alerts", body: "In Telegram, Discord, Slack or any webhook." },
-  { icon: SignatureIcon, title: "Signed commands", body: "On Pyo Cloud, every command to your servers is signed with keys in AWS KMS." },
+  { icon: RocketLaunchIcon, title: "Push to deploy", body: "Deploy from GitHub, GitLab or any image. Roll back in one click." },
   { icon: UsersThreeIcon, title: "Teams kept apart", body: "No team can see another team's data." },
   { icon: GitPullRequestIcon, title: "Preview environments", body: "A live preview of every pull request." },
 ];
