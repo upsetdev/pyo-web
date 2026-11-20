@@ -673,7 +673,6 @@ export const COMPETITORS: Competitor[] = [
     slug: "vercel",
     kind: "cloud",
     name: "Vercel",
-    trademark: "Vercel, the Vercel design, Next.js and related marks, designs and logos are trademarks or registered trademarks of Vercel, Inc. or its affiliates in the US and other countries.",
     seoDescription: "Pyo is an open-source alternative to Vercel that runs on your own infrastructure. Compare features, costs and control, side by side.",
     subtitle: "Deploy on every push, with rollbacks, domains and analytics, on servers you own. Pyo is open source, and free to run for as many services as your servers can hold.",
     groups: [
