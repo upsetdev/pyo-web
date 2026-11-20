@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import {
   ArrowCounterClockwiseIcon,
   ArrowRightIcon,
@@ -207,6 +208,69 @@ export const GROUPS: Group[] = [
   },
 ];
 
+/** The framed grid the feature cards sit in. */
+export function FeatureGrid({
+  children,
+  className = "sm:grid-cols-2 lg:grid-cols-3",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className="rounded-[20px] frame-edge bg-muted p-1.5">
+      <ul className={`grid gap-1.5 ${className}`}>{children}</ul>
+    </div>
+  );
+}
+
+/** One feature: an icon, a title and a line, linking to its page if any. */
+export function FeatureCard({
+  icon: ItemIcon,
+  color,
+  title,
+  body,
+  page,
+  tag,
+}: {
+  icon: Icon;
+  color: string;
+  title: string;
+  body: string;
+  page?: "/sandbox";
+  tag?: ReactNode;
+}) {
+  const card = (
+    <>
+      <ItemIcon size={18} className={color} />
+      <h4 className="mt-3 inline-flex flex-wrap items-center gap-1 text-[14px] font-semibold">
+        {title}
+        {page ? (
+          <ArrowRightIcon
+            size={12}
+            className="text-muted-foreground transition-transform group-hover/card:translate-x-0.5"
+          />
+        ) : null}
+        {tag}
+      </h4>
+      <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+        {body}
+      </p>
+    </>
+  );
+  return page ? (
+    <li>
+      <Link
+        to={page}
+        className="group/card block h-full rounded-[14px] card-edge card-edge-hover bg-card p-4 transition-colors hover:bg-accent/40"
+      >
+        {card}
+      </Link>
+    </li>
+  ) : (
+    <li className="rounded-[14px] card-edge bg-card p-4">{card}</li>
+  );
+}
+
 export function Features() {
   return (
     <section id="features" className="scroll-mt-14">
@@ -234,49 +298,18 @@ export function Features() {
                   {group.body}
                 </p>
               </div>
-              <div className="rounded-[20px] frame-edge bg-muted p-1.5">
-                <ul className="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
-                  {group.items.map(([ItemIcon, title, body, page], i) => {
-                    const card = (
-                      <>
-                        <ItemIcon
-                          size={18}
-                          className={iconColor(i + groupIndex)}
-                        />
-                        <h4 className="mt-3 inline-flex items-center gap-1 text-[14px] font-semibold">
-                          {title}
-                          {page ? (
-                            <ArrowRightIcon
-                              size={12}
-                              className="text-muted-foreground transition-transform group-hover/card:translate-x-0.5"
-                            />
-                          ) : null}
-                        </h4>
-                        <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-                          {body}
-                        </p>
-                      </>
-                    );
-                    return page ? (
-                      <li key={title}>
-                        <Link
-                          to={page}
-                          className="group/card block h-full rounded-[14px] card-edge card-edge-hover bg-card p-4 transition-colors hover:bg-accent/40"
-                        >
-                          {card}
-                        </Link>
-                      </li>
-                    ) : (
-                      <li
-                        key={title}
-                        className="rounded-[14px] card-edge bg-card p-4"
-                      >
-                        {card}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+              <FeatureGrid>
+                {group.items.map(([ItemIcon, title, body, page], i) => (
+                  <FeatureCard
+                    key={title}
+                    icon={ItemIcon}
+                    color={iconColor(i + groupIndex)}
+                    title={title}
+                    body={body}
+                    page={page}
+                  />
+                ))}
+              </FeatureGrid>
             </div>
           ))}
         </div>

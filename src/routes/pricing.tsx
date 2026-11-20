@@ -1,4 +1,16 @@
-import { CheckIcon } from "@phosphor-icons/react";
+import {
+  BellIcon,
+  CheckIcon,
+  CubeTransparentIcon,
+  DatabaseIcon,
+  GitPullRequestIcon,
+  HardDrivesIcon,
+  ShieldCheckIcon,
+  SignatureIcon,
+  UsersThreeIcon,
+  type Icon,
+} from "@phosphor-icons/react";
+import { FeatureCard, FeatureGrid, iconColor } from "~/components/Features";
 import { CompareTable } from "~/components/Versus";
 import { Logo } from "~/components/Logo";
 import type { Row } from "~/data/versus";
@@ -33,18 +45,28 @@ const SELF_HOSTED = [
   "Unlimited teams, members, projects, services and clusters",
 ];
 
-/** What Pyo Cloud includes, headline level. `soon` marks what isn't shipped yet. */
-const CLOUD: { text: string; soon?: boolean }[] = [
-  { text: "Multi-server clusters over your own Tailscale tailnet. Choose where each service runs." },
-  { text: "Built-in Postgres, MySQL and KV, with replicas, point-in-time restore and scheduled backups" },
-  { text: "Built-in WAF, firewall and analytics. Totals on Pyo, raw requests on your servers." },
-  { text: "Sandboxes, including a full desktop in the browser" },
-  { text: "Alerts to Telegram, Discord, Slack and webhooks" },
-  { text: "Every command to your servers signed with keys kept in AWS KMS, a hardware security module" },
-  { text: "Each team's data kept apart in the database" },
-  { text: "Preview environments for pull requests", soon: true },
-  { text: "Unlimited users, projects and services" },
-  { text: "Updates handled by us" },
+const CLOUD = [
+  "Every feature, nothing to run",
+  "Unlimited users, projects and services",
+  "Updates handled by us",
+];
+
+/** Headline features, shown below the plans. `soon` marks what isn't shipped yet. */
+const INCLUDED: {
+  icon: Icon;
+  title: string;
+  body: string;
+  page?: "/sandbox";
+  soon?: boolean;
+}[] = [
+  { icon: HardDrivesIcon, title: "Multi-server clusters", body: "Connect servers over your own Tailscale tailnet and choose where each service runs." },
+  { icon: DatabaseIcon, title: "Built-in databases", body: "Postgres, MySQL and KV, with replicas, point-in-time restore and scheduled backups." },
+  { icon: ShieldCheckIcon, title: "WAF, firewall and analytics", body: "Built in. Pyo keeps the totals and raw requests stay on your servers." },
+  { icon: CubeTransparentIcon, title: "Sandboxes", body: "Isolated machines for code and agents, including a full desktop in the browser.", page: "/sandbox" },
+  { icon: BellIcon, title: "Alerts", body: "Get alerts in Telegram, Discord and Slack, or send them to a webhook." },
+  { icon: SignatureIcon, title: "Signed commands", body: "Every command to your servers is signed. On Pyo Cloud the keys stay in AWS KMS." },
+  { icon: UsersThreeIcon, title: "Teams kept apart", body: "Each team's data is kept apart from every other team's." },
+  { icon: GitPullRequestIcon, title: "Preview environments", body: "A live preview of every pull request.", soon: true },
 ];
 
 /** Pyo Cloud (highlighted) next to self-hosted Pyo, grouped. */
@@ -168,7 +190,7 @@ const FAQ: [string, ReactNode][] = [
 
 function Soon() {
   return (
-    <span className="ml-1.5 inline-flex h-5 items-center rounded-full border border-border px-2 align-middle text-[11px] font-medium text-muted-foreground">
+    <span className="inline-flex h-5 items-center rounded-full border border-border px-2 align-middle text-[11px] font-medium text-muted-foreground">
       Coming soon
     </span>
   );
@@ -195,7 +217,6 @@ function Plan({
   note,
   summary,
   action,
-  label,
   features,
   footer,
 }: {
@@ -205,7 +226,6 @@ function Plan({
   note?: string;
   summary: string;
   action: ReactNode;
-  label?: string;
   features: ReactNode[];
   footer?: ReactNode;
 }) {
@@ -227,10 +247,7 @@ function Plan({
         {summary}
       </p>
       <div className="mt-6">{action}</div>
-      {label ? (
-        <h3 className="mt-8 text-[13px] font-semibold">{label}</h3>
-      ) : null}
-      <ul className={`${label ? "mt-3" : "mt-8"} space-y-2.5`}>
+      <ul className="mt-8 space-y-2.5">
         {features.map((f, i) => (
           <Feature key={i}>{f}</Feature>
         ))}
@@ -280,13 +297,7 @@ function PricingPage() {
             action={
               <CloudButton href={`${site.cloudUrl}/signup`}>Get started</CloudButton>
             }
-            label="Everything included"
-            features={CLOUD.map((f) => (
-              <>
-                {f.text}
-                {f.soon ? <Soon /> : null}
-              </>
-            ))}
+            features={CLOUD}
           />
         </div>
         <p className="mt-4 text-[12px] leading-5 text-muted-foreground">
@@ -300,6 +311,33 @@ function PricingPage() {
           Your servers, bandwidth and S3 storage are billed by your own
           providers, on either plan.
         </p>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-5 pt-24">
+        <h2 className="text-[24px] font-semibold tracking-[-0.02em] sm:text-[28px]">
+          Everything included
+        </h2>
+        <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
+          Both plans come with every feature. Here are a few.{" "}
+          <a href="/#features" className="font-medium text-foreground underline underline-offset-4">
+            See all features
+          </a>
+        </p>
+        <div className="mt-8">
+          <FeatureGrid className="sm:grid-cols-2 lg:grid-cols-4">
+            {INCLUDED.map((f, i) => (
+              <FeatureCard
+                key={f.title}
+                icon={f.icon}
+                color={iconColor(i)}
+                title={f.title}
+                body={f.body}
+                page={f.page}
+                tag={f.soon ? <Soon /> : undefined}
+              />
+            ))}
+          </FeatureGrid>
+        </div>
       </section>
 
       <section className="mx-auto max-w-5xl px-5 pt-24">
