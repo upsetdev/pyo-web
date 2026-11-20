@@ -33,9 +33,16 @@ export const COMPETITORS: Competitor[] = [
     imports: true,
     groups: [
       {
+        group: "Hosting",
+        rows: [
+          { topic: "Hosted control plane", pyo: ["yes", "Pyo Cloud, $5 per server per month or $48 a year"], them: ["yes", "$5 a month for 2 servers, then $3 per server"] },
+        ],
+      },
+      {
         group: "Deploying",
         rows: [
           { topic: "Deploy from Git", pyo: ["yes", "On every push"], them: ["yes", "Yes"] },
+          { topic: "Preview environments", pyo: ["yes", "GitHub and GitLab, with a bot comment"], them: ["yes", "GitHub, GitLab, Gitea and Bitbucket"] },
           { topic: "Deploy any container image", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Docker Compose", pyo: ["yes", "Dashboard, API or pyo deploy -f"], them: ["yes", "Yes"] },
           { topic: "Zero-config builds", pyo: ["yes", "Detects your framework"], them: ["yes", "Yes"] },
@@ -72,10 +79,11 @@ export const COMPETITORS: Competitor[] = [
       {
         group: "Observability",
         rows: [
-          { topic: "Analytics", pyo: ["yes", "No script to add"], them: ["yes", "Yes"] },
+          { topic: "Analytics", pyo: ["yes", "No script to add. Totals kept 12 months, raw requests on your servers"], them: ["yes", "Yes"] },
           { topic: "CPU and memory metrics", pyo: ["yes", "Servers and services, no Prometheus"], them: ["yes", "Servers and containers"] },
           { topic: "Live logs", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Terminal into a service", pyo: ["yes", "From the dashboard"], them: ["yes", "Yes"] },
+          { topic: "Alerts", pyo: ["yes", "Telegram, Discord, Slack or a webhook"], them: ["yes", "Email, Slack, Discord, Telegram and more"] },
         ],
       },
       {
@@ -85,6 +93,8 @@ export const COMPETITORS: Competitor[] = [
           { topic: "Network isolation", pyo: ["yes", "Between projects"], them: ["partly", "Docker networks"] },
           { topic: "External secret stores", pyo: ["yes", "Vault, OpenBao, Infisical, AWS, GCP, Azure and Doppler"], them: ["partly", "Vault, Infisical and Doppler"] },
           { topic: "Team roles", pyo: ["yes", "Owner, admin, developer and viewer"], them: ["yes", "Owner, admin and member"] },
+          { topic: "Two-factor authentication", pyo: ["yes", "Authenticator app. Teams can require it"], them: ["yes", "Teams can require it"] },
+          { topic: "Audit log", pyo: ["yes", "Who did what and from where, with CSV export"], them: ["yes", "Kept 90 days"] },
           { topic: "Scoped API keys", pyo: ["yes", "Read, deploy or full, per team"], them: ["yes", "Yes"] },
         ],
       },
@@ -115,9 +125,16 @@ export const COMPETITORS: Competitor[] = [
     imports: true,
     groups: [
       {
+        group: "Hosting",
+        rows: [
+          { topic: "Hosted control plane", pyo: ["yes", "Pyo Cloud, $5 per server per month or $48 a year"], them: ["yes", "$4.50 per server per month"] },
+        ],
+      },
+      {
         group: "Deploying",
         rows: [
           { topic: "Deploy from Git", pyo: ["yes", "On every push"], them: ["yes", "Yes"] },
+          { topic: "Preview environments", pyo: ["yes", "GitHub and GitLab, with a bot comment"], them: ["yes", "GitHub only"] },
           { topic: "Deploy any container image", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Docker Compose", pyo: ["yes", "Dashboard, API or pyo deploy -f"], them: ["yes", "Yes"] },
           { topic: "Zero-config builds", pyo: ["yes", "Detects your framework"], them: ["yes", "Nixpacks or buildpacks"] },
@@ -152,10 +169,11 @@ export const COMPETITORS: Competitor[] = [
       {
         group: "Observability",
         rows: [
-          { topic: "Analytics", pyo: ["yes", "No script to add"], them: ["no", "Not built in"] },
+          { topic: "Analytics", pyo: ["yes", "No script to add. Totals kept 12 months, raw requests on your servers"], them: ["no", "Not built in"] },
           { topic: "CPU and memory metrics", pyo: ["yes", "Servers and services, no Prometheus"], them: ["yes", "Servers and containers"] },
           { topic: "Live logs", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Terminal into a service", pyo: ["yes", "From the dashboard"], them: ["yes", "Yes"] },
+          { topic: "Alerts", pyo: ["yes", "Telegram, Discord, Slack or a webhook"], them: ["yes", "Slack, Discord, Telegram, email and more"] },
         ],
       },
       {
@@ -165,6 +183,8 @@ export const COMPETITORS: Competitor[] = [
           { topic: "Network isolation", pyo: ["yes", "Between projects"], them: ["partly", "Isolated deployments, for Compose"] },
           { topic: "External secret stores", pyo: ["yes", "Vault, OpenBao, Infisical, AWS, GCP, Azure and Doppler"], them: ["yes", "Vault, OpenBao, Infisical, AWS, Azure, Doppler and Scaleway"] },
           { topic: "Team roles", pyo: ["yes", "Owner, admin, developer and viewer"], them: ["yes", "Owner, admin and member. Custom roles on Enterprise"] },
+          { topic: "Two-factor authentication", pyo: ["yes", "Authenticator app. Teams can require it"], them: ["yes", "Per account"] },
+          { topic: "Audit log", pyo: ["yes", "Who did what and from where, with CSV export"], them: ["partly", "On Enterprise"] },
           { topic: "Scoped API keys", pyo: ["yes", "Read, deploy or full, per team"], them: ["yes", "Yes"] },
         ],
       },
@@ -194,9 +214,16 @@ export const COMPETITORS: Competitor[] = [
     subtitle: "Autoscaling, team roles and scheduled backups on your own infrastructure, all from one dashboard. Here's how Pyo compares, feature by feature.",
     groups: [
       {
+        group: "Hosting",
+        rows: [
+          { topic: "Hosted control plane", pyo: ["yes", "Pyo Cloud, $5 per server per month or $48 a year"], them: ["no", "Self-hosted only"] },
+        ],
+      },
+      {
         group: "Deploying",
         rows: [
           { topic: "Deploy from Git", pyo: ["yes", "On every push"], them: ["yes", "Through a webhook"] },
+          { topic: "Preview environments", pyo: ["yes", "GitHub and GitLab, with a bot comment"], them: ["no", "Not built in"] },
           { topic: "Deploy any container image", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Zero-config builds", pyo: ["yes", "Detects your framework"], them: ["partly", "A Dockerfile, or a few language templates"] },
           { topic: "Zero-downtime deploys", pyo: ["yes", "With 2 or more replicas"], them: ["partly", "Swarm rolling updates, with a health check"] },
@@ -229,10 +256,11 @@ export const COMPETITORS: Competitor[] = [
       {
         group: "Observability",
         rows: [
-          { topic: "Analytics", pyo: ["yes", "No script to add"], them: ["yes", "GoAccess reports from NGINX logs"] },
+          { topic: "Analytics", pyo: ["yes", "No script to add. Totals kept 12 months, raw requests on your servers"], them: ["yes", "GoAccess reports from NGINX logs"] },
           { topic: "CPU and memory metrics", pyo: ["yes", "Servers and services, no Prometheus"], them: ["partly", "Servers, through NetData"] },
           { topic: "Live logs", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Terminal into a service", pyo: ["yes", "From the dashboard"], them: ["partly", "From the server's shell"] },
+          { topic: "Alerts", pyo: ["yes", "Telegram, Discord, Slack or a webhook"], them: ["partly", "Build alerts on paid Pro. Server alerts through NetData"] },
         ],
       },
       {
@@ -242,6 +270,8 @@ export const COMPETITORS: Competitor[] = [
           { topic: "Network isolation", pyo: ["yes", "Between projects"], them: ["partly", "Docker networks"] },
           { topic: "External secret stores", pyo: ["yes", "Vault, OpenBao, Infisical, AWS, GCP, Azure and Doppler"], them: ["no", "Not built in"] },
           { topic: "Team roles", pyo: ["yes", "Owner, admin, developer and viewer"], them: ["no", "A single admin login"] },
+          { topic: "Two-factor authentication", pyo: ["yes", "Authenticator app. Teams can require it"], them: ["partly", "On paid Pro"] },
+          { topic: "Audit log", pyo: ["yes", "Who did what and from where, with CSV export"], them: ["no", "A single admin login"] },
           { topic: "Scoped API keys", pyo: ["yes", "Read, deploy or full, per team"], them: ["partly", "Deploy tokens, per app"] },
         ],
       },
@@ -271,9 +301,16 @@ export const COMPETITORS: Competitor[] = [
     subtitle: "Push to deploy, with a dashboard, autoscaling, team roles and scheduled backups on your own infrastructure. Here's how Pyo compares, feature by feature.",
     groups: [
       {
+        group: "Hosting",
+        rows: [
+          { topic: "Hosted control plane", pyo: ["yes", "Pyo Cloud, $5 per server per month or $48 a year"], them: ["no", "Self-hosted only"] },
+        ],
+      },
+      {
         group: "Deploying",
         rows: [
           { topic: "Deploy from Git", pyo: ["yes", "On every push"], them: ["yes", "Git push over SSH"] },
+          { topic: "Preview environments", pyo: ["yes", "GitHub and GitLab, with a bot comment"], them: ["partly", "Review apps through the GitHub Action"] },
           { topic: "Deploy any container image", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Zero-config builds", pyo: ["yes", "Detects your framework"], them: ["yes", "Buildpacks or Nixpacks"] },
           { topic: "Zero-downtime deploys", pyo: ["yes", "With 2 or more replicas"], them: ["yes", "Yes"] },
@@ -306,10 +343,11 @@ export const COMPETITORS: Competitor[] = [
       {
         group: "Observability",
         rows: [
-          { topic: "Analytics", pyo: ["yes", "No script to add"], them: ["no", "Not built in"] },
+          { topic: "Analytics", pyo: ["yes", "No script to add. Totals kept 12 months, raw requests on your servers"], them: ["no", "Not built in"] },
           { topic: "CPU and memory metrics", pyo: ["yes", "Servers and services, no Prometheus"], them: ["no", "Not built in"] },
           { topic: "Live logs", pyo: ["yes", "Yes"], them: ["yes", "From the CLI"] },
           { topic: "Terminal into a service", pyo: ["yes", "From the dashboard"], them: ["yes", "From the CLI"] },
+          { topic: "Alerts", pyo: ["yes", "Telegram, Discord, Slack or a webhook"], them: ["no", "Not built in"] },
         ],
       },
       {
@@ -319,6 +357,8 @@ export const COMPETITORS: Competitor[] = [
           { topic: "Network isolation", pyo: ["yes", "Between projects"], them: ["partly", "Docker networks"] },
           { topic: "External secret stores", pyo: ["yes", "Vault, OpenBao, Infisical, AWS, GCP, Azure and Doppler"], them: ["no", "Not built in"] },
           { topic: "Team roles", pyo: ["yes", "Owner, admin, developer and viewer"], them: ["partly", "Per-app access, via a plugin"] },
+          { topic: "Two-factor authentication", pyo: ["yes", "Authenticator app. Teams can require it"], them: ["no", "Not built in"] },
+          { topic: "Audit log", pyo: ["yes", "Who did what and from where, with CSV export"], them: ["partly", "Per user, in paid Dokku Pro"] },
           { topic: "Scoped API keys", pyo: ["yes", "Read, deploy or full, per team"], them: ["partly", "SSH keys"] },
         ],
       },
@@ -383,10 +423,11 @@ export const COMPETITORS: Competitor[] = [
       {
         group: "Observability",
         rows: [
-          { topic: "Analytics", pyo: ["yes", "No script to add"], them: ["no", "Not built in"] },
+          { topic: "Analytics", pyo: ["yes", "No script to add. Totals kept 12 months, raw requests on your servers"], them: ["no", "Not built in"] },
           { topic: "CPU and memory metrics", pyo: ["yes", "Servers and services, no Prometheus"], them: ["yes", "Container stats"] },
           { topic: "Live logs", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Terminal into a service", pyo: ["yes", "From the dashboard"], them: ["yes", "Container console"] },
+          { topic: "Alerts", pyo: ["yes", "Telegram, Discord, Slack or a webhook"], them: ["partly", "On Business Edition"] },
         ],
       },
       {
@@ -396,6 +437,8 @@ export const COMPETITORS: Competitor[] = [
           { topic: "Network isolation", pyo: ["yes", "Between projects"], them: ["partly", "Docker networks"] },
           { topic: "External secret stores", pyo: ["yes", "Vault, OpenBao, Infisical, AWS, GCP, Azure and Doppler"], them: ["no", "Not built in"] },
           { topic: "Team roles", pyo: ["yes", "Owner, admin, developer and viewer"], them: ["partly", "Full roles on Business Edition"] },
+          { topic: "Two-factor authentication", pyo: ["yes", "Authenticator app. Teams can require it"], them: ["partly", "Through your identity provider"] },
+          { topic: "Audit log", pyo: ["yes", "Who did what and from where, with CSV export"], them: ["partly", "On Business Edition"] },
           { topic: "Scoped API keys", pyo: ["yes", "Read, deploy or full, per team"], them: ["partly", "Per user, with that user's access"] },
         ],
       },
@@ -430,12 +473,14 @@ export const COMPETITORS: Competitor[] = [
           { topic: "Control plane on your laptop", pyo: ["no", "Runs on your servers"], them: ["yes", "The desktop app drives servers over SSH"] },
           { topic: "Desktop app", pyo: ["no", "A web dashboard"], them: ["yes", "macOS, Windows and Linux"] },
           { topic: "Mail server", pyo: ["no", "Not built in"], them: ["yes", "Sends and receives, with webmail"] },
+          { topic: "Hosted control plane", pyo: ["yes", "Pyo Cloud, $5 per server per month or $48 a year"], them: ["yes", "$5 a month for 2 servers, then $3 per server"] },
         ],
       },
       {
         group: "Deploying",
         rows: [
           { topic: "Deploy from Git", pyo: ["yes", "On every push"], them: ["yes", "On every push"] },
+          { topic: "Preview environments", pyo: ["yes", "GitHub and GitLab, with a bot comment"], them: ["yes", "GitHub, with a bot comment"] },
           { topic: "Deploy any container image", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Docker Compose", pyo: ["yes", "Dashboard, API or pyo deploy -f"], them: ["yes", "Yes"] },
           { topic: "Zero-config builds", pyo: ["yes", "Detects your framework"], them: ["yes", "Detects your stack"] },
@@ -473,10 +518,11 @@ export const COMPETITORS: Competitor[] = [
       {
         group: "Observability",
         rows: [
-          { topic: "Analytics", pyo: ["yes", "No script to add"], them: ["yes", "From the edge, no script to add"] },
+          { topic: "Analytics", pyo: ["yes", "No script to add. Totals kept 12 months, raw requests on your servers"], them: ["yes", "From the edge, no script to add"] },
           { topic: "CPU and memory metrics", pyo: ["yes", "Servers and services, no Prometheus"], them: ["yes", "Servers and containers"] },
           { topic: "Live logs", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Terminal into a service", pyo: ["yes", "From the dashboard"], them: ["yes", "From the dashboard"] },
+          { topic: "Alerts", pyo: ["yes", "Telegram, Discord, Slack or a webhook"], them: ["yes", "Email, Slack, Discord, Teams or a webhook"] },
         ],
       },
       {
@@ -486,6 +532,8 @@ export const COMPETITORS: Competitor[] = [
           { topic: "Network isolation", pyo: ["yes", "Between projects"], them: ["yes", "A Docker network per project"] },
           { topic: "External secret stores", pyo: ["yes", "Vault, OpenBao, Infisical, AWS, GCP, Azure and Doppler"], them: ["no", "Not built in"] },
           { topic: "Team roles", pyo: ["yes", "Owner, admin, developer and viewer"], them: ["yes", "Owner, admin, member and restricted"] },
+          { topic: "Two-factor authentication", pyo: ["yes", "Authenticator app. Teams can require it"], them: ["yes", "Authenticator app or passkey"] },
+          { topic: "Audit log", pyo: ["yes", "Who did what and from where, with CSV export"], them: ["yes", "Yes"] },
           { topic: "Scoped API keys", pyo: ["yes", "Read, deploy or full, per team"], them: ["yes", "Read-only, or limited to chosen resources"] },
         ],
       },
@@ -521,16 +569,17 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "Runs on your own infrastructure", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Render's cloud only"] },
           { topic: "Open source", pyo: ["yes", "Apache 2.0"], them: ["no", "Proprietary"] },
-          { topic: "Free to use", pyo: ["yes", "You only pay for your servers"], them: ["partly", "Paid per instance, with some free options"] },
+          { topic: "Free to use", pyo: ["yes", "Free to self-host, or $5 per server on Pyo Cloud"], them: ["partly", "Paid per instance, with some free options"] },
           { topic: "Runs on any provider", pyo: ["yes", "Or several at once"], them: ["no", "Render only"] },
           { topic: "Your data on your hardware", pyo: ["yes", "Yes"], them: ["no", "On Render's infrastructure"] },
-          { topic: "No plan limits", pyo: ["yes", "Every feature, on every install"], them: ["no", "Some features need a Pro plan"] },
+          { topic: "No plan limits", pyo: ["yes", "Every feature, self-hosted or on Pyo Cloud"], them: ["no", "Some features need a Pro plan"] },
         ],
       },
       {
         group: "Deploying",
         rows: [
           { topic: "Deploy from Git", pyo: ["yes", "On every push"], them: ["yes", "Yes"] },
+          { topic: "Preview environments", pyo: ["yes", "GitHub and GitLab, with a bot comment"], them: ["yes", "Service previews. Full environments on Pro and higher"] },
           { topic: "Deploy any container image", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Zero-downtime deploys", pyo: ["yes", "With 2 or more replicas"], them: ["yes", "Yes"] },
           { topic: "One-click rollback", pyo: ["yes", "To any earlier version"], them: ["yes", "Yes"] },
@@ -565,10 +614,11 @@ export const COMPETITORS: Competitor[] = [
       {
         group: "Observability",
         rows: [
-          { topic: "Analytics", pyo: ["yes", "Built in, no script to add"], them: ["no", "Infrastructure metrics only"] },
+          { topic: "Analytics", pyo: ["yes", "Built in, no script to add. Totals kept 12 months, raw requests on your servers"], them: ["no", "Infrastructure metrics only"] },
           { topic: "CPU and memory metrics", pyo: ["yes", "Servers and services, no Prometheus"], them: ["yes", "For services"] },
           { topic: "Live logs", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Terminal into a service", pyo: ["yes", "From the dashboard"], them: ["yes", "Yes"] },
+          { topic: "Alerts", pyo: ["yes", "Telegram, Discord, Slack or a webhook"], them: ["yes", "Email or Slack. Webhooks on Pro and higher"] },
         ],
       },
       {
@@ -577,6 +627,8 @@ export const COMPETITORS: Competitor[] = [
           { topic: "Encrypted secrets", pyo: ["yes", "A separate key for each team"], them: ["yes", "Yes"] },
           { topic: "External secret stores", pyo: ["yes", "Vault, OpenBao, Infisical, AWS, GCP, Azure and Doppler"], them: ["partly", "Synced in by Doppler or Infisical"] },
           { topic: "Team roles", pyo: ["yes", "On every install"], them: ["partly", "Depends on your plan"] },
+          { topic: "Two-factor authentication", pyo: ["yes", "Authenticator app. Teams can require it"], them: ["yes", "Teams can require it on Pro and higher"] },
+          { topic: "Audit log", pyo: ["yes", "Who did what and from where, with CSV export"], them: ["partly", "On Pro and higher"] },
         ],
       },
       {
@@ -601,16 +653,17 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "Runs on your own infrastructure", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Railway's cloud only"] },
           { topic: "Open source", pyo: ["yes", "Apache 2.0"], them: ["no", "Proprietary"] },
-          { topic: "Free to use", pyo: ["yes", "You only pay for your servers"], them: ["partly", "Paid by usage, with a small free plan"] },
+          { topic: "Free to use", pyo: ["yes", "Free to self-host, or $5 per server on Pyo Cloud"], them: ["partly", "Paid by usage, with a small free plan"] },
           { topic: "Runs on any provider", pyo: ["yes", "Or several at once"], them: ["no", "Railway only"] },
           { topic: "Your data on your hardware", pyo: ["yes", "Yes"], them: ["no", "On Railway's infrastructure"] },
-          { topic: "No plan limits", pyo: ["yes", "Every feature, on every install"], them: ["no", "Replicas, seats and roles depend on your plan"] },
+          { topic: "No plan limits", pyo: ["yes", "Every feature, self-hosted or on Pyo Cloud"], them: ["no", "Replicas, seats and roles depend on your plan"] },
         ],
       },
       {
         group: "Deploying",
         rows: [
           { topic: "Deploy from Git", pyo: ["yes", "On every push"], them: ["yes", "Yes"] },
+          { topic: "Preview environments", pyo: ["yes", "GitHub and GitLab, with a bot comment"], them: ["yes", "GitHub, with a bot comment"] },
           { topic: "Deploy any container image", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Zero-downtime deploys", pyo: ["yes", "With 2 or more replicas"], them: ["yes", "With a health check"] },
           { topic: "One-click rollback", pyo: ["yes", "To any earlier version"], them: ["yes", "Yes"] },
@@ -645,10 +698,11 @@ export const COMPETITORS: Competitor[] = [
       {
         group: "Observability",
         rows: [
-          { topic: "Analytics", pyo: ["yes", "Built in, no script to add"], them: ["no", "Infrastructure metrics only"] },
+          { topic: "Analytics", pyo: ["yes", "Built in, no script to add. Totals kept 12 months, raw requests on your servers"], them: ["no", "Infrastructure metrics only"] },
           { topic: "CPU and memory metrics", pyo: ["yes", "Servers and services, no Prometheus"], them: ["yes", "For services"] },
           { topic: "Live logs", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Terminal into a service", pyo: ["yes", "From the dashboard"], them: ["yes", "Over SSH, from the CLI"] },
+          { topic: "Alerts", pyo: ["yes", "Telegram, Discord, Slack or a webhook"], them: ["yes", "Email or a webhook"] },
         ],
       },
       {
@@ -657,6 +711,8 @@ export const COMPETITORS: Competitor[] = [
           { topic: "Encrypted secrets", pyo: ["yes", "A separate key for each team"], them: ["yes", "Yes"] },
           { topic: "External secret stores", pyo: ["yes", "Vault, OpenBao, Infisical, AWS, GCP, Azure and Doppler"], them: ["partly", "Synced in by Doppler, Infisical or a script"] },
           { topic: "Team roles", pyo: ["yes", "On every install"], them: ["partly", "Depends on your plan"] },
+          { topic: "Two-factor authentication", pyo: ["yes", "Authenticator app. Teams can require it"], them: ["yes", "Teams can require it on Pro and higher"] },
+          { topic: "Audit log", pyo: ["yes", "Who did what and from where, with CSV export"], them: ["yes", "Kept 48 hours to 18 months, by plan"] },
         ],
       },
       {
@@ -681,16 +737,17 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "Runs on your own infrastructure", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Vercel's cloud, or your AWS account on Enterprise"] },
           { topic: "Open source", pyo: ["yes", "Apache 2.0"], them: ["no", "Proprietary"] },
-          { topic: "Free to use", pyo: ["yes", "You only pay for your servers"], them: ["partly", "Free for personal projects. Paid plans for teams"] },
+          { topic: "Free to use", pyo: ["yes", "Free to self-host, or $5 per server on Pyo Cloud"], them: ["partly", "Free for personal projects. Paid plans for teams"] },
           { topic: "Runs on any provider", pyo: ["yes", "Or several at once"], them: ["no", "Vercel, or AWS on Enterprise"] },
           { topic: "Your data on your hardware", pyo: ["yes", "Yes"], them: ["no", "On Vercel's infrastructure"] },
-          { topic: "No plan limits", pyo: ["yes", "Every feature, on every install"], them: ["no", "Some features need Pro or Enterprise"] },
+          { topic: "No plan limits", pyo: ["yes", "Every feature, self-hosted or on Pyo Cloud"], them: ["no", "Some features need Pro or Enterprise"] },
         ],
       },
       {
         group: "Deploying",
         rows: [
           { topic: "Deploy from Git", pyo: ["yes", "On every push"], them: ["yes", "Yes"] },
+          { topic: "Preview environments", pyo: ["yes", "GitHub and GitLab, with a bot comment"], them: ["yes", "With a bot comment"] },
           { topic: "Deploy any container image", pyo: ["yes", "Yes"], them: ["partly", "As functions, in beta"] },
           { topic: "Zero-downtime deploys", pyo: ["yes", "With 2 or more replicas"], them: ["yes", "Yes"] },
           { topic: "One-click rollback", pyo: ["yes", "To any earlier version"], them: ["yes", "Yes"] },
@@ -725,10 +782,11 @@ export const COMPETITORS: Competitor[] = [
       {
         group: "Observability",
         rows: [
-          { topic: "Analytics", pyo: ["yes", "Built in, no script to add"], them: ["yes", "Add a package to your site"] },
+          { topic: "Analytics", pyo: ["yes", "Built in, no script to add. Totals kept 12 months, raw requests on your servers"], them: ["yes", "Add a package to your site"] },
           { topic: "CPU and memory metrics", pyo: ["yes", "Servers and services, no Prometheus"], them: ["partly", "Function metrics. More on paid add-ons"] },
           { topic: "Live logs", pyo: ["yes", "Yes"], them: ["yes", "Kept longer on paid plans"] },
           { topic: "Terminal into a service", pyo: ["yes", "From the dashboard"], them: ["no", "Not for deployments"] },
+          { topic: "Alerts", pyo: ["yes", "Telegram, Discord, Slack or a webhook"], them: ["yes", "Email. Slack and webhooks on Pro"] },
         ],
       },
       {
@@ -737,6 +795,8 @@ export const COMPETITORS: Competitor[] = [
           { topic: "Encrypted secrets", pyo: ["yes", "A separate key for each team"], them: ["yes", "Yes"] },
           { topic: "External secret stores", pyo: ["yes", "Vault, OpenBao, Infisical, AWS, GCP, Azure and Doppler"], them: ["partly", "Synced in by Doppler or Infisical"] },
           { topic: "Team roles", pyo: ["yes", "On every install"], them: ["partly", "On Pro and Enterprise"] },
+          { topic: "Two-factor authentication", pyo: ["yes", "Authenticator app. Teams can require it"], them: ["yes", "Teams can require it"] },
+          { topic: "Audit log", pyo: ["yes", "Who did what and from where, with CSV export"], them: ["partly", "On Enterprise"] },
         ],
       },
       {
@@ -761,16 +821,17 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "Runs on your own infrastructure", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Netlify's cloud only"] },
           { topic: "Open source", pyo: ["yes", "Apache 2.0"], them: ["no", "Proprietary"] },
-          { topic: "Free to use", pyo: ["yes", "You only pay for your servers"], them: ["partly", "Free plan with monthly credits. Paid plans for more"] },
+          { topic: "Free to use", pyo: ["yes", "Free to self-host, or $5 per server on Pyo Cloud"], them: ["partly", "Free plan with monthly credits. Paid plans for more"] },
           { topic: "Runs on any provider", pyo: ["yes", "Or several at once"], them: ["no", "Netlify only"] },
           { topic: "Your data on your hardware", pyo: ["yes", "Yes"], them: ["no", "On Netlify's infrastructure"] },
-          { topic: "No plan limits", pyo: ["yes", "Every feature, on every install"], them: ["no", "Some features need Pro or Enterprise"] },
+          { topic: "No plan limits", pyo: ["yes", "Every feature, self-hosted or on Pyo Cloud"], them: ["no", "Some features need Pro or Enterprise"] },
         ],
       },
       {
         group: "Deploying",
         rows: [
           { topic: "Deploy from Git", pyo: ["yes", "On every push"], them: ["yes", "Yes"] },
+          { topic: "Preview environments", pyo: ["yes", "GitHub and GitLab, with a bot comment"], them: ["yes", "With a bot comment"] },
           { topic: "Deploy any container image", pyo: ["yes", "Yes"], them: ["no", "Static sites and functions"] },
           { topic: "Zero-downtime deploys", pyo: ["yes", "With 2 or more replicas"], them: ["yes", "Yes"] },
           { topic: "One-click rollback", pyo: ["yes", "To any earlier version"], them: ["yes", "Yes"] },
@@ -805,10 +866,11 @@ export const COMPETITORS: Competitor[] = [
       {
         group: "Observability",
         rows: [
-          { topic: "Analytics", pyo: ["yes", "Built in, no script to add"], them: ["yes", "Server-side. History depends on your plan"] },
+          { topic: "Analytics", pyo: ["yes", "Built in, no script to add. Totals kept 12 months, raw requests on your servers"], them: ["yes", "Server-side. History depends on your plan"] },
           { topic: "CPU and memory metrics", pyo: ["yes", "Servers and services, no Prometheus"], them: ["partly", "Request and function metrics"] },
           { topic: "Live logs", pyo: ["yes", "Yes"], them: ["yes", "Kept longer on paid plans"] },
           { topic: "Terminal into a service", pyo: ["yes", "From the dashboard"], them: ["no", "Not for deployments"] },
+          { topic: "Alerts", pyo: ["yes", "Telegram, Discord, Slack or a webhook"], them: ["yes", "Slack or a webhook. Email on Pro"] },
         ],
       },
       {
@@ -817,6 +879,8 @@ export const COMPETITORS: Competitor[] = [
           { topic: "Encrypted secrets", pyo: ["yes", "A separate key for each team"], them: ["yes", "Yes"] },
           { topic: "External secret stores", pyo: ["yes", "Vault, OpenBao, Infisical, AWS, GCP, Azure and Doppler"], them: ["partly", "Synced in by Doppler or Infisical"] },
           { topic: "Team roles", pyo: ["yes", "On every install"], them: ["partly", "Depends on your plan"] },
+          { topic: "Two-factor authentication", pyo: ["yes", "Authenticator app. Teams can require it"], them: ["yes", "Teams can require it on Pro and higher"] },
+          { topic: "Audit log", pyo: ["yes", "Who did what and from where, with CSV export"], them: ["partly", "On Pro and Enterprise"] },
         ],
       },
       {
@@ -841,7 +905,7 @@ export const COMPETITORS: Competitor[] = [
         rows: [
           { topic: "Runs on your own infrastructure", pyo: ["yes", "A VPS, dedicated server or homelab"], them: ["no", "Fly.io's cloud only"] },
           { topic: "Open source", pyo: ["yes", "Apache 2.0"], them: ["no", "Proprietary platform, open-source CLI"] },
-          { topic: "Free to use", pyo: ["yes", "You only pay for your servers"], them: ["no", "Paid by usage, no free plan"] },
+          { topic: "Free to use", pyo: ["yes", "Free to self-host, or $5 per server on Pyo Cloud"], them: ["no", "Paid by usage, no free plan"] },
           { topic: "Runs on any provider", pyo: ["yes", "Or several at once"], them: ["no", "Fly.io only"] },
           { topic: "Your data on your hardware", pyo: ["yes", "Yes"], them: ["no", "On Fly.io's infrastructure"] },
         ],
@@ -850,6 +914,7 @@ export const COMPETITORS: Competitor[] = [
         group: "Deploying",
         rows: [
           { topic: "Deploy from Git", pyo: ["yes", "On every push"], them: ["partly", "Through a GitHub Actions workflow you add"] },
+          { topic: "Preview environments", pyo: ["yes", "GitHub and GitLab, with a bot comment"], them: ["partly", "Through a GitHub Action you add"] },
           { topic: "Deploy any container image", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Zero-downtime deploys", pyo: ["yes", "With 2 or more replicas"], them: ["yes", "Rolling, canary or blue-green"] },
           { topic: "One-click rollback", pyo: ["yes", "To any earlier version"], them: ["partly", "Redeploy an earlier image from the CLI"] },
@@ -883,10 +948,11 @@ export const COMPETITORS: Competitor[] = [
       {
         group: "Observability",
         rows: [
-          { topic: "Analytics", pyo: ["yes", "Built in, no script to add"], them: ["partly", "Request metrics in managed Grafana"] },
+          { topic: "Analytics", pyo: ["yes", "Built in, no script to add. Totals kept 12 months, raw requests on your servers"], them: ["partly", "Request metrics in managed Grafana"] },
           { topic: "CPU and memory metrics", pyo: ["yes", "Servers and services, no Prometheus"], them: ["yes", "In managed Grafana"] },
           { topic: "Live logs", pyo: ["yes", "Yes"], them: ["yes", "Yes"] },
           { topic: "Terminal into a service", pyo: ["yes", "From the dashboard"], them: ["yes", "Over SSH, from the CLI"] },
+          { topic: "Alerts", pyo: ["yes", "Telegram, Discord, Slack or a webhook"], them: ["no", "Not built in"] },
         ],
       },
       {
@@ -895,6 +961,7 @@ export const COMPETITORS: Competitor[] = [
           { topic: "Encrypted secrets", pyo: ["yes", "A separate key for each team"], them: ["yes", "Yes"] },
           { topic: "External secret stores", pyo: ["yes", "Vault, OpenBao, Infisical, AWS, GCP, Azure and Doppler"], them: ["no", "Set with the CLI or API"] },
           { topic: "Team roles", pyo: ["yes", "On every install"], them: ["partly", "Admin or member"] },
+          { topic: "Audit log", pyo: ["yes", "Who did what and from where, with CSV export"], them: ["no", "Not built in"] },
         ],
       },
       {
