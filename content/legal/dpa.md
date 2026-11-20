@@ -10,9 +10,12 @@ DRAFT FOR LEGAL REVIEW. NOT FINAL. NOT LEGAL ADVICE.
 This text is a starting point only. A qualified lawyer must review and adapt
 it before it is published, linked, signed or relied on.
 Fill in every {{PLACEHOLDER}} before publishing:
-  {{ENTITY}} {{ADDRESS}} {{JURISDICTION}} {{DATA_REGION}}
-  {{EFFECTIVE_DATE}} {{DELETION_DAYS}} {{BACKUP_DAYS}} {{BREACH_NOTICE_HOURS}}
-  {{NOTICE_DAYS}}
+  {{DATA_REGION}} {{EFFECTIVE_DATE}} {{DELETION_DAYS}} {{BACKUP_DAYS}} {{BREACH_NOTICE_HOURS}}
+  {{NOTICE_DAYS}} {{HOSTING_PROVIDER}} {{KMS_REGION}} {{EMAIL_PROVIDER}}
+  {{EMAIL_REGION}} {{POLAR_LOCATION}}
+No legal entity or governing law exists yet. The text names "Pyo
+(pyo.dev)" as the party and gives no address. An entity, its address and
+the governing law must be added here before publishing.
 Open points for the lawyer: attach or incorporate the EU standard
 contractual clauses (module 2, and module 3 where the customer is itself a
 processor) and the UK addendum, audit terms, liability under the DPA, and
@@ -22,9 +25,24 @@ separate privacy contact or a data protection officer is needed.
 The security measures in Annex 2 describe the design as built. Check each
 one is live in production before publishing (2FA for staff, KMS signer,
 row-level security on every table, build log cleanup).
+What moved here: the subprocessors list was its own page
+(/legal/subprocessors). It is now Annex 3 of this DPA, with the same
+table, the "Not subprocessors" list and the notes on Polar and Midtrans.
+That page is removed. Section 7 links to Annex 3 and says how customers
+are told about changes: an email to each team's owners at least
+{{NOTICE_DAYS}} days ahead, and a new date on Annex 3. The Privacy Policy
+points to Annex 3 for its list of the companies we share data with, so
+Annex 3 also names them for account data, which Pyo controls.
+Check before publishing (from the old subprocessors page): each
+provider's DPA is signed or accepted, the locations match the accounts
+actually used, and add any monitoring or error tracking service Pyo Cloud
+ends up using. Midtrans is live at launch for Indonesia. The operator is
+the seller for Midtrans payments, unlike Polar's merchant of record setup.
+Check whether Midtrans belongs in Annex 3 as a processor, or is an
+independent controller like Polar.
 -->
 
-This Data Processing Agreement ("DPA") is part of the Pyo Cloud [Terms of Service](/legal/terms) between you, the customer, and {{ENTITY}}, {{ADDRESS}} ("Pyo", "we", "us"). It applies when Pyo processes personal data for you while providing Pyo Cloud. If this DPA and the Terms differ on personal data, this DPA wins.
+This Data Processing Agreement ("DPA") is part of the Pyo Cloud [Terms of Service](/legal/terms) between you, the customer, and Pyo (pyo.dev, "we", "us"). It applies when Pyo processes personal data for you while providing Pyo Cloud. If this DPA and the Terms differ on personal data, this DPA wins.
 
 ## 1. Words we use
 
@@ -66,9 +84,9 @@ Pyo keeps the technical and organisational measures in Annex 2 in place. Pyo may
 
 ## 7. Subprocessors
 
-- You give Pyo general permission to use subprocessors. The current ones are on the [subprocessors list](/legal/subprocessors).
+- You give Pyo general permission to use subprocessors. The current ones are listed in [Annex 3](#annex-3-subprocessors).
 - Pyo gives each subprocessor written terms that protect customer personal data at least as well as this DPA. Pyo stays responsible for its subprocessors' work.
-- Pyo tells you at least {{NOTICE_DAYS}} days before it adds or replaces a subprocessor. Pyo tells you by email, or you can subscribe to updates of the subprocessors list.
+- Pyo tells you at least {{NOTICE_DAYS}} days before it adds or replaces a subprocessor. Pyo emails your team's owners, and updates Annex 3 with the date of the change. To get these emails at another address too, write to support@pyo.dev.
 - You can object, on reasonable data protection grounds, within that time. If we cannot resolve it together, you can end your subscription before the change applies, and Pyo refunds what you paid for time you could not use.
 
 ## 8. Transfers outside your region
@@ -120,7 +138,7 @@ Questions about this DPA go to support@pyo.dev.
 | **Special categories** | None intended. Do not put special category data in configuration, secrets or build output |
 | **Frequency** | Continuous while your servers are connected |
 | **Retention** | Build logs 90 days, analytics totals 13 months, server metrics 30 days, audit log 1 year, configuration and secrets while the team exists |
-| **Location** | {{DATA_REGION}}, and the subprocessors' locations on the subprocessors list |
+| **Location** | {{DATA_REGION}}, and the subprocessors' locations in Annex 3 |
 
 ## Annex 2. Security measures
 
@@ -152,3 +170,28 @@ Questions about this DPA go to support@pyo.dev.
 - Everyone with access is bound to confidentiality.
 - Pyo has a plan to respond to incidents and to notify customers.
 - Pyo's source code is open, so anyone can review how Pyo Cloud's control plane and the agent work.
+
+## Annex 3. Subprocessors
+
+These are the companies that help us run Pyo Cloud and may process personal data for it. Each one has signed terms with us that protect that data. Section 7 explains how we choose and change them. We also use them for the personal data in Pyo Cloud accounts, which our [Privacy Policy](/legal/privacy) covers.
+
+| Subprocessor | What it does for Pyo Cloud | Data it handles | Location |
+|---|---|---|---|
+| {{HOSTING_PROVIDER}} | Hosts Pyo Cloud's servers and database | All data Pyo Cloud stores | {{DATA_REGION}} |
+| Amazon Web Services (AWS KMS) | Keeps the keys that sign commands to your servers | Hashes of commands. No customer content or personal data | {{KMS_REGION}} |
+| Cloudflare | Sits in front of Pyo Cloud: TLS, protection from attacks, routing | All traffic to Pyo Cloud while it passes through, including IP addresses | Global network |
+| Polar | Merchant of record for card payments: checkout, subscriptions, invoices, sales tax | Name, email, billing address, payment details, subscription | {{POLAR_LOCATION}} |
+| Midtrans | Payment processor for customers in Indonesia: QRIS, bank transfer and e-wallets | Name, email, payment details, orders | Indonesia |
+| {{EMAIL_PROVIDER}} | Sends Pyo Cloud's emails, such as team invites and notices | Name, email address, email contents | {{EMAIL_REGION}} |
+
+Polar acts as the merchant of record. For the payments it handles, it is also a controller under its own privacy policy. For Midtrans payments, we are the seller and Midtrans processes the payment for us.
+
+**Not subprocessors.** Some services take part in using Pyo but are not our subprocessors. You choose them, and your own agreement with them applies.
+
+- **Your server and storage providers.** Your services, their data, raw request logs and backups stay with them.
+- **Git providers** such as GitHub and GitLab, when you connect a repository.
+- **Tailscale,** when your servers join your own tailnet. Pyo Cloud never joins it.
+- **DNS providers** you connect, such as Cloudflare DNS, to manage your own domains.
+- **nip.io,** which turns the free addresses of your services into your server's IP address.
+
+**Changes.** We tell you at least {{NOTICE_DAYS}} days before we add or replace a subprocessor, as section 7 describes. The date at the top of this page shows the last change.

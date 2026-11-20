@@ -91,8 +91,6 @@ export default defineConfig({
         { path: "/legal/terms" },
         { path: "/legal/privacy" },
         { path: "/legal/dpa" },
-        { path: "/legal/acceptable-use" },
-        { path: "/legal/subprocessors" },
       ],
     }),
     viteReact(),

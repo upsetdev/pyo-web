@@ -10,8 +10,7 @@ DRAFT FOR LEGAL REVIEW. NOT FINAL. NOT LEGAL ADVICE.
 This text is a starting point only. A qualified lawyer must review and adapt
 it before it is published, linked or relied on.
 Fill in every {{PLACEHOLDER}} before publishing:
-  {{ENTITY}} {{ADDRESS}} {{JURISDICTION}} {{DATA_REGION}}
-  {{EFFECTIVE_DATE}} {{DELETION_DAYS}} {{BACKUP_DAYS}}
+  {{DATA_REGION}} {{EFFECTIVE_DATE}} {{DELETION_DAYS}} {{BACKUP_DAYS}}
 The contact for privacy requests is support@pyo.dev, the general
 contact. Check whether a data protection officer or a separate privacy
 contact is needed. If so, add it here.
@@ -19,13 +18,21 @@ Payments: Polar is merchant of record for card payments. For Midtrans
 payments in Indonesia the operator is the seller, so it keeps invoice and
 tax records itself. Check whether Midtrans is a processor or an
 independent controller for the data it collects.
+No legal entity or governing law exists yet. The text names "Pyo
+(pyo.dev)" as the party and gives no address. An entity, its address and
+the governing law must be added here before publishing.
 Open points for the lawyer: lawful bases, whether an EU or UK
 representative is needed (GDPR art. 27), the transfer mechanism for each
 subprocessor outside {{DATA_REGION}}, the supervisory authority to name,
 and whether the pyo.dev website's cookieless analytics need a mention here.
+What moved: the subprocessors list is no longer its own page. It is now
+Annex 3 of the Data Processing Agreement (/legal/dpa#annex-3-subprocessors).
+"Who we share it with" links there instead of keeping its own copy. Check
+that pointing a controller notice at an annex of the DPA is enough, or
+whether this policy should name the recipients itself.
 -->
 
-This policy explains what {{ENTITY}} ("Pyo", "we", "us") collects about the people who use Pyo Cloud, and why. It covers cloud.pyo.dev, the Pyo Cloud API and the emails we send about Pyo Cloud.
+This policy explains what Pyo (pyo.dev, "we", "us") collects about the people who use Pyo Cloud, and why. It covers cloud.pyo.dev, the Pyo Cloud API and the emails we send about Pyo Cloud.
 
 For the personal data in your account, we are the controller. For personal data that your services handle, such as data about the visitors to your websites, you are the controller and we process it for you. Our [Data Processing Agreement](/legal/dpa) covers that.
 
@@ -101,7 +108,7 @@ When a team is deleted, its encryption keys are deleted too, so its secrets can 
 
 ## Who we share it with
 
-We share personal data only with the companies that help us run Pyo Cloud, and only what they need for that. They are our subprocessors. The [subprocessors list](/legal/subprocessors) names each one, what it does and where.
+We share personal data only with the companies that help us run Pyo Cloud, and only what they need for that. They are our subprocessors. [Annex 3 of our Data Processing Agreement](/legal/dpa#annex-3-subprocessors) names each one, what it does and where.
 
 We may also share personal data when the law requires it, to protect our rights or the safety of others, or as part of a sale or merger of the business behind Pyo Cloud. In that last case we tell you first.
 
@@ -143,4 +150,4 @@ We may change this policy. We tell you about important changes by email or in th
 
 ## Contact
 
-{{ENTITY}}, {{ADDRESS}}. Email support@pyo.dev.
+Pyo, pyo.dev. Email support@pyo.dev.

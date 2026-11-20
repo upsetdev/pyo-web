@@ -23,7 +23,7 @@ const pages: Record<string, LegalPage> = Object.fromEntries(
 );
 
 /** In the order they are listed at the foot of each page. */
-const ORDER = ["terms", "privacy", "dpa", "acceptable-use", "subprocessors"];
+const ORDER = ["terms", "privacy", "dpa"];
 
 export const Route = createFileRoute("/legal/$page")({
   loader: ({ params }) => {
