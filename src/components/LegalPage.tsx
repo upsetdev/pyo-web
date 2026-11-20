@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import type { ComponentType } from "react";
 import { seo } from "~/lib/seo";
 
@@ -57,13 +58,13 @@ function LegalLinks({ slug, className }: { slug: LegalSlug; className: string })
     <ul className={className}>
       {LINKS.map((l) => (
         <li key={l.slug} className="shrink-0">
-          <a
-            href={`/${l.slug}`}
+          <Link
+            to={`/${l.slug}`}
             aria-current={l.slug === slug ? "page" : undefined}
             className={`block ${LINK}`}
           >
             {l.label}
-          </a>
+          </Link>
         </li>
       ))}
     </ul>

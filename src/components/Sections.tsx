@@ -232,15 +232,17 @@ export function Footer() {
             © {new Date().getFullYear()} {site.name}.
           </p>
           <ul className="flex flex-wrap gap-x-5 gap-y-1">
-            {[
-              ["Terms", "/terms"],
-              ["Privacy", "/privacy"],
-              ["DPA", "/dpa"],
-            ].map(([label, href]) => (
-              <li key={href}>
-                <a href={href} className={FOOTER_LINK}>
+            {(
+              [
+                ["Terms", "/terms"],
+                ["Privacy", "/privacy"],
+                ["DPA", "/dpa"],
+              ] as const
+            ).map(([label, to]) => (
+              <li key={to}>
+                <Link to={to} className={FOOTER_LINK}>
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
