@@ -93,7 +93,7 @@ export function LegalPage({ slug }: { slug: LegalSlug }) {
         <p className="mt-4 text-[14px] text-muted-foreground">
           {effective(page.frontmatter.updated)}
         </p>
-        <article className="legal-page prose mt-10 max-w-none">
+        <article className="legal-page prose mt-10 max-w-none [&_:is(h2,h3)]:scroll-mt-20">
           <Body />
         </article>
       </div>
