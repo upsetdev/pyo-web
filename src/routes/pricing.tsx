@@ -61,7 +61,7 @@ const INCLUDED: {
 }[] = [
   { icon: HardDrivesIcon, title: "Multi-server clusters", body: "Connect servers over your Tailscale tailnet. Pick where each service runs." },
   { icon: DatabaseIcon, title: "Built-in databases", body: "Postgres, MySQL and KV with replicas, point-in-time restore and backups." },
-  { icon: ShieldCheckIcon, title: "WAF, firewall and analytics", body: "Raw requests stay on your servers. Pyo keeps only the totals." },
+  { icon: ShieldCheckIcon, title: "WAF, firewall and analytics", body: "Raw requests stay on your servers. Pyo keeps only the totals, for 12 months." },
   { icon: CubeTransparentIcon, title: "Sandboxes", body: "Isolated machines for code and agents, with a full desktop in the browser.", page: "/sandbox" },
   { icon: RocketLaunchIcon, title: "Push to deploy", body: "Deploy from GitHub, GitLab or any image. Roll back in one click." },
   { icon: RobotIcon, title: "MCP, API and CLI", body: "Let AI agents and scripts run Pyo through its MCP server, API or CLI." },
