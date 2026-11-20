@@ -10,14 +10,27 @@ DRAFT FOR LEGAL REVIEW. NOT FINAL. NOT LEGAL ADVICE.
 This text is a starting point only. A qualified lawyer must review and adapt
 it to the operator's entity, jurisdiction and payment setup before it is
 published, linked or relied on.
-Fill in every {{PLACEHOLDER}} before publishing:
-  {{EFFECTIVE_DATE}} {{GRACE_DAYS}} (the code uses 7) {{DELETION_DAYS}}
-  {{NOTICE_DAYS}} {{REFUND_DAYS}} {{YEARLY_REFUND}}
-{{YEARLY_REFUND}} is a decision, not a number. It is the "Yearly plans"
-bullet in section 8. The text there is the default: no refund after
-cancelling a yearly plan, the plan runs to the end of the paid year.
-Change that bullet if a partial refund is chosen.
-{{REFUND_DAYS}} is how long a refund takes to send once approved.
+Values chosen (only the effective date is left):
+  Effective date: still a placeholder in "updated". Set it on publishing.
+    Until then the page shows "Draft, not yet in effect".
+  Notice period: 30 days for price changes, changes to these terms and
+    stopping Pyo Cloud (sections 7, 11 and 16).
+  Grace period for failed payments: 7 days, as in the billing code
+    (section 9).
+  Data kept after a subscription ends: 30 days, then deleted. Backups
+    expire within 30 more days (section 11).
+  Refund sent within: 14 days of approval (section 8).
+  Yearly plans: no refund of the rest of the year after cancelling. The
+    plan runs to the end of the paid year (section 8).
+  Credit left when a subscription ends: used against the final invoice.
+    Anything left after that is not paid out, unless the law requires it
+    (section 8).
+  EU right of withdrawal: section 8 says a 14-day right of withdrawal may
+    apply to consumers in the EU. Check how it works when the service
+    starts at once on subscribing: the consumer's express request to
+    start early, what share of the payment we may keep, and the notice
+    and model withdrawal form the law requires. For card payments Polar is
+    the seller, so check how its own withdrawal and refund rules fit.
 No legal entity or governing law exists yet. The text names "Pyo
 (pyo.dev)" as the party and gives no address. Section 17 names no
 governing law and no courts. An entity, its address and the governing
@@ -47,8 +60,8 @@ removed servers, yearly plans, refunds if Pyo Cloud shuts down, how
 refunds are paid (Polar for cards, the operator for Midtrans) and how to
 ask. Check it against consumer law, the EU right of withdrawal for
 digital services in particular, and Polar's own refund rules as merchant
-of record. Decide whether unused credit is paid out when a subscription
-ends.
+of record. Unused credit is not paid out when a subscription ends,
+unless the law requires it. Check that rule holds up for consumers.
 Payments (section 7): cards go through Polar for everyone, as merchant of
 record. Customers in Indonesia can also pay with QRIS, bank transfer or
 e-wallets through Midtrans, in rupiah, a month or a year at a time. For
@@ -56,6 +69,11 @@ Midtrans payments the operator is the seller, not Polar. So the operator
 issues the invoice and owes any Indonesian VAT (PPN) and other tax on
 those sales. Check the tax registration, invoice rules and consumer law
 this brings, and whether sections 7 and 8 say it correctly.
+Leaving (section 11): Pyo has no team export. Section 11 and DPA
+section 12 say a team can move to self-hosted Pyo by following the manual
+steps in /docs/cloud/moving-to-self-hosted, and promise no export
+feature. That docs page must exist before publishing. Check this is
+enough for data portability.
 Availability (section 10): there is no service level agreement and no
 uptime commitment, with no end date. Check this still holds up and fits
 the disclaimers in section 13.
@@ -168,25 +186,25 @@ Our [Privacy Policy](/legal/privacy) explains what we collect about you and why.
 - **When you pay.** You add a payment method before you connect your first server. You pay in advance for each month or year. A server added during a billing period is charged for the rest of that period. A server removed during a period is credited on your next invoice.
 - **Who you pay.** Card payments go through Polar, which acts as the merchant of record. Polar is the seller for those payments. It charges you, sends invoices and handles sales tax and VAT. Polar's own terms also apply to those payments.
 - **Paying in Indonesia.** Customers in Indonesia can also pay with QRIS, bank transfer or e-wallets through Midtrans, in Indonesian rupiah. For those payments, we are the seller. We send the invoice and handle the tax due on the sale. Midtrans only processes the payment.
-- **Price changes.** We may change prices. We will tell you at least {{NOTICE_DAYS}} days before a change applies to you. A new price applies from your next billing period after that notice.
+- **Price changes.** We may change prices. We will tell you at least 30 days before a change applies to you. A new price applies from your next billing period after that notice.
 - **Refunds.** [Section 8](#8-refunds) explains when we refund a payment.
-
-<!-- {{YEARLY_REFUND}}: the "Yearly plans" bullet below is the default. See the note at the top. -->
 
 ## 8. Refunds
 
-- **No refunds for unused time.** We do not refund part of a month or a year, or servers you paid for but did not use. This does not limit any right to a refund that the law gives you.
+- **No refunds for unused time.** We do not refund part of a month or a year, or servers you paid for but did not use. This does not limit any right to a refund or withdrawal the law gives you.
 - **Removing a server.** If you remove a server during a billing period, we credit the unused part of that period on your next invoice. If you add a server, we charge it pro rata for the rest of the period.
 - **Yearly plans.** If you cancel a yearly plan, we do not refund the rest of the year. Your plan runs to the end of the year you paid for.
+- **Credit when your subscription ends.** Credit from removed servers is used against your final invoice. Credit left after that is not paid out, unless the law requires it.
+- **Consumers in the EU.** If you are a consumer in the EU, you may have a right to withdraw from your subscription within 14 days. If you asked us to start the service during that time, you may have to pay for the part you used.
 - **If Pyo Cloud shuts down.** If we stop offering Pyo Cloud, we refund what you paid for time you can no longer use.
 - **How refunds are paid.** Card payments are refunded through Polar, back to the card you paid with. Midtrans payments in Indonesia are refunded by us, to the method you paid with or by bank transfer.
-- **How to ask.** Email support@pyo.dev with your team name and the payment. Once we approve a refund, we send it within {{REFUND_DAYS}} days. Your bank or card issuer may take a few more days to show it.
+- **How to ask.** Email support@pyo.dev with your team name and the payment. Once we approve a refund, we send it within 14 days. Your bank or card issuer may take a few more days to show it.
 
 ## 9. Failed payments
 
 - If a payment fails, we tell you and try again.
 - Your services keep running on your servers.
-- If the payment still has not gone through after {{GRACE_DAYS}} days, deploys pause. While paused, you cannot deploy or connect new servers. Your services keep running, and you can still sign in, see your team and pay.
+- If the payment still has not gone through after 7 days, deploys pause. While paused, you cannot deploy or connect new servers. Your services keep running, and you can still sign in, see your team and pay.
 - Deploys resume as soon as the payment goes through.
 - If a payment stays unpaid for a long time, we may end your subscription as in [section 11](#11-cancelling-and-ending).
 
@@ -201,9 +219,9 @@ Our [Privacy Policy](/legal/privacy) explains what we collect about you and why.
 
 - **You can cancel at any time.** Cancel in Settings › Billing, or remove all your servers. Cancelling stops future charges. You keep access until the end of the period you paid for.
 - **We can end or suspend your account** if you break these terms, including the acceptable use rules in [section 4](#4-acceptable-use), if you do not pay, or if the law requires it. If we can, we tell you first and give you a fair chance to fix the problem. We can act at once when there is a serious risk to Pyo Cloud, other customers or the public.
-- **We can stop offering Pyo Cloud.** If we do, we tell you at least {{NOTICE_DAYS}} days ahead and refund what you paid for time you could not use, as in [section 8](#8-refunds).
-- **Leaving with your data.** You can export your team at any time and import it into self-hosted Pyo. Your services and data are already on your servers.
-- **What happens to your data.** After your subscription ends, we keep your team's data for {{DELETION_DAYS}} days so that you can come back or export it. Then we delete it. Copies in our backups are deleted when those backups expire. Our [Privacy Policy](/legal/privacy) lists how long we keep each kind of data.
+- **We can stop offering Pyo Cloud.** If we do, we tell you at least 30 days ahead and refund what you paid for time you could not use, as in [section 8](#8-refunds).
+- **Leaving with your data.** You can move your team to self-hosted Pyo at any time. Follow the manual steps in [Moving to self-hosted Pyo](/docs/cloud/moving-to-self-hosted). Your services and data are already on your servers.
+- **What happens to your data.** After your subscription ends, we keep your team's data for 30 days so that you can come back or move to self-hosted Pyo. Then we delete it. Copies in our backups are deleted when those backups expire, within 30 more days. Our [Privacy Policy](/legal/privacy) lists how long we keep each kind of data.
 - **The agent.** When your subscription ends, the agent on your servers stops receiving commands. Your services keep running until you change or remove them. Removing the agent is up to you.
 
 ## 12. Open-source software
@@ -228,7 +246,7 @@ If someone makes a claim against us because of your content, your services or yo
 
 ## 16. Changes to these terms
 
-We may change these terms. We tell you about important changes by email or in the dashboard at least {{NOTICE_DAYS}} days before they apply. If you keep using Pyo Cloud after that, the new terms apply. If you do not agree, you can cancel before they apply.
+We may change these terms. We tell you about important changes by email or in the dashboard at least 30 days before they apply. If you keep using Pyo Cloud after that, the new terms apply. If you do not agree, you can cancel before they apply.
 
 ## 17. Disputes
 

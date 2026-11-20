@@ -9,10 +9,30 @@ status: "DRAFT for legal review. Not final and not legal advice. A qualified law
 DRAFT FOR LEGAL REVIEW. NOT FINAL. NOT LEGAL ADVICE.
 This text is a starting point only. A qualified lawyer must review and adapt
 it before it is published, linked, signed or relied on.
-Fill in every {{PLACEHOLDER}} before publishing:
-  {{DATA_REGION}} {{EFFECTIVE_DATE}} {{DELETION_DAYS}} {{BACKUP_DAYS}} {{BREACH_NOTICE_HOURS}}
-  {{NOTICE_DAYS}} {{HOSTING_PROVIDER}} {{KMS_REGION}} {{EMAIL_PROVIDER}}
-  {{EMAIL_REGION}} {{POLAR_LOCATION}}
+Values chosen (only the effective date is left):
+  Effective date: still a placeholder in "updated". Set it on publishing.
+    Until then the page shows "Draft, not yet in effect".
+  Data region: the European Union. Pyo Cloud stores and processes data
+    in the EU (section 8, Annex 1, Annex 3).
+  KMS region: an AWS region in the EU (Annex 3).
+  Data kept after a subscription ends: 30 days, then deleted. Backups
+    expire within 30 days (section 12).
+  Breach notice: within 48 hours of becoming aware, so the customer can
+    meet the GDPR's 72-hour deadline (section 10).
+  Subprocessor change notice: 30 days (section 7, Annex 3).
+  Hosting provider and email provider: not named on purpose. Annex 3
+    describes them by category ("Hosting provider", "Email delivery
+    provider"). Check this is enough for GDPR art. 28(2) and (4), which
+    expect the controller to know who the subprocessors are. If not,
+    name them here or offer the names on request.
+  Polar's location: not stated. Annex 3 points to Polar's own privacy
+    policy.
+Transfers (section 8): some subprocessors may process data outside the
+EU, under standard contractual clauses or another lawful safeguard:
+Cloudflare's global network, Polar, Midtrans for payments in Indonesia,
+and AWS for KMS calls (the keys live in an EU region, but AWS is a US
+company and the calls carry only hashes of commands). The email provider
+may also send from outside the EU. Check the safeguard for each.
 No legal entity or governing law exists yet. The text names "Pyo
 (pyo.dev)" as the party and gives no address. An entity, its address and
 the governing law must be added here before publishing.
@@ -30,7 +50,7 @@ What moved here: the subprocessors list was its own page
 table, the "Not subprocessors" list and the notes on Polar and Midtrans.
 That page is removed. Section 7 links to Annex 3 and says how customers
 are told about changes: an email to each team's owners at least
-{{NOTICE_DAYS}} days ahead, and a new date on Annex 3. The Privacy Policy
+30 days ahead, and a new date on Annex 3. The Privacy Policy
 points to Annex 3 for its list of the companies we share data with, so
 Annex 3 also names them for account data, which Pyo controls.
 Check before publishing (from the old subprocessors page): each
@@ -86,12 +106,12 @@ Pyo keeps the technical and organisational measures in Annex 2 in place. Pyo may
 
 - You give Pyo general permission to use subprocessors. The current ones are listed in [Annex 3](#annex-3-subprocessors).
 - Pyo gives each subprocessor written terms that protect customer personal data at least as well as this DPA. Pyo stays responsible for its subprocessors' work.
-- Pyo tells you at least {{NOTICE_DAYS}} days before it adds or replaces a subprocessor. Pyo emails your team's owners, and updates Annex 3 with the date of the change. To get these emails at another address too, write to support@pyo.dev.
+- Pyo tells you at least 30 days before it adds or replaces a subprocessor. Pyo emails your team's owners, and updates Annex 3 with the date of the change. To get these emails at another address too, write to support@pyo.dev.
 - You can object, on reasonable data protection grounds, within that time. If we cannot resolve it together, you can end your subscription before the change applies, and Pyo refunds what you paid for time you could not use.
 
 ## 8. Transfers outside your region
 
-Pyo Cloud's database is in {{DATA_REGION}}. When customer personal data goes to a country without an adequacy decision, Pyo uses the European Commission's standard contractual clauses, the UK addendum, or another lawful safeguard. Those clauses are part of this DPA where they are needed.
+Pyo stores and processes customer personal data in the European Union. Some subprocessors may process it outside the EU. These include Cloudflare's global network, Polar, Midtrans for payments in Indonesia, and AWS for the keys that sign commands. When customer personal data goes to a country without an adequacy decision, Pyo uses the European Commission's standard contractual clauses, the UK addendum, or another lawful safeguard. Those clauses are part of this DPA where they are needed.
 
 ## 9. Helping you
 
@@ -100,7 +120,7 @@ Pyo Cloud's database is in {{DATA_REGION}}. When customer personal data goes to 
 
 ## 10. Personal data breaches
 
-- Pyo tells you without undue delay, and within {{BREACH_NOTICE_HOURS}} hours, after it becomes aware of a personal data breach that affects your customer personal data.
+- Pyo tells you without undue delay, and within 48 hours, after it becomes aware of a personal data breach that affects your customer personal data.
 - Pyo tells the email addresses of your team's owners. The notice says what happened, what data and how many people are likely affected, what Pyo is doing about it, and who to contact. If Pyo does not know everything yet, it sends what it knows and follows up.
 - Pyo takes reasonable steps to contain the breach and limit its harm.
 - Telling you about a breach does not mean Pyo accepts fault.
@@ -112,9 +132,9 @@ Pyo Cloud's database is in {{DATA_REGION}}. When customer personal data goes to 
 
 ## 12. When the subscription ends
 
-- When your subscription ends, Pyo keeps customer personal data for {{DELETION_DAYS}} days so that you can come back or export it. Then Pyo deletes it.
-- You can export your team at any time before then. You can also ask for earlier deletion by emailing support@pyo.dev.
-- Copies in Pyo's backups are deleted when those backups expire, within {{BACKUP_DAYS}} days. Each team's secrets are encrypted with the team's own key, which is deleted with the team, so they cannot be read from a backup.
+- When your subscription ends, Pyo keeps customer personal data for 30 days so that you can come back or move to self-hosted Pyo. Then Pyo deletes it.
+- You can move your team to self-hosted Pyo at any time before then. Follow the manual steps in [Moving to self-hosted Pyo](/docs/cloud/moving-to-self-hosted). You can also ask for earlier deletion by emailing support@pyo.dev.
+- Copies in Pyo's backups are deleted when those backups expire, within 30 days. Each team's secrets are encrypted with the team's own key, which is deleted with the team, so they cannot be read from a backup.
 - Pyo may keep data only where the law requires it, and keeps it confidential.
 - Data on your own servers is in your control. Pyo does not delete it.
 
@@ -138,7 +158,7 @@ Questions about this DPA go to support@pyo.dev.
 | **Special categories** | None intended. Do not put special category data in configuration, secrets or build output |
 | **Frequency** | Continuous while your servers are connected |
 | **Retention** | Build logs 90 days, analytics totals 13 months, server metrics 30 days, audit log 1 year, configuration and secrets while the team exists |
-| **Location** | {{DATA_REGION}}, and the subprocessors' locations in Annex 3 |
+| **Location** | The European Union, and the subprocessors' locations in Annex 3 |
 
 ## Annex 2. Security measures
 
@@ -177,12 +197,12 @@ These are the companies that help us run Pyo Cloud and may process personal data
 
 | Subprocessor | What it does for Pyo Cloud | Data it handles | Location |
 |---|---|---|---|
-| {{HOSTING_PROVIDER}} | Hosts Pyo Cloud's servers and database | All data Pyo Cloud stores | {{DATA_REGION}} |
-| Amazon Web Services (AWS KMS) | Keeps the keys that sign commands to your servers | Hashes of commands. No customer content or personal data | {{KMS_REGION}} |
+| Hosting provider | Hosts Pyo Cloud's servers and database | All data Pyo Cloud stores | European Union |
+| Amazon Web Services (AWS KMS) | Keeps the keys that sign commands to your servers | Hashes of commands. No customer content or personal data | An AWS region in the EU |
 | Cloudflare | Sits in front of Pyo Cloud: TLS, protection from attacks, routing | All traffic to Pyo Cloud while it passes through, including IP addresses | Global network |
-| Polar | Merchant of record for card payments: checkout, subscriptions, invoices, sales tax | Name, email, billing address, payment details, subscription | {{POLAR_LOCATION}} |
+| Polar | Merchant of record for card payments: checkout, subscriptions, invoices, sales tax | Name, email, billing address, payment details, subscription | See Polar's privacy policy |
 | Midtrans | Payment processor for customers in Indonesia: QRIS, bank transfer and e-wallets | Name, email, payment details, orders | Indonesia |
-| {{EMAIL_PROVIDER}} | Sends Pyo Cloud's emails, such as team invites and notices | Name, email address, email contents | {{EMAIL_REGION}} |
+| Email delivery provider | Sends Pyo Cloud's emails, such as team invites and notices | Name, email address, email contents | The EU or other countries, under the safeguards in section 8 |
 
 Polar acts as the merchant of record. For the payments it handles, it is also a controller under its own privacy policy. For Midtrans payments, we are the seller and Midtrans processes the payment for us.
 
@@ -194,4 +214,4 @@ Polar acts as the merchant of record. For the payments it handles, it is also a 
 - **DNS providers** you connect, such as Cloudflare DNS, to manage your own domains.
 - **nip.io,** which turns the free addresses of your services into your server's IP address.
 
-**Changes.** We tell you at least {{NOTICE_DAYS}} days before we add or replace a subprocessor, as section 7 describes. The date at the top of this page shows the last change.
+**Changes.** We tell you at least 30 days before we add or replace a subprocessor, as section 7 describes. The date at the top of this page shows the last change.
