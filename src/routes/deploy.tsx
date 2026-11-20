@@ -10,6 +10,7 @@ import {
 } from "@phosphor-icons/react";
 import { createFileRoute, Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useId, useState, type FormEvent, type ReactNode } from "react";
+import { CloudButton } from "~/components/CloudButton";
 import { CopyCommand } from "~/components/CopyCommand";
 import { DockerIcon } from "~/components/DockerIcon";
 import { GithubIcon } from "~/components/GithubIcon";
@@ -451,17 +452,12 @@ function DeploySource({ source }: { source: Source }) {
               </div>
             </form>
           </Choice>
-          <Choice icon={<CloudIcon size={16} aria-hidden />} title="Pyo Cloud" muted>
+          <Choice icon={<CloudIcon size={16} aria-hidden />} title="Pyo Cloud" muted={!site.cloudLive}>
             <p className="mt-4 text-[14px] leading-relaxed">
               Pyo, run by us. Your services run on your own servers.
             </p>
             <div className="mt-auto pt-6">
-              <span
-                aria-disabled="true"
-                className="inline-flex h-11 w-full cursor-default items-center justify-center rounded-full border border-border bg-secondary text-[14px] font-medium text-muted-foreground"
-              >
-                Coming soon
-              </span>
+              <CloudButton href={dashboardUrl(site.cloudUrl, source)}>Deploy</CloudButton>
             </div>
           </Choice>
         </div>

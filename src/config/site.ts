@@ -18,4 +18,6 @@ export const site = {
   setupCommand: "curl -fsSL https://pyo.dev/install.sh | bash",
   /** Pyo Cloud's address, for the docs' examples (see PyoAddress). */
   cloudUrl: "https://cloud.pyo.dev",
+  /** Pyo Cloud takes sign-ups. Off: the pricing and deploy pages say "Coming soon". */
+  cloudLive: false as boolean,
 } as const;
