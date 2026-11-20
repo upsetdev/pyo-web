@@ -18,6 +18,7 @@ import { Route as SandboxRouteImport } from './routes/sandbox'
 import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as TemplatesRouteImport } from './routes/templates'
 import { Route as DocsSplatRouteImport } from './routes/docs/$'
+import { Route as LegalPageRouteImport } from './routes/legal/$page'
 import { Route as TemplatesIdRouteImport } from './routes/templates_.$id'
 import { Route as VsCompetitorRouteImport } from './routes/vs.$competitor'
 
@@ -66,6 +67,11 @@ const DocsSplatRoute = DocsSplatRouteImport.update({
   path: '/docs/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegalPageRoute = LegalPageRouteImport.update({
+  id: '/legal/$page',
+  path: '/legal/$page',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TemplatesIdRoute = TemplatesIdRouteImport.update({
   id: '/templates_/$id',
   path: '/templates/$id',
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/sponsors': typeof SponsorsRoute
   '/templates': typeof TemplatesRoute
   '/docs/$': typeof DocsSplatRoute
+  '/legal/$page': typeof LegalPageRoute
   '/templates/$id': typeof TemplatesIdRoute
   '/vs/$competitor': typeof VsCompetitorRoute
 }
@@ -100,6 +107,7 @@ export interface FileRoutesByTo {
   '/sponsors': typeof SponsorsRoute
   '/templates': typeof TemplatesRoute
   '/docs/$': typeof DocsSplatRoute
+  '/legal/$page': typeof LegalPageRoute
   '/templates/$id': typeof TemplatesIdRoute
   '/vs/$competitor': typeof VsCompetitorRoute
 }
@@ -114,6 +122,7 @@ export interface FileRoutesById {
   '/sponsors': typeof SponsorsRoute
   '/templates': typeof TemplatesRoute
   '/docs/$': typeof DocsSplatRoute
+  '/legal/$page': typeof LegalPageRoute
   '/templates_/$id': typeof TemplatesIdRoute
   '/vs/$competitor': typeof VsCompetitorRoute
 }
@@ -129,6 +138,7 @@ export interface FileRouteTypes {
     | '/sponsors'
     | '/templates'
     | '/docs/$'
+    | '/legal/$page'
     | '/templates/$id'
     | '/vs/$competitor'
   fileRoutesByTo: FileRoutesByTo
@@ -142,6 +152,7 @@ export interface FileRouteTypes {
     | '/sponsors'
     | '/templates'
     | '/docs/$'
+    | '/legal/$page'
     | '/templates/$id'
     | '/vs/$competitor'
   id:
@@ -155,6 +166,7 @@ export interface FileRouteTypes {
     | '/sponsors'
     | '/templates'
     | '/docs/$'
+    | '/legal/$page'
     | '/templates_/$id'
     | '/vs/$competitor'
   fileRoutesById: FileRoutesById
@@ -169,6 +181,7 @@ export interface RootRouteChildren {
   SponsorsRoute: typeof SponsorsRoute
   TemplatesRoute: typeof TemplatesRoute
   DocsSplatRoute: typeof DocsSplatRoute
+  LegalPageRoute: typeof LegalPageRoute
   TemplatesIdRoute: typeof TemplatesIdRoute
   VsCompetitorRoute: typeof VsCompetitorRoute
 }
@@ -238,6 +251,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal/$page': {
+      id: '/legal/$page'
+      path: '/legal/$page'
+      fullPath: '/legal/$page'
+      preLoaderRoute: typeof LegalPageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/templates_/$id': {
       id: '/templates_/$id'
       path: '/templates/$id'
@@ -265,6 +285,7 @@ const rootRouteChildren: RootRouteChildren = {
   SponsorsRoute: SponsorsRoute,
   TemplatesRoute: TemplatesRoute,
   DocsSplatRoute: DocsSplatRoute,
+  LegalPageRoute: LegalPageRoute,
   TemplatesIdRoute: TemplatesIdRoute,
   VsCompetitorRoute: VsCompetitorRoute,
 }
