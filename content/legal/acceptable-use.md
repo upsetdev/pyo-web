@@ -10,7 +10,9 @@ DRAFT FOR LEGAL REVIEW. NOT FINAL. NOT LEGAL ADVICE.
 This text is a starting point only. A qualified lawyer must review and adapt
 it before it is published, linked or relied on.
 Fill in every {{PLACEHOLDER}} before publishing:
-  {{ENTITY}} {{CONTACT_EMAIL}} {{EFFECTIVE_DATE}}
+  {{ENTITY}} {{SECURITY_EMAIL}} {{EFFECTIVE_DATE}}
+The general contact and the abuse address is support@pyo.dev.
+{{SECURITY_EMAIL}} is for security reports. No address is chosen yet.
 Open points for the lawyer: a separate abuse address, notice and takedown
 duties under the EU Digital Services Act or local law, and a copyright
 (DMCA style) process if one is needed.
@@ -29,7 +31,7 @@ This policy covers what reaches Pyo and what Pyo helps you do. That includes you
 **Attack or abuse Pyo Cloud**
 
 - Try to access another team's data, servers or account.
-- Probe, scan or test the security of Pyo Cloud without our written permission. If you find a security problem, please report it to {{CONTACT_EMAIL}}.
+- Probe, scan or test the security of Pyo Cloud without our written permission. If you find a security problem, please report it to {{SECURITY_EMAIL}}.
 - Get around rate limits, billing, server counts or security checks.
 - Overload Pyo Cloud, for example with excessive API calls, fake servers or data built to slow it down.
 - Send data to Pyo Cloud that contains malware or is meant to exploit it.
@@ -53,7 +55,7 @@ This policy covers what reaches Pyo and what Pyo helps you do. That includes you
 
 ## Reporting abuse
 
-To report abuse involving Pyo Cloud, email {{CONTACT_EMAIL}}. Please include:
+To report abuse involving Pyo Cloud, email support@pyo.dev. Please include:
 
 - the address, domain or service involved
 - what happened, and when
@@ -77,4 +79,4 @@ We may change this policy. We tell you about important changes by email or in th
 
 ## Contact
 
-{{ENTITY}}. Email {{CONTACT_EMAIL}}.
+{{ENTITY}}. Email support@pyo.dev.

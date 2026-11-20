@@ -11,11 +11,23 @@ This text is a starting point only. A qualified lawyer must review and adapt
 it to the operator's entity, jurisdiction and payment setup before it is
 published, linked or relied on.
 Fill in every {{PLACEHOLDER}} before publishing:
-  {{ENTITY}} {{ADDRESS}} {{JURISDICTION}} {{CONTACT_EMAIL}} {{EFFECTIVE_DATE}}
+  {{ENTITY}} {{ADDRESS}} {{JURISDICTION}} {{EFFECTIVE_DATE}}
   {{GRACE_DAYS}} (the code uses 7) {{DELETION_DAYS}} {{NOTICE_DAYS}}
+The general contact is support@pyo.dev.
 Open points for the lawyer: liability cap, indemnity, consumer law where
-customers are individuals, the Midtrans setup (the operator is the seller
-there, not Polar), dispute resolution and venue.
+customers are individuals, dispute resolution and venue.
+Payments (section 6): cards go through Polar for everyone, as merchant of
+record. Customers in Indonesia can also pay with QRIS, bank transfer or
+e-wallets through Midtrans, in rupiah, a month or a year at a time. For
+Midtrans payments the operator is the seller, not Polar. So the operator
+issues the invoice and owes any Indonesian VAT (PPN) and other tax on
+those sales. Check the tax registration, invoice rules and consumer law
+this brings, and whether section 6 says it correctly.
+Availability (section 8): the earlier draft said there is no SLA "during
+beta". The product has no beta label, so the section now says plainly
+that there is no service level agreement and no uptime commitment, with
+no end date. Check this still holds up and fits the disclaimers in
+section 11.
 -->
 
 These terms are an agreement between you and {{ENTITY}}, {{ADDRESS}} ("Pyo", "we", "us"). They cover Pyo Cloud at cloud.pyo.dev and everything that comes with it ("Pyo Cloud").
@@ -33,7 +45,7 @@ Pyo Cloud is a hosted version of Pyo's control plane. We run the dashboard, the 
 - You need an account to use Pyo Cloud. Give us true and current details, and keep them up to date.
 - You must be at least 18 years old, or the age of majority where you live.
 - Keep your password, passkeys, API keys and connect commands safe. You are responsible for what happens under your account and your teams, unless it is our fault.
-- Tell us at {{CONTACT_EMAIL}} as soon as you think someone has used your account without your permission.
+- Tell us at support@pyo.dev as soon as you think someone has used your account without your permission.
 - A team is a group of accounts that share servers, projects and services. Team owners decide who joins a team and what each member may do. A team's owners are responsible for the team's members.
 
 ## 3. Using Pyo Cloud
@@ -60,7 +72,8 @@ Our [Privacy Policy](/legal/privacy) explains what we collect about you and why.
 - **Price.** Pyo Cloud costs $5 per server per month, or 20% less when you pay for a year. A server is each machine you connect, counted once, whatever its roles. Clusters, teams, members, projects and services cost nothing extra. Prices do not include taxes unless we say so.
 - **No trial.** There is no free trial. Self-hosted Pyo is the free option.
 - **When you pay.** You add a payment method before you connect your first server. You pay in advance for each month or year. A server added during a billing period is charged for the rest of that period. A server removed during a period is credited on your next invoice.
-- **Who you pay.** Most payments go through Polar, which acts as the merchant of record. Polar is the seller for those payments. It charges you, sends invoices and handles sales tax and VAT. Polar's own terms also apply to those payments. Customers in Indonesia may pay through Midtrans instead. For those payments, we are the seller and we send the invoice.
+- **Who you pay.** Card payments go through Polar, which acts as the merchant of record. Polar is the seller for those payments. It charges you, sends invoices and handles sales tax and VAT. Polar's own terms also apply to those payments.
+- **Paying in Indonesia.** Customers in Indonesia can also pay with QRIS, bank transfer or e-wallets through Midtrans, in Indonesian rupiah. For those payments, we are the seller. We send the invoice and handle the tax due on the sale. Midtrans only processes the payment.
 - **Price changes.** We may change prices. We will tell you at least {{NOTICE_DAYS}} days before a change applies to you. A new price applies from your next billing period after that notice.
 - **Refunds.** Payments are not refunded, except where the law requires it or where we say so in writing.
 
@@ -72,9 +85,9 @@ Our [Privacy Policy](/legal/privacy) explains what we collect about you and why.
 - Deploys resume as soon as the payment goes through.
 - If a payment stays unpaid for a long time, we may end your subscription as in section 9.
 
-## 8. Availability during beta
+## 8. Availability
 
-- Pyo Cloud is new. Until we say that it has left beta, there is no service level agreement and no promise of uptime.
+- There is no service level agreement. We do not promise any level of uptime.
 - We work to keep Pyo Cloud available and to fix problems quickly. We may need to stop it for maintenance or in an emergency, and we try to warn you first.
 - Your services run on your servers. When Pyo Cloud is down, your services keep running, but you may not be able to deploy or change them until it is back.
 - We may change, add or remove features. If we remove a feature you rely on in a way that matters, we will tell you first when we can.
@@ -126,4 +139,4 @@ These terms are governed by the laws of {{JURISDICTION}}. The courts of {{JURISD
 
 ## 17. Contact
 
-{{ENTITY}}, {{ADDRESS}}. Email {{CONTACT_EMAIL}}.
+{{ENTITY}}, {{ADDRESS}}. Email support@pyo.dev.

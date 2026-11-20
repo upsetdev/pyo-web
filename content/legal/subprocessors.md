@@ -11,12 +11,15 @@ This text is a starting point only. A qualified lawyer must review and adapt
 it before it is published, linked or relied on.
 Fill in every {{PLACEHOLDER}} before publishing:
   {{HOSTING_PROVIDER}} {{DATA_REGION}} {{KMS_REGION}} {{EMAIL_PROVIDER}}
-  {{EMAIL_REGION}} {{POLAR_LOCATION}} {{NOTICE_DAYS}} {{CONTACT_EMAIL}}
-  {{EFFECTIVE_DATE}}
+  {{EMAIL_REGION}} {{POLAR_LOCATION}} {{NOTICE_DAYS}} {{EFFECTIVE_DATE}}
+The general contact is support@pyo.dev.
 Check before publishing: each provider's DPA is signed or accepted, the
-locations match the accounts actually used, Midtrans is live at launch
-(remove its row if not), and add any monitoring or error tracking service
-Pyo Cloud ends up using.
+locations match the accounts actually used, and add any monitoring or
+error tracking service Pyo Cloud ends up using.
+Midtrans is live at launch for Indonesia. The operator is the seller for
+Midtrans payments, unlike Polar's merchant of record setup. Check whether
+Midtrans belongs on this list as a processor, or is an independent
+controller like Polar.
 -->
 
 These are the companies that help us run Pyo Cloud and may process personal data for it. Each one has signed terms with us that protect that data. Our [Data Processing Agreement](/legal/dpa) explains how we choose and change them.
@@ -26,11 +29,11 @@ These are the companies that help us run Pyo Cloud and may process personal data
 | {{HOSTING_PROVIDER}} | Hosts Pyo Cloud's servers and database | All data Pyo Cloud stores | {{DATA_REGION}} |
 | Amazon Web Services (AWS KMS) | Keeps the keys that sign commands to your servers | Hashes of commands. No customer content or personal data | {{KMS_REGION}} |
 | Cloudflare | Sits in front of Pyo Cloud: TLS, protection from attacks, routing | All traffic to Pyo Cloud while it passes through, including IP addresses | Global network |
-| Polar | Merchant of record: checkout, subscriptions, invoices, sales tax | Name, email, billing address, payment details, subscription | {{POLAR_LOCATION}} |
-| Midtrans | Payments for customers in Indonesia | Name, email, payment details, orders | Indonesia |
+| Polar | Merchant of record for card payments: checkout, subscriptions, invoices, sales tax | Name, email, billing address, payment details, subscription | {{POLAR_LOCATION}} |
+| Midtrans | Payment processor for customers in Indonesia: QRIS, bank transfer and e-wallets | Name, email, payment details, orders | Indonesia |
 | {{EMAIL_PROVIDER}} | Sends Pyo Cloud's emails, such as team invites and notices | Name, email address, email contents | {{EMAIL_REGION}} |
 
-Polar acts as the merchant of record. For the payments it handles, it is also a controller under its own privacy policy.
+Polar acts as the merchant of record. For the payments it handles, it is also a controller under its own privacy policy. For Midtrans payments, we are the seller and Midtrans processes the payment for us.
 
 ## Not subprocessors
 
@@ -44,4 +47,4 @@ Some services take part in using Pyo but are not our subprocessors. You choose t
 
 ## Changes
 
-We tell you at least {{NOTICE_DAYS}} days before we add or replace a subprocessor. To get these notices by email, write to {{CONTACT_EMAIL}}.
+We tell you at least {{NOTICE_DAYS}} days before we add or replace a subprocessor. To get these notices by email, write to support@pyo.dev.

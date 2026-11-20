@@ -10,13 +10,15 @@ DRAFT FOR LEGAL REVIEW. NOT FINAL. NOT LEGAL ADVICE.
 This text is a starting point only. A qualified lawyer must review and adapt
 it before it is published, linked, signed or relied on.
 Fill in every {{PLACEHOLDER}} before publishing:
-  {{ENTITY}} {{ADDRESS}} {{JURISDICTION}} {{DATA_REGION}} {{CONTACT_EMAIL}}
+  {{ENTITY}} {{ADDRESS}} {{JURISDICTION}} {{DATA_REGION}}
   {{EFFECTIVE_DATE}} {{DELETION_DAYS}} {{BACKUP_DAYS}} {{BREACH_NOTICE_HOURS}}
   {{NOTICE_DAYS}}
 Open points for the lawyer: attach or incorporate the EU standard
 contractual clauses (module 2, and module 3 where the customer is itself a
 processor) and the UK addendum, audit terms, liability under the DPA, and
-whether customers need a signable copy.
+whether customers need a signable copy. DPA questions and deletion
+requests go to support@pyo.dev, the general contact. Check whether a
+separate privacy contact or a data protection officer is needed.
 The security measures in Annex 2 describe the design as built. Check each
 one is live in production before publishing (2FA for staff, KMS signer,
 row-level security on every table, build log cleanup).
@@ -93,7 +95,7 @@ Pyo Cloud's database is in {{DATA_REGION}}. When customer personal data goes to 
 ## 12. When the subscription ends
 
 - When your subscription ends, Pyo keeps customer personal data for {{DELETION_DAYS}} days so that you can come back or export it. Then Pyo deletes it.
-- You can export your team at any time before then. You can also ask for earlier deletion by emailing {{CONTACT_EMAIL}}.
+- You can export your team at any time before then. You can also ask for earlier deletion by emailing support@pyo.dev.
 - Copies in Pyo's backups are deleted when those backups expire, within {{BACKUP_DAYS}} days. Each team's secrets are encrypted with the team's own key, which is deleted with the team, so they cannot be read from a backup.
 - Pyo may keep data only where the law requires it, and keeps it confidential.
 - Data on your own servers is in your control. Pyo does not delete it.
@@ -104,7 +106,7 @@ This DPA applies as long as Pyo processes customer personal data for you, includ
 
 ## 14. Contact
 
-Questions about this DPA go to {{CONTACT_EMAIL}}.
+Questions about this DPA go to support@pyo.dev.
 
 ## Annex 1. Details of the processing
 

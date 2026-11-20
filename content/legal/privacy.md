@@ -10,8 +10,15 @@ DRAFT FOR LEGAL REVIEW. NOT FINAL. NOT LEGAL ADVICE.
 This text is a starting point only. A qualified lawyer must review and adapt
 it before it is published, linked or relied on.
 Fill in every {{PLACEHOLDER}} before publishing:
-  {{ENTITY}} {{ADDRESS}} {{JURISDICTION}} {{DATA_REGION}} {{CONTACT_EMAIL}}
+  {{ENTITY}} {{ADDRESS}} {{JURISDICTION}} {{DATA_REGION}}
   {{EFFECTIVE_DATE}} {{DELETION_DAYS}} {{BACKUP_DAYS}}
+The contact for privacy requests is support@pyo.dev, the general
+contact. Check whether a data protection officer or a separate privacy
+contact is needed. If so, add it here.
+Payments: Polar is merchant of record for card payments. For Midtrans
+payments in Indonesia the operator is the seller, so it keeps invoice and
+tax records itself. Check whether Midtrans is a processor or an
+independent controller for the data it collects.
 Open points for the lawyer: lawful bases, whether an EU or UK
 representative is needed (GDPR art. 27), the transfer mechanism for each
 subprocessor outside {{DATA_REGION}}, the supervisory authority to name,
@@ -42,7 +49,7 @@ Self-hosted Pyo is not covered by this policy. If you run Pyo yourself, its data
 
 ### Payments
 
-Polar handles most payments as the merchant of record. Midtrans handles payments for customers in Indonesia. They collect your card or payment details. We do not see or keep full card numbers. We receive your subscription status, the number of servers paid for, your billing country and payment events.
+Polar handles card payments as the merchant of record. In Indonesia, Midtrans also handles QRIS, bank transfer and e-wallet payments. For those, we are the seller, so we keep the invoices that tax law requires. Polar and Midtrans collect your card or payment details. We do not see or keep full card numbers. We receive your subscription status, the number of servers paid for, your billing country and payment events.
 
 ### When you write to us
 
@@ -122,7 +129,7 @@ Depending on where you live, you have the right to:
 - withdraw consent, where we rely on consent
 - complain to your data protection authority
 
-You can change most of your details in the dashboard, and delete your account there. For anything else, email {{CONTACT_EMAIL}}. We answer within one month. We may need to confirm who you are first.
+You can change most of your details in the dashboard, and delete your account there. For anything else, email support@pyo.dev. We answer within one month. We may need to confirm who you are first.
 
 If you are a visitor to a service that runs on Pyo, please contact the owner of that service. They control that data. We will help them answer you.
 
@@ -136,4 +143,4 @@ We may change this policy. We tell you about important changes by email or in th
 
 ## Contact
 
-{{ENTITY}}, {{ADDRESS}}. Email {{CONTACT_EMAIL}}.
+{{ENTITY}}, {{ADDRESS}}. Email support@pyo.dev.
