@@ -20,8 +20,8 @@ Values chosen (only the effective date is left):
   Breach notice: within 48 hours of becoming aware, so the customer can
     meet the GDPR's 72-hour deadline (section 10).
   Subprocessor change notice: 30 days (section 7, Annex 3).
-  Hosting provider: Hetzner Online GmbH (Germany), servers in the EU.
-  Email delivery: Resend, Inc. (United States), under section 8's
+  Hosting provider: Hetzner, servers in the EU.
+  Email delivery: Resend (United States), under section 8's
     safeguards.
   Polar's location: not stated. Annex 3 points to Polar's own privacy
     policy.
@@ -195,12 +195,12 @@ These are the companies that help us run Pyo Cloud and may process personal data
 
 | Subprocessor | What it does for Pyo Cloud | Data it handles | Location |
 |---|---|---|---|
-| Hetzner Online GmbH | Hosts Pyo Cloud's servers and database | All data Pyo Cloud stores | Germany and Finland (EU) |
+| Hetzner | Hosts Pyo Cloud's servers and database | All data Pyo Cloud stores | Germany and Finland (EU) |
 | Amazon Web Services (AWS KMS) | Keeps the keys that sign commands to your servers | Hashes of commands. No customer content or personal data | An AWS region in the EU |
 | Cloudflare | Sits in front of Pyo Cloud: TLS, protection from attacks, routing | All traffic to Pyo Cloud while it passes through, including IP addresses | Global network |
 | Polar | Merchant of record for card payments: checkout, subscriptions, invoices, sales tax | Name, email, billing address, payment details, subscription | See Polar's privacy policy |
 | Midtrans | Payment processor for customers in Indonesia: QRIS, bank transfer and e-wallets | Name, email, payment details, orders | Indonesia |
-| Resend, Inc. | Sends Pyo Cloud's emails, such as team invites and notices | Name, email address, email contents | United States, under the safeguards in section 8 |
+| Resend | Sends Pyo Cloud's emails, such as team invites and notices | Name, email address, email contents | United States, under the safeguards in section 8 |
 
 Polar acts as the merchant of record. For the payments it handles, it is also a controller under its own privacy policy. For Midtrans payments, we are the seller and Midtrans processes the payment for us.
 
