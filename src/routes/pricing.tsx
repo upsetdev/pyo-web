@@ -28,27 +28,27 @@ export const Route = createFileRoute("/pricing")({
       path: "/pricing",
       title: "Pricing: free self-hosted, or Pyo Cloud at $5 per server | Pyo",
       description:
-        "Self-host Pyo for free with every feature, or let us run it with Pyo Cloud for $5 per server per month. Either way, your services and data stay on your servers.",
+        "Self-host Pyo for free, or let us run Pyo for $5 per server per month. Your services and data stay on your servers.",
       card: {
         badge: "Pricing",
         title: "Free to self-host, or Pyo Cloud at $5 per server",
-        description: "Every feature on every install. Your services and data stay on your servers.",
+        description: "Every feature on both plans. Your services and data stay on your servers.",
       },
     }),
   component: PricingPage,
 });
 
 const SELF_HOSTED = [
-  "Every feature, on every install",
+  "Every feature",
   "Open source, Apache 2.0",
-  "Runs entirely on your servers",
-  "Unlimited teams, members, projects, services and clusters",
+  "Unlimited teams, members, projects and services",
 ];
 
 const CLOUD = [
-  "Every feature, nothing to run",
-  "Unlimited users, projects and services",
-  "Updates handled by us",
+  "Every feature",
+  "We update and back up Pyo",
+  "Support from the Pyo team",
+  "Unlimited teams, members, projects and services",
 ];
 
 /** Headline features, shown below the plans. `soon` marks what isn't shipped yet. */
@@ -59,13 +59,13 @@ const INCLUDED: {
   page?: "/sandbox";
   soon?: boolean;
 }[] = [
-  { icon: HardDrivesIcon, title: "Multi-server clusters", body: "Connect servers over your own Tailscale tailnet and choose where each service runs." },
-  { icon: DatabaseIcon, title: "Built-in databases", body: "Postgres, MySQL and KV, with replicas, point-in-time restore and scheduled backups." },
-  { icon: ShieldCheckIcon, title: "WAF, firewall and analytics", body: "Built in. Pyo keeps the totals and raw requests stay on your servers." },
-  { icon: CubeTransparentIcon, title: "Sandboxes", body: "Isolated machines for code and agents, including a full desktop in the browser.", page: "/sandbox" },
-  { icon: BellIcon, title: "Alerts", body: "Get alerts in Telegram, Discord and Slack, or send them to a webhook." },
-  { icon: SignatureIcon, title: "Signed commands", body: "On Pyo Cloud, every command to your servers is signed with keys kept in AWS KMS." },
-  { icon: UsersThreeIcon, title: "Teams kept apart", body: "Each team's data is kept apart from every other team's." },
+  { icon: HardDrivesIcon, title: "Multi-server clusters", body: "Connect servers over your Tailscale tailnet. Pick where each service runs." },
+  { icon: DatabaseIcon, title: "Built-in databases", body: "Postgres, MySQL and KV with replicas, point-in-time restore and backups." },
+  { icon: ShieldCheckIcon, title: "WAF, firewall and analytics", body: "Raw requests stay on your servers. Pyo keeps only the totals." },
+  { icon: CubeTransparentIcon, title: "Sandboxes", body: "Isolated machines for code and agents, with a full desktop in the browser.", page: "/sandbox" },
+  { icon: BellIcon, title: "Alerts", body: "In Telegram, Discord, Slack or any webhook." },
+  { icon: SignatureIcon, title: "Signed commands", body: "On Pyo Cloud, every command to your servers is signed with keys in AWS KMS." },
+  { icon: UsersThreeIcon, title: "Teams kept apart", body: "No team can see another team's data." },
   { icon: GitPullRequestIcon, title: "Preview environments", body: "A live preview of every pull request.", soon: true },
 ];
 
@@ -75,7 +75,6 @@ const COMPARE: { group: string; rows: Row[] }[] = [
     group: "Your services",
     rows: [
       { topic: "Where your services run", pyo: ["yes", "Your servers"], them: ["yes", "Your servers"] },
-      { topic: "Features", pyo: ["yes", "Every feature"], them: ["yes", "Every feature"] },
     ],
   },
   {
@@ -83,23 +82,23 @@ const COMPARE: { group: string; rows: Row[] }[] = [
     rows: [
       {
         topic: "Dashboard, API and database",
-        pyo: ["partly", "You run them on one of your servers"],
+        pyo: ["partly", "You run them on your server"],
         them: ["yes", "Run by us at cloud.pyo.dev"],
       },
       {
         topic: "Updates",
-        pyo: ["partly", "You update Pyo when a release comes out"],
-        them: ["yes", "Handled by us, and your services keep running"],
+        pyo: ["partly", "You install each release"],
+        them: ["yes", "By us, while your services keep running"],
       },
       {
         topic: "Agent updates",
         pyo: ["yes", "With each Pyo update"],
-        them: ["yes", "Automatic, or when your team chooses"],
+        them: ["yes", "Automatic, or when you choose"],
       },
       {
         topic: "Pyo's own backups",
-        pyo: ["partly", "You set them up, on your server or in your own S3 bucket"],
-        them: ["yes", "Handled by us"],
+        pyo: ["partly", "You set them up, on your server or in S3"],
+        them: ["yes", "By us"],
       },
     ],
   },
@@ -108,12 +107,12 @@ const COMPARE: { group: string; rows: Row[] }[] = [
     rows: [
       {
         topic: "Inbound ports",
-        pyo: ["partly", "Your team must be able to reach your dashboard"],
-        them: ["yes", "None for Pyo: your servers only connect out"],
+        pyo: ["partly", "Your team needs to reach your dashboard"],
+        them: ["yes", "None for Pyo, as your servers only connect out"],
       },
       {
         topic: "Support",
-        pyo: ["partly", "Community, on GitHub"],
+        pyo: ["partly", "Community on GitHub"],
         them: ["yes", "From the Pyo team"],
       },
     ],
@@ -123,7 +122,7 @@ const COMPARE: { group: string; rows: Row[] }[] = [
     rows: [
       {
         topic: "Cost",
-        pyo: ["yes", "Free and open source"],
+        pyo: ["yes", "Free"],
         them: ["yes", "$5 per server per month, 20% off yearly"],
       },
     ],
@@ -133,31 +132,30 @@ const COMPARE: { group: string; rows: Row[] }[] = [
 const FAQ: [string, ReactNode][] = [
   [
     "What counts as a server?",
-    "Each machine you connect counts once, whatever it does. One server that runs your services, databases and builds is $5 a month. Clusters, teams, members, projects and services are free and unlimited.",
+    "Each machine you connect counts once, whatever it runs. Everything else is free and unlimited.",
   ],
   [
     "When am I charged?",
-    "You pay when you connect your first server. After that, you pay $5 per server each month, or $48 per server each year.",
+    "When you connect your first server, then every month or year.",
   ],
   [
     "What happens when I add or remove a server?",
-    "Adding a server mid-month charges it for the rest of that month. Removing one credits your next invoice.",
+    "A server added mid-month is charged for the rest of the month. A removed one is credited on your next invoice.",
   ],
   [
     "What if a payment fails?",
-    "Your services keep running. After 7 days, deploys pause until the payment goes through.",
+    "Your services keep running. After 7 days, deploys pause until you pay.",
   ],
   [
     "Can I cancel or leave?",
-    "Cancel anytime. Remove your servers and the charges stop. Your services keep running on your servers.",
+    "Yes, anytime. Remove your servers and billing stops, but your services keep running.",
   ],
   [
     "Where does my data live?",
     <>
-      Your services, databases, images, backups and raw request logs stay on
-      your servers. Pyo Cloud keeps your settings, encrypted environment
-      variables, build logs and analytics totals. Your servers only connect
-      out, so Pyo needs no inbound ports. See{" "}
+      Services, databases, images, backups and raw request logs stay on your
+      servers. Pyo Cloud keeps settings, encrypted environment variables, build
+      logs and analytics totals. See{" "}
       <a href="/docs/cloud/security" className="font-medium text-foreground underline underline-offset-4">
         Security on Pyo Cloud
       </a>
@@ -165,23 +163,8 @@ const FAQ: [string, ReactNode][] = [
     </>,
   ],
   [
-    "What server do I need?",
-    <>
-      Linux on x86-64 with at least 2 CPU cores, 2 GB of memory and 40 GB of
-      disk. 4 GB of memory is recommended. Pyo uses about 1 GB of it. See{" "}
-      <a href="/docs/cloud/server-requirements" className="font-medium text-foreground underline underline-offset-4">
-        Server requirements
-      </a>
-      .
-    </>,
-  ],
-  [
-    "What else do I pay for?",
-    "Your servers, bandwidth and S3 storage, billed directly by your providers. The $5 covers what Pyo runs for you.",
-  ],
-  [
     "Is there a free trial?",
-    "No. Self-hosted Pyo is the free option. It's open source and has every feature.",
+    "No. Self-hosted Pyo is free and has every feature.",
   ],
   ...(site.cloudLive
     ? []
@@ -265,8 +248,8 @@ function PricingPage() {
           Pricing
         </h1>
         <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-muted-foreground">
-          Self-host Pyo for free, or let us run it for you with Pyo Cloud.
-          Either way, your services run on your own infrastructure.
+          Run Pyo yourself for free, or let us run it with Pyo Cloud. Your
+          services run on your servers either way.
         </p>
       </section>
 
@@ -275,7 +258,7 @@ function PricingPage() {
           <Plan
             name="Self-hosted"
             price="Free"
-            summary="Open source, with every feature. You run and update Pyo yourself."
+            summary="You run and update Pyo on your own server."
             action={
               <ButtonLink
                 href="/docs/install"
@@ -293,7 +276,7 @@ function PricingPage() {
             price="$5"
             unit="/ server / month"
             note="Or $48 per server per year, 20% off."
-            summary="Pyo, run by us. Connect your servers and deploy to them, with nothing to run or update."
+            summary="We run Pyo for you. Your services run on your servers."
             action={
               <CloudButton href={`${site.cloudUrl}/signup`}>Get started</CloudButton>
             }
@@ -301,15 +284,14 @@ function PricingPage() {
           />
         </div>
         <p className="mt-4 text-[12px] leading-5 text-muted-foreground">
-          Each server needs Linux on x86-64 with at least 2 CPU cores, 2 GB of
-          memory and 40 GB of disk. 4 GB is recommended.{" "}
+          Servers need Linux on x86-64 with at least 2 CPU cores, 2 GB of
+          memory (4 GB recommended) and 40 GB of disk.{" "}
           <a href="/docs/cloud/server-requirements" className="underline underline-offset-4 hover:text-foreground">
             Server requirements
           </a>
         </p>
         <p className="mt-1 text-[12px] leading-5 text-muted-foreground">
-          Your servers, bandwidth and S3 storage are billed by your own
-          providers, on either plan.
+          Your providers bill servers, bandwidth and S3 storage directly.
         </p>
       </section>
 
@@ -318,7 +300,7 @@ function PricingPage() {
           Everything included
         </h2>
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
-          Both plans come with every feature. Here are a few.{" "}
+          Both plans have every feature, including these.{" "}
           <a href="/#features" className="font-medium text-foreground underline underline-offset-4">
             See all features
           </a>
@@ -345,14 +327,13 @@ function PricingPage() {
           Self-hosted or Pyo Cloud
         </h2>
         <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
-          Same Pyo, same features, and your services run on your servers
-          either way. The difference is who runs and looks after Pyo itself.
+          The only difference is who runs Pyo itself.
         </p>
         <div className="mt-8">
           <CompareTable
             caption="How self-hosted Pyo compares with Pyo Cloud"
-            first={{ mark: <Logo showName={false} />, name: "Self-hosted", tagline: "Open source, run by you" }}
-            second={{ mark: <Logo showName={false} />, name: "Pyo Cloud", tagline: "Run by us" }}
+            first={{ mark: <Logo showName={false} />, name: "Self-hosted", tagline: "You run Pyo" }}
+            second={{ mark: <Logo showName={false} />, name: "Pyo Cloud", tagline: "We run Pyo" }}
             groups={COMPARE}
             highlight="second"
           />
