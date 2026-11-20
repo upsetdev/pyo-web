@@ -125,7 +125,7 @@ We may also share personal data when the law requires it, to protect our rights 
 
 ## Where it is stored
 
-We store and process Pyo Cloud's data in the European Union. Some subprocessors may process personal data outside the EU. These include Cloudflare's global network, Polar, Midtrans for payments in Indonesia, and AWS for the keys that sign commands. When personal data leaves the European Economic Area, the United Kingdom or Switzerland, we use safeguards that the law accepts, such as the European Commission's standard contractual clauses.
+We store and process Pyo Cloud's data in the European Union, on Hetzner servers in Germany and Finland. Some subprocessors may process personal data outside the EU. These include Cloudflare's global network, Polar, Midtrans for payments in Indonesia, AWS for the keys that sign commands, and Resend for our emails. When personal data leaves the European Economic Area, the United Kingdom or Switzerland, we use safeguards that the law accepts, such as the European Commission's standard contractual clauses.
 
 ## How we protect it
 

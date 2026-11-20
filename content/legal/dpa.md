@@ -20,19 +20,17 @@ Values chosen (only the effective date is left):
   Breach notice: within 48 hours of becoming aware, so the customer can
     meet the GDPR's 72-hour deadline (section 10).
   Subprocessor change notice: 30 days (section 7, Annex 3).
-  Hosting provider and email provider: not named on purpose. Annex 3
-    describes them by category ("Hosting provider", "Email delivery
-    provider"). Check this is enough for GDPR art. 28(2) and (4), which
-    expect the controller to know who the subprocessors are. If not,
-    name them here or offer the names on request.
+  Hosting provider: Hetzner Online GmbH (Germany), servers in the EU.
+  Email delivery: Resend, Inc. (United States), under section 8's
+    safeguards.
   Polar's location: not stated. Annex 3 points to Polar's own privacy
     policy.
 Transfers (section 8): some subprocessors may process data outside the
 EU, under standard contractual clauses or another lawful safeguard:
 Cloudflare's global network, Polar, Midtrans for payments in Indonesia,
 and AWS for KMS calls (the keys live in an EU region, but AWS is a US
-company and the calls carry only hashes of commands). The email provider
-may also send from outside the EU. Check the safeguard for each.
+company and the calls carry only hashes of commands). Resend, the email
+provider, is a US company. Check the safeguard for each.
 No legal entity or governing law exists yet. The text names "Pyo
 (pyo.dev)" as the party and gives no address. An entity, its address and
 the governing law must be added here before publishing.
@@ -111,7 +109,7 @@ Pyo keeps the technical and organisational measures in Annex 2 in place. Pyo may
 
 ## 8. Transfers outside your region
 
-Pyo stores and processes customer personal data in the European Union. Some subprocessors may process it outside the EU. These include Cloudflare's global network, Polar, Midtrans for payments in Indonesia, and AWS for the keys that sign commands. When customer personal data goes to a country without an adequacy decision, Pyo uses the European Commission's standard contractual clauses, the UK addendum, or another lawful safeguard. Those clauses are part of this DPA where they are needed.
+Pyo stores and processes customer personal data in the European Union. Some subprocessors may process it outside the EU. These include Cloudflare's global network, Polar, Midtrans for payments in Indonesia, AWS for the keys that sign commands, and Resend for our emails. When customer personal data goes to a country without an adequacy decision, Pyo uses the European Commission's standard contractual clauses, the UK addendum, or another lawful safeguard. Those clauses are part of this DPA where they are needed.
 
 ## 9. Helping you
 
@@ -197,12 +195,12 @@ These are the companies that help us run Pyo Cloud and may process personal data
 
 | Subprocessor | What it does for Pyo Cloud | Data it handles | Location |
 |---|---|---|---|
-| Hosting provider | Hosts Pyo Cloud's servers and database | All data Pyo Cloud stores | European Union |
+| Hetzner Online GmbH | Hosts Pyo Cloud's servers and database | All data Pyo Cloud stores | Germany and Finland (EU) |
 | Amazon Web Services (AWS KMS) | Keeps the keys that sign commands to your servers | Hashes of commands. No customer content or personal data | An AWS region in the EU |
 | Cloudflare | Sits in front of Pyo Cloud: TLS, protection from attacks, routing | All traffic to Pyo Cloud while it passes through, including IP addresses | Global network |
 | Polar | Merchant of record for card payments: checkout, subscriptions, invoices, sales tax | Name, email, billing address, payment details, subscription | See Polar's privacy policy |
 | Midtrans | Payment processor for customers in Indonesia: QRIS, bank transfer and e-wallets | Name, email, payment details, orders | Indonesia |
-| Email delivery provider | Sends Pyo Cloud's emails, such as team invites and notices | Name, email address, email contents | The EU or other countries, under the safeguards in section 8 |
+| Resend, Inc. | Sends Pyo Cloud's emails, such as team invites and notices | Name, email address, email contents | United States, under the safeguards in section 8 |
 
 Polar acts as the merchant of record. For the payments it handles, it is also a controller under its own privacy policy. For Midtrans payments, we are the seller and Midtrans processes the payment for us.
 
