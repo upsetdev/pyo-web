@@ -148,7 +148,7 @@ const FAQ: [string, ReactNode][] = [
   ],
   [
     "What if a payment fails?",
-    "Your services keep running. After 7 days, deploys pause until you pay.",
+    "Your services keep running. After 7 days, changes pause until you pay.",
   ],
   [
     "Can I cancel or leave?",
