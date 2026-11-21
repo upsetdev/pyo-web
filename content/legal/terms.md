@@ -206,7 +206,7 @@ Our [Privacy Policy](/privacy) explains what we collect about you and why. When 
 - Your services keep running on your servers.
 - If the payment still has not gone through after 7 days, your plan pauses. While paused, you cannot deploy, connect new servers or change settings on your servers. Your services keep running, and you can still sign in, see your team, read logs, delete things and pay.
 - Everything resumes as soon as the payment goes through.
-- If a payment stays unpaid for a long time, we may end your subscription as in [section 11](#11-cancelling-and-ending).
+- If a payment is still unpaid 30 days after it failed, we end your subscription as in [section 11](#11-cancelling-and-ending).
 
 ## 10. Availability
 
