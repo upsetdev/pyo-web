@@ -26,7 +26,7 @@ const STEPS: {
     name: "clusters",
     label: "Clusters",
     title: "Start with one server, add more as you grow",
-    body: "Any VPS, dedicated server or machine under your desk. Add more over Tailscale.",
+    body: "Any VPS, dedicated server or machine under your desk. Set up Tailscale once, and every cluster joins your tailnet.",
   },
   {
     name: "database",
